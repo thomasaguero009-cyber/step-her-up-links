@@ -1,27 +1,854 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Clase gratis en vivo con Gianie Milet</title>
-<meta name="description" content="Miércoles 21 de octubre, 7:00 PM (Puerto Rico). Reserva tu lugar gratis.">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clase gratis en vivo con Gianie Milet — Step Her Up</title>
+<meta name="description" content="Clase gratuita en vivo el miércoles 21 de octubre, 7:00 PM (Puerto Rico). Reserva tu lugar y entra al grupo de WhatsApp.">
 <meta property="og:title" content="Clase gratis en vivo con Gianie Milet">
-<meta property="og:description" content="De experta invisible a autoridad pagada. Miércoles 21 de octubre, 7:00 PM (Puerto Rico). Reserva tu lugar gratis.">
+<meta property="og:description" content="Miércoles 21 de octubre · 7:00 PM (Puerto Rico). Reserva tu lugar gratis.">
 <meta property="og:image" content="https://shu.stepherup.com/assets/gianie-foto.jpg">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://shu.stepherup.com/masterclass/">
-<noscript><meta http-equiv="refresh" content="0;url=https://thomasaguero009-cyber.github.io/step-her-up/webinar.html"></noscript>
+<link rel="canonical" href="https://shu.stepherup.com/masterclass/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  html,body{ margin:0; height:100%; background:#1a0509; color:#f7ece9; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif; }
-  body{ display:flex; align-items:center; justify-content:center; }
-  p{ font-size:14px; letter-spacing:.04em; opacity:.7; }
+  :root{
+    --wine-1:#1a0509; --wine-2:#3d0f1f; --wine-3:#5a1626;
+    --blush:#f0a8be; --blush-2:#e88aa8;
+    --cream:#f7ece9; --text-dim:rgba(247,236,233,0.72);
+    --line:rgba(247,236,233,0.14); --border:rgba(255,255,255,0.14);
+    --ink:#2a0f17; --ink-dim:#6d4b55; --paper:#f6ede9;
+    --rad:16px;
+  }
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    margin:0; color:var(--cream); font-family:"Inter",-apple-system,BlinkMacSystemFont,sans-serif; font-size:17px; line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+    background:
+      radial-gradient(ellipse 1100px 700px at 82% 0%, rgba(90,22,38,0.5), transparent 55%),
+      radial-gradient(ellipse 900px 600px at 15% 60%, rgba(90,22,38,0.35), transparent 55%),
+      linear-gradient(180deg, var(--wine-2) 0%, var(--wine-1) 40%);
+    background-attachment:fixed; min-height:100vh;
+  }
+  h1,h2,h3{ font-family:"Playfair Display",Georgia,serif; font-weight:500; margin:0; letter-spacing:-0.01em; }
+  p{ margin:0; }
+  .wrap{ max-width:1120px; margin:0 auto; padding:0 24px; }
+  [hidden]{ display:none !important; }
+  section{ scroll-margin-top:84px; }
+
+  /* ----- Piezas reutilizables ----- */
+  .kicker{ display:block; font-size:12px; font-weight:600; letter-spacing:0.22em; text-transform:uppercase; color:var(--blush); }
+  .title{ font-size:clamp(30px,4vw,46px); line-height:1.12; }
+  .title em, h1 em{ font-style:italic; color:var(--blush); }
+  .lede{ color:var(--text-dim); font-size:clamp(17px,1.9vw,19px); max-width:34em; }
+  .btn{
+    display:inline-flex; align-items:center; justify-content:center; padding:16px 34px; border:0; border-radius:999px; cursor:pointer;
+    font:600 16px "Inter",sans-serif; letter-spacing:0.01em; text-decoration:none; transition:transform .15s, box-shadow .15s, opacity .15s;
+  }
+  .btn:hover{ transform:translateY(-1px); }
+  .btn:disabled{ opacity:0.6; cursor:default; transform:none; }
+  .btn-solid{ background:linear-gradient(90deg,var(--blush-2),var(--blush)); color:#2a0a13; box-shadow:0 10px 28px rgba(232,138,168,0.28); }
+  .btn-wine{ background:var(--wine-3); color:var(--cream); box-shadow:0 10px 26px rgba(90,22,38,0.28); }
+  .btn-block{ display:flex; width:100%; }
+  .pill{ display:inline-flex; align-items:center; gap:10px; font-size:12px; font-weight:600; letter-spacing:0.18em; text-transform:uppercase; color:#ffc2cd; }
+  .pulse{ width:8px; height:8px; border-radius:50%; background:#ff5c7a; display:inline-block; animation:pulsar 1.8s infinite; }
+  @keyframes pulsar{ 0%{ box-shadow:0 0 0 0 rgba(255,92,122,0.6); } 70%{ box-shadow:0 0 0 10px rgba(255,92,122,0); } 100%{ box-shadow:0 0 0 0 rgba(255,92,122,0); } }
+  @media(prefers-reduced-motion:reduce){ .pulse{ animation:none; } html{ scroll-behavior:auto; } }
+
+  /* ===== Barra superior con cuenta regresiva (siempre visible) ===== */
+  .topbar{ position:sticky; top:0; z-index:50; background:rgba(22,5,9,0.92); backdrop-filter:blur(12px); border-bottom:1px solid var(--line); }
+  .tb-in{ max-width:1120px; margin:0 auto; padding:9px 24px; display:grid; grid-template-columns:minmax(0,1fr) auto minmax(0,1fr); align-items:center; gap:20px; }
+  .tb-logo{ justify-self:start; display:block; line-height:0; }
+  .tb-logo img{ height:56px; width:auto; display:block; margin:-8px 0 -8px -4px; }
+  .tb-center{ display:flex; align-items:center; justify-content:center; gap:26px; }
+  .tb-info{ display:flex; flex-direction:column; line-height:1.3; text-align:right; }
+  .tb-kicker{ font-size:11px; font-weight:600; letter-spacing:0.2em; text-transform:uppercase; color:var(--blush); }
+  .tb-date{ font-size:13px; color:var(--text-dim); }
+  .tb-timer{ display:flex; align-items:flex-start; }
+  .tb-u{ position:relative; min-width:52px; padding:0 10px; text-align:center; }
+  .tb-u + .tb-u::before{ content:""; position:absolute; left:0; top:6px; bottom:6px; width:1px; background:var(--line); }
+  .tb-u b{ display:block; font:600 24px/1.1 "Inter",sans-serif; font-variant-numeric:tabular-nums; color:var(--cream); }
+  .tb-u i{ display:block; font-style:normal; font-size:10px; letter-spacing:0.16em; text-transform:uppercase; color:var(--text-dim); }
+  .tb-join{ padding:10px 22px; font-size:14px; }
+  @media(max-width:900px){
+    .tb-date{ display:none; }
+    .tb-center{ gap:18px; }
+  }
+  @media(max-width:640px){
+    .tb-info{ display:none; }
+    .tb-in{ grid-template-columns:auto 1fr; padding:8px 12px; gap:10px; }
+    .tb-spacer{ display:none; }
+    .tb-logo img{ height:44px; margin:-6px 0 -6px -4px; }
+    .tb-center{ justify-content:flex-end; }
+    .tb-u{ min-width:48px; padding:0 7px; }
+    .tb-u b{ font-size:20px; }
+    .tb-u i{ font-size:9px; letter-spacing:0.12em; }
+  }
+
+  /* ===== Hero ===== */
+  .hero{ padding:88px 0 96px; }
+  .hero-grid{ display:grid; grid-template-columns:minmax(0,1.1fr) minmax(0,0.9fr); grid-template-areas:"copy card" "facts card"; column-gap:72px; align-items:center; }
+  .hero-copy{ grid-area:copy; align-self:end; }
+  .facts{ grid-area:facts; align-self:start; margin-top:34px !important; }
+  .form-card{ grid-area:card; }
+  .eyebrow-ed{ display:flex; align-items:center; gap:18px; flex-wrap:wrap; }
+  .ee-a{ font-size:12.5px; font-weight:600; letter-spacing:0.26em; text-transform:uppercase; color:var(--cream); }
+  .ee-line{ width:56px; height:1px; background:linear-gradient(90deg,var(--blush),rgba(240,168,190,0)); flex:none; }
+  .ee-b{ font:italic 500 23px/1.2 "Playfair Display",Georgia,serif; color:var(--blush); }
+  @media(max-width:520px){
+    .eyebrow-ed{ flex-direction:column; align-items:flex-start; gap:6px; }
+    .ee-line{ display:none; }
+    .ee-a{ font-size:12px; letter-spacing:0.22em; }
+    .ee-b{ font-size:22px; }
+  }
+  .hero h1{ font-size:clamp(38px,5.6vw,66px); line-height:1.06; margin:26px 0 22px; }
+  .facts{ margin:0; padding:0; list-style:none; border-top:1px solid var(--line); max-width:30em; }
+  .facts li{ display:grid; grid-template-columns:104px 1fr; gap:16px; padding:14px 0; border-bottom:1px solid var(--line); align-items:baseline; }
+  .facts .k{ font-size:11.5px; font-weight:600; letter-spacing:0.18em; text-transform:uppercase; color:var(--blush); }
+  .facts .v{ font-size:16.5px; color:var(--cream); }
+  .facts .v small{ display:block; margin-top:2px; font-size:13.5px; color:var(--text-dim); }
+  @media(max-width:900px){
+    .hero{ padding:44px 0 56px; }
+    .hero-grid{ grid-template-columns:1fr; grid-template-areas:"copy" "card" "facts"; row-gap:34px; }
+    .facts{ margin-top:0 !important; }
+    .facts li{ grid-template-columns:92px 1fr; }
+  }
+
+  /* ----- Tarjeta de registro ----- */
+  .form-card{ background:rgba(255,255,255,0.055); border:1px solid rgba(240,168,190,0.32); border-radius:24px; padding:36px 34px 30px; box-shadow:0 28px 70px rgba(0,0,0,0.35); }
+  .form-card h2{ font-size:28px; text-align:center; }
+  .fc-sub{ text-align:center; font-size:15px; color:var(--text-dim); margin:10px 0 22px; line-height:1.55; }
+  .fc-cupos{ display:flex; justify-content:center; margin:0 0 16px; }
+  .form-note{ margin-top:14px; text-align:center; font-size:13px; color:var(--text-dim); }
+  .field{ display:flex; flex-direction:column; gap:7px; margin-bottom:16px; }
+  .field label{ font-size:13px; font-weight:500; color:var(--text-dim); }
+  .field input, .field select{
+    width:100%; height:52px; padding:0 16px; border-radius:12px; border:1px solid var(--border); background:rgba(0,0,0,0.28);
+    color:var(--cream); font-size:16px; font-family:inherit;
+  }
+  .field input:focus, .field select:focus{ outline:none; border-color:var(--blush-2); }
+  .field input::placeholder{ color:rgba(247,236,233,0.36); }
+  .field select option{ background:#2a0c14; color:var(--cream); }
+  .tel-row{ display:grid; grid-template-columns:minmax(0,0.95fr) minmax(0,1.3fr); gap:10px; }
+  .hp{ position:absolute; left:-9999px; width:1px; height:1px; opacity:0; }
+  .form-msg{ min-height:20px; margin:12px 0 0; text-align:center; font-size:14px; color:#ffb3b3; }
+  .reveal{ display:grid; grid-template-rows:0fr; transition:grid-template-rows .4s ease; }
+  .reveal.open{ grid-template-rows:1fr; }
+  .reveal-inner{ overflow:hidden; min-height:0; }
+  #webinarForm{ padding-top:2px; opacity:0; transform:translateY(-6px); transition:opacity .35s .1s, transform .35s .1s; }
+  .reveal.open #webinarForm{ opacity:1; transform:none; }
+  @media(prefers-reduced-motion:reduce){ .reveal, #webinarForm{ transition:none; } }
+  .done{ text-align:center; padding:4px 0 2px; }
+  .done .check{ width:60px; height:60px; margin:0 auto 18px; border-radius:50%; border:1px solid rgba(95,211,154,0.6); background:rgba(95,211,154,0.12); display:flex; align-items:center; justify-content:center; font-size:26px; color:#5fd39a; }
+  .done h2{ font-size:28px; }
+  .done p{ color:var(--text-dim); margin:12px 0 24px; font-size:15.5px; }
+  .done .done-hint{ margin:14px 0 0; font-size:13.5px; }
+  @media(max-width:520px){ .form-card{ padding:28px 22px 24px; } .tel-row{ grid-template-columns:1fr; } }
+
+  /* ===== Franja de urgencia ===== */
+  .strip{ border-top:1px solid var(--line); border-bottom:1px solid var(--line); background:rgba(0,0,0,0.22); }
+  .strip-in{ display:grid; grid-template-columns:minmax(0,1.05fr) auto auto; gap:48px; align-items:center; padding-top:34px; padding-bottom:34px; }
+  .strip-left p{ margin-top:10px; font-size:15px; color:var(--text-dim); max-width:27em; line-height:1.55; }
+  .strip-mid{ text-align:center; }
+  .strip-label{ display:block; margin-bottom:8px; font-size:11px; font-weight:600; letter-spacing:0.2em; text-transform:uppercase; color:var(--blush); }
+  .strip-timer{ display:flex; justify-content:center; }
+  .st-u{ position:relative; min-width:76px; padding:0 14px; text-align:center; }
+  .st-u + .st-u::before{ content:""; position:absolute; left:0; top:8px; bottom:8px; width:1px; background:var(--line); }
+  .st-u b{ display:block; font:500 46px/1.05 "Playfair Display",serif; font-variant-numeric:tabular-nums; }
+  .st-u i{ display:block; margin-top:4px; font-style:normal; font-size:10.5px; letter-spacing:0.18em; text-transform:uppercase; color:var(--text-dim); }
+  @media(max-width:900px){
+    .strip-in{ grid-template-columns:1fr; gap:26px; text-align:center; padding-top:40px; padding-bottom:40px; }
+    .strip-left p{ margin-left:auto; margin-right:auto; }
+    .strip .btn{ justify-self:center; width:100%; max-width:380px; }
+  }
+  @media(max-width:420px){ .st-u{ min-width:64px; padding:0 8px; } .st-u b{ font-size:38px; } }
+
+  /* ===== Beneficios (sección clara) ===== */
+  .light{ background:var(--paper); color:var(--ink); padding:104px 0; }
+  .light .kicker{ color:#a53a58; }
+  .light .title em{ color:#a53a58; }
+  .ben-grid{ display:grid; grid-template-columns:minmax(0,0.82fr) minmax(0,1.18fr); gap:72px; align-items:center; }
+  .ben-photo{ margin:0; position:relative; }
+  .ben-photo img{ display:block; width:100%; aspect-ratio:4/5; object-fit:cover; object-position:center 14%; border-radius:200px 200px 18px 18px; background:#cfcfd2; box-shadow:0 30px 60px rgba(61,15,31,0.22); }
+  .ben-photo figcaption{ margin-top:22px; text-align:center; }
+  .ben-photo figcaption b{ display:block; font:500 24px "Playfair Display",serif; color:var(--ink); }
+  .ben-photo figcaption span{ display:block; margin:4px auto 0; max-width:21em; font-size:14px; color:var(--ink-dim); line-height:1.5; }
+  .ben-photo figcaption em{ display:inline-block; margin-top:12px; padding-top:12px; border-top:1px solid rgba(42,15,23,0.16); font-style:normal; font-size:12px; font-weight:600; letter-spacing:0.16em; text-transform:uppercase; color:#a53a58; }
+  .ben-copy .title{ margin:14px 0 12px; }
+  .ben-copy .lede{ color:var(--ink-dim); margin-bottom:30px; }
+  .ben-list{ list-style:none; margin:0 0 36px; padding:0; border-top:1px solid rgba(42,15,23,0.16); }
+  .ben-list li{ display:grid; grid-template-columns:52px 1fr; gap:6px; padding:20px 0; border-bottom:1px solid rgba(42,15,23,0.16); align-items:baseline; }
+  .ben-list .num{ font:500 22px "Playfair Display",serif; color:#a53a58; }
+  .ben-list p{ font-size:16.5px; line-height:1.55; color:var(--ink); }
+  .ben-list p b{ font-weight:600; }
+  @media(max-width:900px){
+    .light{ padding:64px 0; }
+    .ben-grid{ grid-template-columns:1fr; gap:44px; }
+    .ben-photo{ max-width:340px; margin:0 auto; }
+    .ben-copy .btn{ width:100%; }
+  }
+
+  /* ===== Testimonios (igual que la landing del VSL) ===== */
+  .section{ padding:96px 0 0; }
+  .section + .section{ padding-top:84px; }
+  .section-head{ text-align:center; max-width:620px; margin:0 auto 44px; }
+  .section-head h2{ font-size:clamp(28px,3.6vw,40px); font-weight:500; }
+  .section-head h2 .hl{ color:var(--blush); font-style:italic; }
+  .reviews-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:22px; max-width:1240px; margin:0 auto; }
+  .review-card{ background:#fff; border-radius:16px; padding:22px; display:flex; flex-direction:column; gap:12px; box-shadow:0 12px 30px rgba(0,0,0,0.25); }
+  .review-stars{ color:#fbbc04; font-size:16px; letter-spacing:2px; }
+  .review-text{ color:#3c3c3c; font-size:14.5px; line-height:1.55; margin:0; flex:1; }
+  .review-author{ display:flex; align-items:center; gap:10px; }
+  .review-avatar{ width:38px; height:38px; border-radius:50%; flex-shrink:0; background:linear-gradient(135deg, var(--blush-2), var(--blush)); color:#2a0a13; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:14px; }
+  .review-name{ font-size:13.5px; font-weight:700; color:#1a1a1a; }
+  .review-source{ font-size:11.5px; color:#767676; }
+  @media (max-width:900px){ .reviews-grid{ grid-template-columns:repeat(2,1fr); } }
+  @media (max-width:600px){ .reviews-grid{ grid-template-columns:1fr; } .section{ padding-top:64px; } }
+
+  /* ===== Cierre ===== */
+  .final{ padding:104px 0 112px; text-align:center; }
+  .final .title{ margin:18px 0 14px; }
+  .final .lede{ margin:0 auto 32px; }
+  .final .btn{ min-width:300px; }
+  @media(max-width:600px){ .final{ padding:72px 0 80px; } .final .btn{ width:100%; min-width:0; } }
+  footer{ border-top:1px solid var(--line); padding:26px 24px; text-align:center; font-size:13px; color:var(--text-dim); }
 </style>
+<link rel="stylesheet" href="https://thomasaguero009-cyber.github.io/step-her-up/assets/carrusel.css?v=2">
 </head>
 <body>
-<p>Un momento…</p>
+
+<!-- Cuenta regresiva (arriba de todo, siempre visible) -->
+<header class="topbar" id="countdownBar">
+  <div class="tb-in">
+    <a class="tb-logo" href="#registro" aria-label="Step Her Up"><img src="https://thomasaguero009-cyber.github.io/step-her-up/assets/logo.png" alt="Step Her Up"></a>
+    <div class="tb-center">
+      <div class="tb-info">
+        <span class="tb-kicker" id="cbTitulo">La clase gratis empieza en</span>
+        <span class="tb-date" id="tbFecha">Miércoles 21 de octubre · 7:00 PM (Puerto Rico)</span>
+      </div>
+      <div class="tb-timer" id="cbTimer">
+        <div class="tb-u"><b id="cbD">00</b><i>Días</i></div>
+        <div class="tb-u"><b id="cbH">00</b><i>Horas</i></div>
+        <div class="tb-u"><b id="cbM">00</b><i>Min</i></div>
+        <div class="tb-u"><b id="cbS">00</b><i>Seg</i></div>
+      </div>
+      <a class="btn btn-solid tb-join" id="cbJoin" href="https://chat.whatsapp.com/L0Mjb4eIL52FT966cokUxt?mode=gi_t" hidden>Entrar a la clase en vivo</a>
+    </div>
+    <span class="tb-spacer" aria-hidden="true"></span>
+  </div>
+</header>
+
+<main>
+<!-- 1. Hero + registro -->
+<section class="hero" id="registro">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <div class="eyebrow-ed"><span class="ee-a">Clase gratuita en vivo</span><span class="ee-line" aria-hidden="true"></span><span class="ee-b">con Gianie Milet</span></div>
+      <h1>De experta invisible a <em>autoridad pagada</em></h1>
+      <p class="lede">Aprende a posicionar tu servicio, atraer a tus clientas ideales y cobrar lo que vales, sin trabajar más horas.</p>
+    </div>
+    <ul class="facts">
+      <li><span class="k">Fecha</span><span class="v" id="heroFecha">Miércoles 21 de octubre</span></li>
+      <li><span class="k">Hora</span><span class="v"><span id="heroHora">7:00 PM, hora de Puerto Rico</span><small id="horaLocal" hidden></small></span></li>
+      <li><span class="k">Acceso</span><span class="v">Grupo de WhatsApp<small>Ahí recibes el aviso y el enlace a la clase</small></span></li>
+    </ul>
+
+    <div class="form-card" id="formCard">
+      <div id="formView">
+        <h2>Reserva tu lugar gratis</h2>
+        <p class="fc-sub">Asegura tu lugar en la clase en vivo y empieza a posicionarte como la autoridad que mereces.</p>
+        <div class="fc-cupos"><span class="pill"><i class="pulse"></i>Cupos limitados</span></div>
+        <button class="btn btn-solid btn-block" id="openForm" type="button" aria-expanded="false" aria-controls="reveal">Quiero mi lugar</button>
+        <div class="reveal" id="reveal" inert><div class="reveal-inner">
+          <form id="webinarForm" novalidate>
+            <div class="field">
+              <label for="wNombre">Nombre completo</label>
+              <input id="wNombre" name="nombre" type="text" autocomplete="name" placeholder="Tu nombre y apellido" required>
+            </div>
+            <div class="field">
+              <label for="wEmail">Correo electrónico</label>
+              <input id="wEmail" name="email" type="email" autocomplete="email" inputmode="email" placeholder="tucorreo@email.com" required>
+            </div>
+            <div class="field">
+              <label for="wTel">Número de WhatsApp</label>
+              <div class="tel-row">
+                <select id="wPais" aria-label="Código de país">
+                  <option value="+54" data-cc="AR">🇦🇷 +54 Argentina</option>
+                <option value="+34" data-cc="ES">🇪🇸 +34 España</option>
+                <option value="+52" data-cc="MX">🇲🇽 +52 México</option>
+                <option value="+56" data-cc="CL">🇨🇱 +56 Chile</option>
+                <option value="+57" data-cc="CO">🇨🇴 +57 Colombia</option>
+                <option value="+598" data-cc="UY">🇺🇾 +598 Uruguay</option>
+                <option value="+51" data-cc="PE">🇵🇪 +51 Perú</option>
+                <option value="+593" data-cc="EC">🇪🇨 +593 Ecuador</option>
+                <option value="+58" data-cc="VE">🇻🇪 +58 Venezuela</option>
+                <option value="+591" data-cc="BO">🇧🇴 +591 Bolivia</option>
+                <option value="+595" data-cc="PY">🇵🇾 +595 Paraguay</option>
+                <option value="+507" data-cc="PA">🇵🇦 +507 Panamá</option>
+                <option value="+506" data-cc="CR">🇨🇷 +506 Costa Rica</option>
+                <option value="+502" data-cc="GT">🇬🇹 +502 Guatemala</option>
+                <option value="+504" data-cc="HN">🇭🇳 +504 Honduras</option>
+                <option value="+503" data-cc="SV">🇸🇻 +503 El Salvador</option>
+                <option value="+505" data-cc="NI">🇳🇮 +505 Nicaragua</option>
+                <option value="+1" data-cc="DO">🇩🇴 +1 República Dominicana</option>
+                <option value="+1" data-cc="PR" selected>🇵🇷 +1 Puerto Rico</option>
+                <option value="+53" data-cc="CU">🇨🇺 +53 Cuba</option>
+                <option value="+351" data-cc="PT">🇵🇹 +351 Portugal</option>
+                <option value="+55" data-cc="BR">🇧🇷 +55 Brasil</option>
+                <option value="+1" data-cc="US">🇺🇸 +1 Estados Unidos</option>
+                <option value="+1" data-cc="CA">🇨🇦 +1 Canadá</option>
+                <option value="+44" data-cc="GB">🇬🇧 +44 Reino Unido</option>
+                <option value="+49" data-cc="DE">🇩🇪 +49 Alemania</option>
+                <option value="+33" data-cc="FR">🇫🇷 +33 Francia</option>
+                <option value="+39" data-cc="IT">🇮🇹 +39 Italia</option>
+                <option value="+31" data-cc="NL">🇳🇱 +31 Países Bajos</option>
+                <option value="+41" data-cc="CH">🇨🇭 +41 Suiza</option>
+                <option value="+61" data-cc="AU">🇦🇺 +61 Australia</option>
+                <option value="+64" data-cc="NZ">🇳🇿 +64 Nueva Zelanda</option>
+                <option value="+81" data-cc="JP">🇯🇵 +81 Japón</option>
+                <option value="+86" data-cc="CN">🇨🇳 +86 China</option>
+                <option value="+91" data-cc="IN">🇮🇳 +91 India</option>
+                <option value="+971" data-cc="AE">🇦🇪 +971 Emiratos Árabes Unidos</option>
+                <option value="+1" data-cc="JM">🇯🇲 +1 Jamaica</option>
+                <option value="+1" data-cc="TT">🇹🇹 +1 Trinidad y Tobago</option>
+                <option value="+1" data-cc="BS">🇧🇸 +1 Bahamas</option>
+                <option value="+501" data-cc="BZ">🇧🇿 +501 Belice</option>
+                <option value="+509" data-cc="HT">🇭🇹 +509 Haití</option>
+                <option value="+592" data-cc="GY">🇬🇾 +592 Guyana</option>
+                <option value="+597" data-cc="SR">🇸🇷 +597 Surinam</option>
+                <option value="+240" data-cc="GQ">🇬🇶 +240 Guinea Ecuatorial</option>
+                <option value="+353" data-cc="IE">🇮🇪 +353 Irlanda</option>
+                <option value="+32" data-cc="BE">🇧🇪 +32 Bélgica</option>
+                <option value="+43" data-cc="AT">🇦🇹 +43 Austria</option>
+                <option value="+46" data-cc="SE">🇸🇪 +46 Suecia</option>
+                <option value="+47" data-cc="NO">🇳🇴 +47 Noruega</option>
+                <option value="+45" data-cc="DK">🇩🇰 +45 Dinamarca</option>
+                <option value="+358" data-cc="FI">🇫🇮 +358 Finlandia</option>
+                <option value="+48" data-cc="PL">🇵🇱 +48 Polonia</option>
+                <option value="+420" data-cc="CZ">🇨🇿 +420 Chequia</option>
+                <option value="+36" data-cc="HU">🇭🇺 +36 Hungría</option>
+                <option value="+40" data-cc="RO">🇷🇴 +40 Rumania</option>
+                <option value="+359" data-cc="BG">🇧🇬 +359 Bulgaria</option>
+                <option value="+385" data-cc="HR">🇭🇷 +385 Croacia</option>
+                <option value="+30" data-cc="GR">🇬🇷 +30 Grecia</option>
+                <option value="+352" data-cc="LU">🇱🇺 +352 Luxemburgo</option>
+                <option value="+354" data-cc="IS">🇮🇸 +354 Islandia</option>
+                <option value="+380" data-cc="UA">🇺🇦 +380 Ucrania</option>
+                <option value="+7" data-cc="RU">🇷🇺 +7 Rusia</option>
+                <option value="+90" data-cc="TR">🇹🇷 +90 Turquía</option>
+                <option value="+972" data-cc="IL">🇮🇱 +972 Israel</option>
+                <option value="+966" data-cc="SA">🇸🇦 +966 Arabia Saudita</option>
+                <option value="+974" data-cc="QA">🇶🇦 +974 Catar</option>
+                <option value="+965" data-cc="KW">🇰🇼 +965 Kuwait</option>
+                <option value="+20" data-cc="EG">🇪🇬 +20 Egipto</option>
+                <option value="+212" data-cc="MA">🇲🇦 +212 Marruecos</option>
+                <option value="+27" data-cc="ZA">🇿🇦 +27 Sudáfrica</option>
+                <option value="+234" data-cc="NG">🇳🇬 +234 Nigeria</option>
+                <option value="+254" data-cc="KE">🇰🇪 +254 Kenia</option>
+                <option value="+65" data-cc="SG">🇸🇬 +65 Singapur</option>
+                <option value="+60" data-cc="MY">🇲🇾 +60 Malasia</option>
+                <option value="+63" data-cc="PH">🇵🇭 +63 Filipinas</option>
+                <option value="+66" data-cc="TH">🇹🇭 +66 Tailandia</option>
+                <option value="+62" data-cc="ID">🇮🇩 +62 Indonesia</option>
+                <option value="+84" data-cc="VN">🇻🇳 +84 Vietnam</option>
+                <option value="+82" data-cc="KR">🇰🇷 +82 Corea del Sur</option>
+                <option value="+852" data-cc="HK">🇭🇰 +852 Hong Kong</option>
+                <option value="+886" data-cc="TW">🇹🇼 +886 Taiwán</option>
+                <option value="+92" data-cc="PK">🇵🇰 +92 Pakistán</option>
+                </select>
+                <input id="wTel" name="telefono" type="tel" autocomplete="tel-national" inputmode="tel" placeholder="Tu número" required>
+              </div>
+            </div>
+            <input class="hp" type="text" id="wWebsite" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+            <button class="btn btn-solid btn-block" id="wBtn" type="submit">Confirmar mi lugar</button>
+            <p class="form-msg" id="wMsg" role="alert"></p>
+          </form>
+        </div></div>
+      </div>
+      <div class="done" id="doneView" hidden>
+        <div class="check">✓</div>
+        <h2>¡Listo, ya tienes tu lugar!</h2>
+        <p id="doneTxt">Último paso: entra al grupo de WhatsApp para recibir el aviso y el acceso a la clase.</p>
+        <a class="btn btn-solid btn-block" id="doneBtn" href="https://chat.whatsapp.com/L0Mjb4eIL52FT966cokUxt?mode=gi_t">Entrar al grupo de WhatsApp</a>
+        <p class="done-hint" id="doneHint" hidden>Si WhatsApp no se abrió solo, toca el botón de arriba.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 2. Cupos limitados + segunda cuenta regresiva -->
+<section class="strip" id="urgencia">
+  <div class="wrap strip-in">
+    <div class="strip-left">
+      <span class="pill"><i class="pulse"></i>Cupos limitados</span>
+      <p>El acceso a la clase se da por el grupo de WhatsApp, que tiene un cupo máximo de personas. Reserva el tuyo antes de que se llene.</p>
+    </div>
+    <div class="strip-mid">
+      <span class="strip-label" id="ubTitulo">La clase empieza en</span>
+      <div class="strip-timer" id="ubTimer">
+        <div class="st-u"><b id="ubD">00</b><i>Días</i></div>
+        <div class="st-u"><b id="ubH">00</b><i>Horas</i></div>
+        <div class="st-u"><b id="ubM">00</b><i>Min</i></div>
+        <div class="st-u"><b id="ubS">00</b><i>Seg</i></div>
+      </div>
+    </div>
+    <a class="btn btn-solid js-abrir" href="#registro" id="urgCta">Quiero mi lugar</a>
+  </div>
+</section>
+
+<!-- 3. Beneficios + Gianie -->
+<section class="light" id="beneficios">
+  <div class="wrap ben-grid">
+    <figure class="ben-photo">
+      <img src="https://thomasaguero009-cyber.github.io/step-her-up/images/gianie/gianie-foto.jpg" alt="Gianie Milet" loading="lazy">
+      <figcaption>
+        <b>Gianie Milet</b>
+        <span>Estratega en posicionamiento y crecimiento de negocios para mujeres profesionales</span>
+        <em>Más de 70 mujeres acompañadas</em>
+      </figcaption>
+    </figure>
+    <div class="ben-copy">
+      <span class="kicker">En esta clase</span>
+      <h2 class="title">Lo que te llevas de la <em>clase</em></h2>
+      <p class="lede">Ordena tu mensaje, tu oferta y la forma en que vendes.</p>
+      <ol class="ben-list">
+        <li><span class="num">01</span><p>Entender <b>por qué tu negocio no está creciendo</b> aunque trabajas más que nunca.</p></li>
+        <li><span class="num">02</span><p>Descubrir los <b>3 ajustes de posicionamiento</b> que convierten tu servicio en una oferta irresistible.</p></li>
+        <li><span class="num">03</span><p>Aprender a <b>vender con autoridad y estrategia</b>, sin bajar precios ni aceptar clientas tóxicas.</p></li>
+        <li><span class="num">04</span><p>Ver cómo <b>atraer a tus clientas ideales</b> hacia tu servicio.</p></li>
+        <li><span class="num">05</span><p>Entender cómo <b>cobrar lo que vales</b> sin trabajar más horas.</p></li>
+      </ol>
+      <a class="btn btn-wine js-abrir" href="#registro">Quiero mi lugar</a>
+    </div>
+  </div>
+</section>
+
+<!-- 4. Testimonios (iguales a la landing del VSL) -->
+<section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Fotos de <span class="hl">testimonios</span></h2>
+      </div>
+
+      <div class="carousel">
+        <div class="carousel-track" id="carouselTrack">
+          <div class="carousel-slide"><img src="https://thomasaguero009-cyber.github.io/step-her-up/images/testimonios/testimonio-1.jpeg" alt="Captura de testimonio de una alumna" loading="lazy"></div>
+          <div class="carousel-slide"><img src="https://thomasaguero009-cyber.github.io/step-her-up/images/testimonios/testimonio-2.jpeg" alt="Captura de testimonio de una alumna" loading="lazy"></div>
+          <div class="carousel-slide"><img src="https://thomasaguero009-cyber.github.io/step-her-up/images/testimonios/testimonio-3.jpeg" alt="Captura de testimonio de una alumna" loading="lazy"></div>
+          <div class="carousel-slide"><img src="https://thomasaguero009-cyber.github.io/step-her-up/images/testimonios/testimonio-4.jpeg" alt="Captura de testimonio de una alumna" loading="lazy"></div>
+          <div class="carousel-slide"><img src="https://thomasaguero009-cyber.github.io/step-her-up/images/testimonios/testimonio-5.jpeg" alt="Captura de testimonio de una alumna" loading="lazy"></div>
+          <div class="carousel-slide"><img src="https://thomasaguero009-cyber.github.io/step-her-up/images/testimonios/testimonio-6.jpeg" alt="Captura de testimonio de una alumna" loading="lazy"></div>
+          <div class="carousel-slide"><img src="https://thomasaguero009-cyber.github.io/step-her-up/images/testimonios/testimonio-7.jpeg" alt="Captura de testimonio de una alumna" loading="lazy"></div>
+          <div class="carousel-slide"><img src="https://thomasaguero009-cyber.github.io/step-her-up/images/testimonios/testimonio-8.jpeg" alt="Captura de testimonio de una alumna" loading="lazy"></div>
+          <div class="carousel-slide"><img src="https://thomasaguero009-cyber.github.io/step-her-up/images/testimonios/testimonio-9.jpeg" alt="Captura de testimonio de una alumna" loading="lazy"></div>
+          <div class="carousel-slide"><img src="https://thomasaguero009-cyber.github.io/step-her-up/images/testimonios/testimonio-10.jpeg" alt="Captura de testimonio de una alumna" loading="lazy"></div>
+          <div class="carousel-slide" aria-hidden="true"><img src="https://thomasaguero009-cyber.github.io/step-her-up/images/testimonios/testimonio-1.jpeg" alt="" loading="lazy"></div>
+          <div class="carousel-slide" aria-hidden="true"><img src="https://thomasaguero009-cyber.github.io/step-her-up/images/testimonios/testimonio-2.jpeg" alt="" loading="lazy"></div>
+          <div class="carousel-slide" aria-hidden="true"><img src="https://thomasaguero009-cyber.github.io/step-her-up/images/testimonios/testimonio-3.jpeg" alt="" loading="lazy"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Lo que <span class="hl">dicen</span> de nosotras</h2>
+      </div>
+
+      <div class="reviews-grid">
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"Muchas gracias por todo!! 🤍"</p>
+          <div class="review-author">
+            <div class="review-avatar">V</div>
+            <div>
+              <div class="review-name">Virnalis</div>
+              <div class="review-source">Alumna Step Her Up</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"He tenido un crecimiento gigante en clientas desde mayo... Estoy muy agradecida y emocionada por esta etapa."</p>
+          <div class="review-author">
+            <div class="review-avatar">F</div>
+            <div>
+              <div class="review-name">Fabi</div>
+              <div class="review-source">Alumna Step Her Up</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"De febrero a acá, tengo 51 clientas recurrentes y 16 nuevas 🤩 — solo con contenido orgánico."</p>
+          <div class="review-author">
+            <div class="review-avatar">F</div>
+            <div>
+              <div class="review-name">Fabi</div>
+              <div class="review-source">Alumna Step Her Up</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"Amoresss puse una candelita en ig y me salieron 5 ventas."</p>
+          <div class="review-author">
+            <div class="review-avatar">L</div>
+            <div>
+              <div class="review-name">Lizbeth</div>
+              <div class="review-source">Alumna Step Her Up</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"En menos de un mes adquirimos más de 2000 nuevos followers y más de 30 llamadas de clientes interesados en nuestro servicio... 1000% recomendada."</p>
+          <div class="review-author">
+            <div class="review-avatar">P</div>
+            <div>
+              <div class="review-name">Piazza</div>
+              <div class="review-source">Cliente Step Her Up</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"La gloria es para Dios! Gracias Gianie por darnos todo para crecer 🙌🤍"</p>
+          <div class="review-author">
+            <div class="review-avatar">K</div>
+            <div>
+              <div class="review-name">@kelymarmelendez</div>
+              <div class="review-source">Comentario en Instagram</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"Gracias por lo que haces 💗"</p>
+          <div class="review-author">
+            <div class="review-avatar">L</div>
+            <div>
+              <div class="review-name">@lyasesthetic</div>
+              <div class="review-source">Comentario en Instagram</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"La mejor ✨"</p>
+          <div class="review-author">
+            <div class="review-avatar">D</div>
+            <div>
+              <div class="review-name">@dravirnalis</div>
+              <div class="review-source">Comentario en Instagram</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"Bendecida de formar parte de este grupo de mujeres exitosas. 🔥🔥🔥🔥"</p>
+          <div class="review-author">
+            <div class="review-avatar">J</div>
+            <div>
+              <div class="review-name">@jennyfernandezthebroker</div>
+              <div class="review-source">Comentario en Instagram</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"Agradecida con Dios por poner a grandes mujeres que inspiran a seguir creciendo."</p>
+          <div class="review-author">
+            <div class="review-avatar">V</div>
+            <div>
+              <div class="review-name">@valle_y</div>
+              <div class="review-source">Comentario en Instagram</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"Que bendición ser parte de esta gran comunidad 🙏💗"</p>
+          <div class="review-author">
+            <div class="review-avatar">L</div>
+            <div>
+              <div class="review-name">@__lenyram__</div>
+              <div class="review-source">Comentario en Instagram</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"Gracias por tu empatía y siempre dar lo mejor de ti a todas. Bendiciones."</p>
+          <div class="review-author">
+            <div class="review-avatar">T</div>
+            <div>
+              <div class="review-name">@tugestoraenpr</div>
+              <div class="review-source">Comentario en Instagram</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"Que bendición formar parte de este grupo de mujeres que lo están dando todo. Sales motivada si o si ✨🤍"</p>
+          <div class="review-author">
+            <div class="review-avatar">Y</div>
+            <div>
+              <div class="review-name">@yadimarsalasphotography</div>
+              <div class="review-source">Comentario en Instagram</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"Me encanta 💖 hermosa, editoriales, minimalista y elegantes, como me encantan las fotos de boda. 200% recomendada."</p>
+          <div class="review-author">
+            <div class="review-avatar">Y</div>
+            <div>
+              <div class="review-name">@yadimarsalasphotography</div>
+              <div class="review-source">Comentario en Instagram</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<!-- 5. Cierre -->
+<section class="final">
+  <div class="wrap">
+    <span class="pill"><i class="pulse"></i>Cupos limitados</span>
+    <h2 class="title">Tu lugar es gratis. <em>Resérvalo ahora.</em></h2>
+    <p class="lede" id="finalFecha">Miércoles 21 de octubre · 7:00 PM, hora de Puerto Rico</p>
+    <a class="btn btn-solid js-abrir" href="#registro" id="finalCta">Quiero mi lugar</a>
+  </div>
+</section>
+</main>
+
+<footer>© Step Her Up · Todos los derechos reservados</footer>
+
 <script>
-  // Link propio del webinar: lleva a la página real sin perder las UTMs (?utm_...) ni el hash.
-  location.replace("https://thomasaguero009-cyber.github.io/step-her-up/webinar.html" + location.search + location.hash);
+
+(function () {
+  // ===== Datos del evento =====
+  // 21/10/2026, 7:00 PM hora de Puerto Rico (AST, UTC-4 todo el año).
+  const EVENTO = new Date("2026-10-21T19:00:00-04:00");
+  const WHATSAPP_URL = "https://chat.whatsapp.com/L0Mjb4eIL52FT966cokUxt?mode=gi_t";
+  const WORKER_URL = "https://step-her-up-calendar.thomasaguero009.workers.dev";
+  const LEAD_KEY = "shu_webinar_lead";
+  const PENDIENTE_KEY = "shu_webinar_pendiente";
+
+  // ===== Cuenta regresiva =====
+  const $ = (id) => document.getElementById(id);
+  const dos = (n) => String(n).padStart(2, "0");
+  function tick() {
+    let ms = EVENTO - Date.now();
+    if (ms <= 0) {
+      // En vivo: los dos relojes se reemplazan por el acceso al grupo.
+      $("cbTimer").hidden = true;
+      $("cbTitulo").textContent = "¡La clase está en vivo!";
+      $("cbJoin").hidden = false;
+      $("ubTimer").hidden = true;
+      $("ubTitulo").textContent = "¡La clase está en vivo!";
+      $("urgCta").textContent = "Entrar al grupo de WhatsApp";
+      $("urgCta").href = WHATSAPP_URL;
+      return false;
+    }
+    const s = Math.floor(ms / 1000);
+    const v = [dos(Math.floor(s / 86400)), dos(Math.floor((s % 86400) / 3600)), dos(Math.floor((s % 3600) / 60)), dos(s % 60)];
+    ["D", "H", "M", "S"].forEach((k, i) => { $("cb" + k).textContent = v[i]; $("ub" + k).textContent = v[i]; });
+    return true;
+  }
+  if (tick()) {
+    const t = setInterval(() => { if (!tick()) clearInterval(t); }, 1000);
+  }
+
+  // ===== Horario en la zona de cada persona =====
+  // Se toma de la zona horaria que tiene configurada su dispositivo (no de la
+  // IP ni de una VPN). Si es distinta a la de Puerto Rico, TODOS los lugares
+  // donde aparece el horario muestran su hora, y la de Puerto Rico queda como
+  // referencia. Para previsualizar otra zona: agregar ?tz=America/Mexico_City
+  function horarioLocal() {
+    try {
+      let zona = Intl.DateTimeFormat().resolvedOptions().timeZone;
+      const prueba = new URLSearchParams(location.search).get("tz");
+      if (prueba) { new Intl.DateTimeFormat("es", { timeZone: prueba }); zona = prueba; }
+      if (!zona) return;
+      const cap = (t) => t.charAt(0).toUpperCase() + t.slice(1);
+      const fecha = (tz) => cap(new Intl.DateTimeFormat("es", { weekday: "long", day: "numeric", month: "long", timeZone: tz }).format(EVENTO).replace(",", ""));
+      const hora = (tz) => new Intl.DateTimeFormat("en-US", { hour: "numeric", minute: "2-digit", timeZone: tz }).format(EVENTO);
+      const PR = "America/Puerto_Rico";
+      if (fecha(zona) === fecha(PR) && hora(zona) === hora(PR)) return; // misma hora que Puerto Rico: queda como está
+      const fLocal = fecha(zona), hLocal = hora(zona);
+      $("tbFecha").textContent = fLocal + " · " + hLocal + " (tu hora)";
+      $("heroFecha").textContent = fLocal;
+      $("heroHora").textContent = hLocal + ", tu hora local";
+      $("horaLocal").textContent = "Equivale a " + hora(PR) + " en Puerto Rico" + (fecha(zona) !== fecha(PR) ? " (" + fecha(PR) + ")" : "");
+      $("horaLocal").hidden = false;
+      $("finalFecha").textContent = fLocal + " · " + hLocal + ", tu hora local";
+    } catch (e) {}
+  }
+  horarioLocal();
+
+  // ===== Código de país según la IP (igual que el resto del funnel) =====
+  async function detectarPais() {
+    const sel = $("wPais");
+    try {
+      const ctrl = new AbortController();
+      const to = setTimeout(() => ctrl.abort(), 3000);
+      const res = await fetch(WORKER_URL + "/geo", { signal: ctrl.signal });
+      clearTimeout(to);
+      const geo = await res.json();
+      const opt = geo.ok && geo.country ? [...sel.options].find((o) => o.dataset.cc === geo.country) : null;
+      if (opt) opt.selected = true;
+    } catch (e) {}
+  }
+  detectarPais();
+
+  // ===== Registro =====
+  const params = new URLSearchParams(location.search);
+  // Mismas UTMs "arrastradas" que el resto del funnel (shu_utm, 30 días).
+  const utms = (function () {
+    const vacio = { utm_source: "", utm_medium: "", utm_campaign: "", utm_content: "" };
+    try {
+      const nuevas = {};
+      Object.keys(vacio).forEach((k) => { const v = (params.get(k) || "").trim().slice(0, 150); if (v) nuevas[k] = v; });
+      if (Object.keys(nuevas).length) {
+        localStorage.setItem("shu_utm", JSON.stringify({ ...vacio, ...nuevas, fecha: Date.now() }));
+        return { ...vacio, ...nuevas };
+      }
+      const g = JSON.parse(localStorage.getItem("shu_utm"));
+      if (g && g.fecha && Date.now() - g.fecha < 30 * 24 * 3600 * 1000) { Object.keys(vacio).forEach((k) => { vacio[k] = g[k] || ""; }); }
+    } catch (e) {}
+    return vacio;
+  })();
+  function enviar(payload, esperarMs) {
+    const ctrl = new AbortController();
+    const to = setTimeout(() => ctrl.abort(), esperarMs);
+    return fetch(WORKER_URL + "/webinar-registro", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+      signal: ctrl.signal,
+      keepalive: true,
+    }).then(async (r) => {
+      clearTimeout(to);
+      let data = {};
+      try { data = await r.json(); } catch (e) {}
+      return { status: r.status, data };
+    });
+  }
+
+  // Al confirmar el lugar, la mandamos de inmediato al grupo de WhatsApp. La
+  // tarjeta con el botón queda como respaldo: algunos navegadores (por ejemplo
+  // el de Instagram) bloquean el salto automático, y ahí toca el botón.
+  function mostrarListo(redirigir) {
+    $("formView").hidden = true;
+    $("doneView").hidden = false;
+    $("doneBtn").href = WHATSAPP_URL;
+    $("formCard").scrollIntoView({ behavior: "smooth", block: "center" });
+    if (redirigir) {
+      $("doneTxt").textContent = "Te estamos llevando al grupo de WhatsApp para que recibas el aviso y el acceso a la clase.";
+      setTimeout(() => { location.href = WHATSAPP_URL; }, 350);
+      setTimeout(() => { if (document.visibilityState === "visible") $("doneHint").hidden = false; }, 2800);
+    }
+  }
+
+  const MENSAJES = {
+    nombre_invalido: "Escribe tu nombre y apellido.",
+    email_invalido: "Revisa tu correo: parece que le falta algo.",
+    telefono_invalido: "Revisa tu número de WhatsApp.",
+  };
+
+  $("webinarForm").addEventListener("submit", async (ev) => {
+    ev.preventDefault();
+    const msg = $("wMsg");
+    msg.textContent = "";
+    const nombre = $("wNombre").value.trim();
+    const email = $("wEmail").value.trim();
+    const numero = $("wTel").value.replace(/\D/g, "").replace(/^0+/, "");
+    if (nombre.split(/\s+/).filter(Boolean).length < 1 || nombre.length < 2) { msg.textContent = MENSAJES.nombre_invalido; $("wNombre").focus(); return; }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) { msg.textContent = MENSAJES.email_invalido; $("wEmail").focus(); return; }
+    if (numero.length < 6) { msg.textContent = MENSAJES.telefono_invalido; $("wTel").focus(); return; }
+
+    const payload = {
+      nombre, email,
+      telefono: $("wPais").value + numero,
+      website: $("wWebsite").value,
+      timezone: (Intl.DateTimeFormat().resolvedOptions().timeZone) || "",
+      pagina: location.href,
+      ...utms,
+    };
+    const btn = $("wBtn");
+    btn.disabled = true; btn.textContent = "Reservando tu lugar…";
+    try { localStorage.setItem(LEAD_KEY, JSON.stringify({ nombre, email, fecha: new Date().toISOString() })); } catch (e) {}
+
+    try {
+      const r = await enviar(payload, 4500);
+      if (r.status >= 400 && r.status < 500 && MENSAJES[r.data.error]) {
+        msg.textContent = MENSAJES[r.data.error];
+        btn.disabled = false; btn.textContent = "Confirmar mi lugar";
+        try { localStorage.removeItem(LEAD_KEY); } catch (e) {}
+        return;
+      }
+      if (!r.data.ok) throw new Error("no_guardado");
+    } catch (e) {
+      // Sin conexión o falla del servidor: la dejamos pasar igual al grupo
+      // y reintentamos guardar sus datos la próxima vez que abra la página.
+      try { localStorage.setItem(PENDIENTE_KEY, JSON.stringify(payload)); } catch (e2) {}
+    }
+    mostrarListo(true);
+  });
+
+  // Reintento de un registro que no se pudo guardar.
+  try {
+    const pend = JSON.parse(localStorage.getItem(PENDIENTE_KEY) || "null");
+    if (pend) enviar(pend, 8000).then((r) => { if (r.data && r.data.ok) localStorage.removeItem(PENDIENTE_KEY); }).catch(() => {});
+  } catch (e) {}
+
+  // Si ya se había registrado en este dispositivo, le mostramos el acceso al grupo.
+  try {
+    if (localStorage.getItem(LEAD_KEY)) {
+      mostrarListo(false);
+      $("doneTxt").textContent = "Ya estás registrada. Entra al grupo de WhatsApp para recibir el aviso y el acceso a la clase.";
+    }
+  } catch (e) {}
+
+  // El botón "Quiero mi lugar" despliega el mini formulario en el mismo lugar.
+  function abrirFormulario(enfocar) {
+    const reveal = $("reveal");
+    if (reveal.classList.contains("open")) return;
+    reveal.classList.add("open");
+    reveal.removeAttribute("inert");
+    $("openForm").hidden = true;
+    $("openForm").setAttribute("aria-expanded", "true");
+    if (enfocar) setTimeout(() => $("wNombre").focus({ preventScroll: true }), 420);
+  }
+  $("openForm").addEventListener("click", () => abrirFormulario(true));
+  // El botón de abajo sube al formulario y también lo despliega.
+  const alFormulario = () => { abrirFormulario(false); setTimeout(() => $("wNombre").focus({ preventScroll: true }), 650); };
+  document.querySelectorAll(".js-abrir").forEach((el) => el.addEventListener("click", () => { if (EVENTO - Date.now() > 0) alFormulario(); }));
+})();
+
 </script>
+<script src="https://thomasaguero009-cyber.github.io/step-her-up/assets/carrusel.js?v=2" defer></script>
 </body>
 </html>
