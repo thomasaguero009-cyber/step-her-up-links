@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://shu.stepherup.com/sitemap.xml
