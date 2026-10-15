@@ -14,7 +14,7 @@
 <meta property="og:image" content="https://shu.stepherup.com/assets/gianie-foto.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -37,78 +37,237 @@
       "@id": "https://shu.stepherup.com/gianie/#stepherup",
       "name": "Step Her Up",
       "description": "Consultoría de posicionamiento y monetización para mujeres profesionales y emprendedoras en Puerto Rico.",
+      "logo": "https://shu.stepherup.com/assets/logo.png",
       "founder": { "@id": "https://shu.stepherup.com/gianie/#gianie" }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        { "@type": "Question", "name": "¿Quién es Gianie Milet?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Gianie Milet es consultora de marca personal y ventas en Puerto Rico y fundadora de Step Her Up. Ayuda a mujeres profesionales y emprendedoras con posicionamiento, marketing, fe y ventas." } },
+        { "@type": "Question", "name": "¿Qué es Step Her Up?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Step Her Up es la consultoría de posicionamiento y monetización de Gianie Milet. Trabaja la estrategia, la oferta, el contenido y las ventas de mujeres profesionales y emprendedoras." } },
+        { "@type": "Question", "name": "¿Para quién es?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Para mujeres profesionales y emprendedoras que dan mucho valor y quieren posicionarse como expertas para atraer a sus clientas ideales y cobrar lo que valen." } },
+        { "@type": "Question", "name": "¿Cómo empiezo?",
+          "acceptedAnswer": { "@type": "Answer", "text": "El primer paso es la clase gratuita en vivo, donde Gianie muestra el paso a paso para posicionar tu servicio, atraer a tus clientas ideales y cobrar lo que vales." } }
+      ]
     }
   ]
 }
 </script>
 <style>
-  :root{ --wine-1:#1a0509; --wine-2:#3d0f1f; --wine-3:#5a1626; --blush:#f0a8be; --blush-2:#e88aa8; --cream:#f7ece9; --dim:rgba(247,236,233,.74); --line:rgba(255,255,255,.14); }
+  :root{ --wine-1:#1a0509; --wine-2:#3d0f1f; --wine-3:#5a1626; --blush:#f0a8be; --blush-2:#e88aa8; --cream:#f7ece9; --dim:rgba(247,236,233,.76); --line:rgba(255,255,255,.14); --card:rgba(255,255,255,.055); }
   *{ box-sizing:border-box; }
-  html,body{ margin:0; }
-  body{ color:var(--cream); font-family:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; line-height:1.6;
-        background:radial-gradient(ellipse 1000px 650px at 85% 0%, rgba(90,22,38,.55), transparent 60%), linear-gradient(180deg,var(--wine-2) 0%,var(--wine-1) 45%); background-attachment:fixed; }
-  main{ max-width:960px; margin:0 auto; padding:48px 20px 72px; }
-  .hero{ display:grid; grid-template-columns:minmax(0,320px) minmax(0,1fr); gap:40px; align-items:center; }
-  .hero img{ width:100%; height:auto; border-radius:20px; display:block; border:1px solid var(--line); }
-  .eyebrow{ font-size:12px; letter-spacing:.18em; text-transform:uppercase; color:var(--blush); font-weight:600; margin:0 0 10px; }
-  h1{ font-family:"Playfair Display",Georgia,serif; font-size:clamp(38px,6vw,60px); line-height:1.08; margin:0 0 12px; font-weight:700; text-wrap:balance; }
-  .role{ font-size:19px; color:var(--blush); margin:0 0 18px; }
-  .lede{ font-size:18px; color:var(--dim); margin:0 0 26px; }
-  .btn{ display:inline-block; padding:15px 26px; border-radius:999px; font-weight:700; font-size:16px; text-decoration:none; background:linear-gradient(90deg,var(--blush-2),var(--blush)); color:#2a0a13; box-shadow:0 10px 28px rgba(232,138,168,.28); }
-  .link{ margin-left:18px; color:var(--cream); font-size:15px; }
-  section{ margin-top:56px; border-top:1px solid var(--line); padding-top:32px; }
-  h2{ font-family:"Playfair Display",Georgia,serif; font-size:28px; margin:0 0 14px; font-weight:600; text-wrap:balance; }
-  p{ margin:0 0 14px; color:var(--dim); font-size:17px; }
-  ul{ margin:0; padding-left:20px; color:var(--dim); font-size:17px; }
-  li{ margin-bottom:8px; }
-  blockquote{ margin:0; padding:20px 22px; border-left:3px solid var(--blush-2); background:rgba(255,255,255,.05); border-radius:0 14px 14px 0; font-size:18px; color:var(--cream); }
-  blockquote cite{ display:block; margin-top:10px; font-style:normal; font-size:14px; color:var(--blush); }
-  .legal{ font-size:13px; opacity:.7; margin-top:18px; }
-  @media (max-width:720px){ .hero{ grid-template-columns:1fr; } .hero img{ max-width:300px; } .link{ display:block; margin:16px 0 0; } }
+  html{ scroll-behavior:smooth; }
+  body{ margin:0; color:var(--cream); font-family:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; line-height:1.6;
+        background:radial-gradient(ellipse 1100px 700px at 85% -5%, rgba(90,22,38,.6), transparent 60%), radial-gradient(ellipse 900px 600px at 0% 55%, rgba(90,22,38,.35), transparent 60%), linear-gradient(180deg,var(--wine-2) 0%,var(--wine-1) 38%); background-attachment:fixed; }
+  img{ max-width:100%; height:auto; display:block; }
+  a{ color:inherit; }
+  .wrap{ max-width:1080px; margin:0 auto; padding:0 24px; }
+  header.top{ position:sticky; top:0; z-index:10; backdrop-filter:blur(14px); background:rgba(26,5,9,.72); border-bottom:1px solid var(--line); }
+  .top .wrap{ display:flex; align-items:center; justify-content:space-between; height:68px; }
+  .top img{ height:44px; width:auto; }
+  .btn{ display:inline-block; padding:15px 28px; border-radius:999px; font-weight:700; font-size:16px; text-decoration:none; background:linear-gradient(90deg,var(--blush-2),var(--blush)); color:#2a0a13; box-shadow:0 10px 28px rgba(232,138,168,.28); transition:transform .15s; }
+  .btn:hover{ transform:translateY(-1px); }
+  .btn.sm{ padding:10px 20px; font-size:14px; box-shadow:none; }
+  .btn.ghost{ background:transparent; color:var(--cream); border:1px solid var(--line); box-shadow:none; }
+  .eyebrow{ font-size:12px; letter-spacing:.2em; text-transform:uppercase; color:var(--blush); font-weight:600; margin:0 0 14px; }
+  h1,h2,h3{ font-family:"Playfair Display",Georgia,serif; font-weight:600; text-wrap:balance; margin:0; }
+  .hero{ padding:64px 0 40px; }
+  .hero .wrap{ display:grid; grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr); gap:56px; align-items:center; }
+  h1{ font-size:clamp(46px,7vw,84px); line-height:1.02; letter-spacing:-.01em; }
+  .tagline{ font-family:"Playfair Display",Georgia,serif; font-style:italic; font-size:clamp(22px,3vw,30px); color:var(--blush); margin:14px 0 22px; }
+  .lede{ font-size:19px; color:var(--dim); max-width:540px; margin:0 0 30px; }
+  .cta-row{ display:flex; gap:14px; flex-wrap:wrap; align-items:center; }
+  .photo{ position:relative; }
+  .photo img{ border-radius:24px; border:1px solid var(--line); box-shadow:0 30px 70px rgba(0,0,0,.45); }
+  .photo::after{ content:""; position:absolute; inset:auto -14px -14px auto; width:70%; height:70%; border-radius:24px; border:1px solid var(--blush-2); opacity:.45; z-index:-1; }
+  .proof{ padding:8px 0 24px; }
+  .proof .wrap{ display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+  .stat{ border:1px solid var(--line); background:var(--card); border-radius:18px; padding:20px 22px; }
+  .stat b{ display:block; font-family:"Playfair Display",Georgia,serif; font-size:34px; color:var(--cream); line-height:1.1; }
+  .stat span{ color:var(--dim); font-size:14px; }
+  section.block{ padding:72px 0 0; }
+  h2{ font-size:clamp(28px,4vw,42px); line-height:1.15; margin-bottom:12px; }
+  .sub{ color:var(--dim); font-size:18px; max-width:640px; margin:0 0 34px; }
+  .grid4{ display:grid; grid-template-columns:repeat(4,1fr); gap:14px; }
+  .card{ border:1px solid var(--line); background:var(--card); border-radius:20px; padding:26px 22px; }
+  .card .n{ font-size:13px; letter-spacing:.14em; color:var(--blush); font-weight:700; }
+  .card h3{ font-size:24px; margin:8px 0 8px; }
+  .card p{ margin:0; color:var(--dim); font-size:16px; }
+  .grid2{ display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+  .path{ border:1px solid var(--line); background:linear-gradient(160deg,rgba(255,255,255,.07),rgba(255,255,255,.02)); border-radius:22px; padding:32px 28px; }
+  .path h3{ font-size:28px; margin-bottom:10px; }
+  .path p{ color:var(--dim); margin:0 0 12px; }
+  .path ul{ margin:0; padding-left:20px; color:var(--dim); }
+  .path li{ margin-bottom:6px; }
+  .ba{ display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:26px; }
+  .ba figure{ margin:0; }
+  .ba img{ border-radius:16px; border:1px solid var(--line); width:100%; }
+  .ba figcaption{ font-size:14px; color:var(--dim); margin-top:10px; }
+  .quotes{ display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+  blockquote{ margin:0; padding:24px 22px; border:1px solid var(--line); border-radius:20px; background:var(--card); font-size:17px; }
+  blockquote cite{ display:block; margin-top:14px; font-style:normal; font-size:14px; color:var(--blush); font-weight:600; }
+  .legal{ font-size:13px; opacity:.7; margin-top:22px; }
+  .about{ display:grid; grid-template-columns:minmax(0,.7fr) minmax(0,1.3fr); gap:48px; align-items:center; }
+  .about img{ border-radius:22px; border:1px solid var(--line); }
+  .about p{ color:var(--dim); font-size:18px; margin:0 0 14px; }
+  details{ border-bottom:1px solid var(--line); padding:18px 0; }
+  summary{ cursor:pointer; font-weight:600; font-size:18px; list-style:none; display:flex; justify-content:space-between; gap:16px; }
+  summary::-webkit-details-marker{ display:none; }
+  summary::after{ content:"+"; color:var(--blush); font-size:24px; line-height:1; }
+  details[open] summary::after{ content:"–"; }
+  details p{ margin:12px 0 0; color:var(--dim); }
+  .final{ margin:80px 0 0; padding:56px 28px; border-radius:28px; text-align:center; background:linear-gradient(135deg,var(--wine-3),var(--wine-2)); border:1px solid var(--line); }
+  .final h2{ margin-bottom:10px; }
+  .final p{ color:var(--dim); font-size:18px; max-width:560px; margin:0 auto 26px; }
+  footer{ padding:48px 0 56px; color:var(--dim); font-size:14px; text-align:center; }
+  footer a{ color:var(--blush); }
+  @media (max-width:900px){
+    .hero .wrap, .about{ grid-template-columns:1fr; gap:36px; }
+    .photo{ max-width:380px; }
+    .grid4{ grid-template-columns:1fr 1fr; }
+    .quotes, .grid2, .ba{ grid-template-columns:1fr; }
+  }
+  @media (max-width:560px){
+    .wrap{ padding:0 18px; }
+    .hero{ padding-top:40px; }
+    .proof .wrap{ grid-template-columns:1fr; }
+    .grid4{ grid-template-columns:1fr; }
+    .top img{ height:38px; }
+    .btn{ width:100%; text-align:center; }
+    .btn.sm{ width:auto; }
+  }
 </style>
 </head>
 <body>
-<main>
-  <div class="hero">
-    <img src="https://shu.stepherup.com/assets/gianie-foto.jpg" alt="Gianie Milet, consultora de marca personal y ventas" width="832" height="1040">
-    <div>
-      <p class="eyebrow">Step Her Up · Puerto Rico</p>
-      <h1>Gianie Milet</h1>
-      <p class="role">Consultora de marca personal y ventas</p>
-      <p class="lede">Posicionamiento, marketing, fe y ventas. Ayudo a mujeres profesionales y emprendedoras a posicionarse como expertas, atraer a sus clientas ideales y cobrar lo que valen.</p>
-      <a class="btn" href="https://shu.stepherup.com/clase/?utm_source=sitio&amp;utm_medium=web&amp;utm_campaign=sobre-gianie">Reserva tu lugar en la clase gratuita</a>
-      <a class="link" href="https://www.instagram.com/gianiemilet/" rel="me noopener">@gianiemilet en Instagram</a>
-    </div>
+<header class="top">
+  <div class="wrap">
+    <a href="https://shu.stepherup.com/gianie/" aria-label="Step Her Up"><img src="https://shu.stepherup.com/assets/logo.png" alt="Step Her Up" width="68" height="44"></a>
+    <a class="btn sm" href="https://shu.stepherup.com/clase/?utm_source=sitio&amp;utm_medium=web&amp;utm_campaign=sobre-gianie&amp;utm_content=barra">Clase gratuita</a>
   </div>
+</header>
 
-  <section>
-    <h2>Quién es Gianie</h2>
-    <p>Gianie Milet es consultora de marca personal y ventas en Puerto Rico y fundadora de Step Her Up. Construyó su propia marca personal mientras terminaba la universidad y hoy acompaña a otras mujeres a hacer lo mismo con su servicio.</p>
-    <p>Ha acompañado a más de 70 mujeres profesionales en Puerto Rico.</p>
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <p class="eyebrow">Consultora de marca personal y ventas</p>
+        <h1>Gianie Milet</h1>
+        <p class="tagline">Posicionamiento, marketing, fe y ventas</p>
+        <p class="lede">Ayudo a mujeres profesionales y emprendedoras en Puerto Rico a posicionarse como expertas, atraer a sus clientas ideales y cobrar lo que valen.</p>
+        <div class="cta-row">
+          <a class="btn" href="https://shu.stepherup.com/clase/?utm_source=sitio&amp;utm_medium=web&amp;utm_campaign=sobre-gianie&amp;utm_content=hero">Reserva tu lugar en la clase gratuita</a>
+          <a class="btn ghost" href="https://www.instagram.com/gianiemilet/" rel="me noopener">@gianiemilet</a>
+        </div>
+      </div>
+      <div class="photo">
+        <img src="https://shu.stepherup.com/assets/gianie-foto.jpg" alt="Gianie Milet, consultora de marca personal y ventas en Puerto Rico" width="832" height="1040">
+      </div>
+    </div>
+  </section>
+
+  <section class="proof" aria-label="Datos clave">
+    <div class="wrap">
+      <div class="stat"><b>+70</b><span>mujeres profesionales acompañadas</span></div>
+      <div class="stat"><b>+38 mil</b><span>seguidoras en Instagram</span></div>
+      <div class="stat"><b>Puerto Rico</b><span>consultoría de posicionamiento y monetización</span></div>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="wrap">
+      <p class="eyebrow">Con qué ayuda</p>
+      <h2>Cuatro frentes para que tu servicio se cobre como corresponde</h2>
+      <p class="sub">No se trata de empezar desde cero. Se trata de tomar lo que ya eres y lo que ya sabes, y posicionarlo para que el mercado lo valore.</p>
+      <div class="grid4">
+        <div class="card"><span class="n">01</span><h3>Posicionamiento</h3><p>Que tu servicio se vea, se sienta y se cobre al nivel correcto.</p></div>
+        <div class="card"><span class="n">02</span><h3>Marketing</h3><p>Contenido y anuncios con una idea clara para atraer a tus clientas ideales.</p></div>
+        <div class="card"><span class="n">03</span><h3>Ventas</h3><p>Un proceso para convertir esa atención en clientas que pagan, sin bajar tus precios.</p></div>
+        <div class="card"><span class="n">04</span><h3>Fe</h3><p>Construir tu negocio con propósito y confianza en lo que ya eres.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="wrap">
+      <p class="eyebrow">Cómo trabajamos</p>
+      <h2>Dos caminos para crecer contigo</h2>
+      <p class="sub">Con Step Her Up trabajas con acompañamiento real, según el momento de tu negocio.</p>
+      <div class="grid2">
+        <div class="path">
+          <h3>Consultoría 1:1</h3>
+          <p>Trabajo directo sobre tu negocio, con foco en:</p>
+          <ul><li>Estrategia</li><li>Oferta</li><li>Contenido</li><li>Ventas</li></ul>
+        </div>
+        <div class="path">
+          <h3>Sistema de crecimiento</h3>
+          <p>Un sistema paso a paso para seguir avanzando, dentro de una comunidad de mujeres que se apoyan unas a otras.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="wrap">
+      <p class="eyebrow">Resultados</p>
+      <h2>Lo que dicen las mujeres que ya lo hicieron</h2>
+      <p class="sub">Testimonios reales de alumnas de Step Her Up.</p>
+      <div class="ba">
+        <figure><img src="https://shu.stepherup.com/assets/antes-gianie.jpeg" alt="Instagram de Gianie Milet antes: 5,745 seguidores y 71.1 mil visualizaciones en 30 días" loading="lazy"><figcaption>Instagram de Gianie antes: 5,745 seguidores y 71.1 mil visualizaciones en 30 días.</figcaption></figure>
+        <figure><img src="https://shu.stepherup.com/assets/despues-gianie.jpeg" alt="Instagram de Gianie Milet después: 20.1 mil seguidores y 1.1 millones de visualizaciones en 30 días" loading="lazy"><figcaption>Después, en 60 días: 20.1 mil seguidores y 1.1 millones de visualizaciones en 30 días.</figcaption></figure>
+      </div>
+      <div class="quotes">
+        <blockquote>“De febrero a acá, tengo 51 clientas recurrentes y 16 nuevas, solo con contenido orgánico.”<cite>Fabi, alumna</cite></blockquote>
+        <blockquote>“Le diría que lo dé, así aunque tenga miedo… Me lancé y ha sido un éxito.”<cite>Aymar Ginorio, dueña de tienda de joyería</cite></blockquote>
+        <blockquote>“Es la confianza en mí misma, y me llevo un grupo de mujeres que nos apoyamos las unas a las otras.”<cite>Virnalis Santiago, farmacéutica</cite></blockquote>
+      </div>
+      <p class="legal">Los resultados no están garantizados y dependen del compromiso y la situación de cada persona.</p>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="wrap about">
+      <img src="https://shu.stepherup.com/assets/gianie-foto.jpg" alt="Gianie Milet" loading="lazy" width="832" height="1040">
+      <div>
+        <p class="eyebrow">Sobre Gianie</p>
+        <h2>Una marca construida a la vez que estudiaba</h2>
+        <p>Gianie Milet es consultora de marca personal y ventas en Puerto Rico y fundadora de Step Her Up. Construyó su propia marca mientras terminaba la universidad, sin esperar años para posicionarse.</p>
+        <p>Hoy acompaña a mujeres profesionales a hacer lo mismo con su servicio: que se vea, se sienta y se cobre al nivel que merece.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="wrap">
+      <p class="eyebrow">Preguntas frecuentes</p>
+      <h2>Lo que más se pregunta</h2>
+      <div style="margin-top:22px">
+        <details><summary>¿Quién es Gianie Milet?</summary><p>Gianie Milet es consultora de marca personal y ventas en Puerto Rico y fundadora de Step Her Up. Ayuda a mujeres profesionales y emprendedoras con posicionamiento, marketing, fe y ventas.</p></details>
+        <details><summary>¿Qué es Step Her Up?</summary><p>Es la consultoría de posicionamiento y monetización de Gianie. Trabaja la estrategia, la oferta, el contenido y las ventas de mujeres profesionales y emprendedoras.</p></details>
+        <details><summary>¿Para quién es?</summary><p>Para mujeres profesionales y emprendedoras que dan mucho valor y quieren posicionarse como expertas para atraer a sus clientas ideales y cobrar lo que valen.</p></details>
+        <details><summary>¿Cómo empiezo?</summary><p>El primer paso es la clase gratuita en vivo, donde Gianie te muestra el paso a paso para posicionar tu servicio, atraer a tus clientas ideales y cobrar lo que vales.</p></details>
+      </div>
+    </div>
   </section>
 
   <section>
-    <h2>Con qué ayuda</h2>
-    <ul>
-      <li><strong>Posicionamiento:</strong> que tu servicio se vea, se sienta y se cobre al nivel correcto.</li>
-      <li><strong>Marketing:</strong> contenido y anuncios que atraen a tus clientas ideales.</li>
-      <li><strong>Ventas:</strong> cómo convertir esa atención en clientas que pagan.</li>
-      <li><strong>Fe:</strong> construir tu negocio con propósito y confianza.</li>
-    </ul>
-  </section>
-
-  <section>
-    <h2>Lo que dicen sus alumnas</h2>
-    <blockquote>“De febrero a acá, tengo 51 clientas recurrentes y 16 nuevas, solo con contenido orgánico.”<cite>Fabi, alumna de Step Her Up</cite></blockquote>
-    <p class="legal">Los resultados no están garantizados y dependen del compromiso y la situación de cada persona.</p>
-  </section>
-
-  <section>
-    <h2>Empieza por la clase gratuita</h2>
-    <p>En vivo te muestro el paso a paso para posicionar tu servicio, atraer a tus clientas ideales y cobrar lo que vales, sin trabajar más horas.</p>
-    <a class="btn" href="https://shu.stepherup.com/clase/?utm_source=sitio&amp;utm_medium=web&amp;utm_campaign=sobre-gianie">Quiero mi lugar</a>
+    <div class="wrap">
+      <div class="final">
+        <h2>Empieza por la clase gratuita</h2>
+        <p>En vivo te muestro el paso a paso para posicionar tu servicio, atraer a tus clientas ideales y cobrar lo que vales, sin trabajar más horas.</p>
+        <a class="btn" href="https://shu.stepherup.com/clase/?utm_source=sitio&amp;utm_medium=web&amp;utm_campaign=sobre-gianie&amp;utm_content=cierre">Quiero mi lugar</a>
+      </div>
+    </div>
   </section>
 </main>
+
+<footer>
+  <div class="wrap">
+    <p><strong>Step Her Up</strong> · Consultoría de posicionamiento y monetización<br>Sanar · Creer · Conquistar</p>
+    <p><a href="https://www.instagram.com/gianiemilet/" rel="me noopener">Instagram @gianiemilet</a></p>
+  </div>
+</footer>
 </body>
 </html>
