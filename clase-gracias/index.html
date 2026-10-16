@@ -99,13 +99,13 @@ fbq('track', 'PageView');
   });
   (function () {
     var v = document.getElementById("v"), caja = document.getElementById("caja"), grande = document.getElementById("grande"), etq = document.getElementById("etq");
-    var btn = document.querySelector("a.wa"), enviado = false;
+    var btn = document.querySelector("a.wa"), enviado = false, auto = null;
     v.muted = false; v.volume = 1;
     function alternar() { if (v.paused) { v.muted = false; v.play(); } else { v.pause(); } }
     caja.addEventListener("click", alternar);
     grande.addEventListener("keydown", function (e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); alternar(); } });
     v.addEventListener("play", function () {
-      btn.classList.remove("llama"); caja.classList.add("jugando");
+      clearTimeout(auto); btn.classList.remove("llama"); caja.classList.add("jugando");
       if (enviado) return; enviado = true;
       try { if (typeof fbq === "function") fbq("trackCustom", "VerVideoGracias"); } catch (e) {}
     });
@@ -114,10 +114,15 @@ fbq('track', 'PageView');
     v.addEventListener("ended", function () {
       caja.classList.remove("jugando"); etq.textContent = "Ver de nuevo";
       btn.classList.add("llama");
+      clearTimeout(auto);   // 20 s después de terminar el video, si no tocó el botón, la llevamos al grupo
+      auto = setTimeout(function () {
+        try { if (typeof fbq === "function") fbq("trackCustom", "AutoRedirectGrupoWhatsApp"); } catch (e) {}
+        setTimeout(function () { window.location.href = btn.href; }, 250);
+      }, 20000);
       try { btn.scrollIntoView({ behavior: "smooth", block: "center" }); } catch (e) {}
       try { if (typeof fbq === "function") fbq("trackCustom", "VideoGraciasTerminado"); } catch (e) {}
     });
-    btn.addEventListener("click", function () { btn.classList.remove("llama"); });
+    btn.addEventListener("click", function () { clearTimeout(auto); btn.classList.remove("llama"); });
   })();
 </script>
 </body>
