@@ -31,14 +31,15 @@ fbq('track', 'PageView');
   header{ padding:26px 0 8px; text-align:center; }
   header img{ height:64px; width:auto; margin:0 auto; }
   .eyebrow{ font-size:12px; letter-spacing:.22em; text-transform:uppercase; font-weight:700; color:var(--blush); margin:26px 0 12px; text-align:center; }
-  h1{ font-family:"Playfair Display",Georgia,serif; font-weight:600; font-size:clamp(34px,6vw,58px); line-height:1.08; margin:0 auto; text-align:center; text-wrap:balance; }
+  h1{ margin-top:26px !important; font-family:"Playfair Display",Georgia,serif; font-weight:600; font-size:clamp(34px,6vw,58px); line-height:1.08; margin:0 auto; text-align:center; text-wrap:balance; }
   h1 em{ color:var(--blush); }
+  .lede-abajo{ margin-top:26px !important; }
   .lede{ text-align:center; font-size:19px; color:rgba(247,236,233,.82); max-width:600px; margin:16px auto 26px; }
   .btn{ display:flex; align-items:center; justify-content:center; gap:12px; width:100%; max-width:520px; margin:0 auto; padding:20px 28px; border-radius:12px; background:linear-gradient(90deg,var(--blush-2),var(--blush)); color:#2a0a13; font-weight:800; font-size:20px; text-decoration:none; box-shadow:0 14px 34px rgba(232,138,168,.32); transition:transform .15s; }
   .btn:hover{ transform:translateY(-2px); }
   .btn svg{ width:26px; height:26px; flex:0 0 26px; }
   .hint{ text-align:center; font-size:14px; color:rgba(247,236,233,.65); margin:12px 0 0; }
-  .video{ margin:40px auto 0; border-radius:16px; overflow:hidden; background:#000; box-shadow:0 30px 70px rgba(0,0,0,.55); border:1px solid var(--line); aspect-ratio:16/9; }
+  .video{ margin:30px auto 0; border-radius:16px; overflow:hidden; background:#000; box-shadow:0 30px 70px rgba(0,0,0,.55); border:1px solid var(--line); aspect-ratio:16/9; }
   .video video{ width:100%; height:100%; display:block; background:#000; }
   .video-cap{ text-align:center; font-size:14px; color:rgba(247,236,233,.7); margin:12px 0 0; }
   .steps{ display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin:44px 0 0; }
@@ -56,16 +57,7 @@ fbq('track', 'PageView');
 <body>
 <div class="wrap">
   <header><img src="https://shu.stepherup.com/assets/logo-sitio.png" alt="Step Her Up" width="112" height="64"></header>
-
-  <p class="eyebrow">Registro confirmado</p>
   <h1>¡Felicidades! Ya reservaste <em>tu lugar</em></h1>
-  <p class="lede">Falta un último paso y es muy rápido. Entra al grupo de WhatsApp: ahí te mandamos los recordatorios y el enlace para entrar a la clase.</p>
-
-  <a class="btn wa" href="https://chat.whatsapp.com/L0Mjb4eIL52FT966cokUxt?mode=gi_t" data-pos="arriba">
-    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 004.74 1.21c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zm5.8 14.17c-.25.7-1.45 1.34-2 1.4-.51.06-1.15.09-1.86-.12-.43-.14-.98-.32-1.69-.63-2.98-1.29-4.93-4.3-5.08-4.5-.15-.2-1.21-1.61-1.21-3.07 0-1.46.77-2.18 1.04-2.48.27-.3.59-.37.79-.37h.57c.18 0 .43-.07.67.51.25.6.84 2.06.92 2.21.07.15.12.32.02.52-.1.2-.15.32-.3.5-.15.17-.31.39-.45.52-.15.15-.3.31-.13.6.17.3.77 1.27 1.65 2.05 1.13 1.01 2.09 1.32 2.39 1.47.3.15.47.12.65-.07.17-.2.75-.87.95-1.17.2-.3.4-.25.67-.15.27.1 1.73.82 2.03.97.3.15.5.22.57.35.07.12.07.72-.18 1.42z"/></svg>
-    Entrar al grupo de WhatsApp
-  </a>
-  <p class="hint">Si no entras al grupo, no te llegará el enlace de la clase.</p>
 
   <div class="video">
     <video controls playsinline preload="metadata" poster="https://shu.stepherup.com/assets/typ-clase-poster.jpg" id="v">
@@ -73,24 +65,13 @@ fbq('track', 'PageView');
       Tu navegador no puede reproducir este video.
     </video>
   </div>
-  <p class="video-cap">Dale play: son menos de 90 segundos.</p>
 
-  <div class="steps">
-    <div class="step"><b>1</b><h3>Entra al grupo</h3><p>Toca el botón de WhatsApp y únete al grupo de la clase.</p></div>
-    <div class="step"><b>2</b><h3>Recibe los avisos</h3><p>Ahí te mandamos los recordatorios para que no se te pase.</p></div>
-    <div class="step"><b>3</b><h3>Conéctate a la clase</h3><p>El enlace para entrar llega por el grupo, antes de empezar.</p></div>
-  </div>
-
-  <div class="final">
-    <h2>Un solo paso para asegurar tu clase</h2>
-    <p>Sin el grupo no recibes el enlace. Entra ahora, que toma unos segundos.</p>
-    <a class="btn wa" href="https://chat.whatsapp.com/L0Mjb4eIL52FT966cokUxt?mode=gi_t" data-pos="abajo">
-      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 004.74 1.21c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zm5.8 14.17c-.25.7-1.45 1.34-2 1.4-.51.06-1.15.09-1.86-.12-.43-.14-.98-.32-1.69-.63-2.98-1.29-4.93-4.3-5.08-4.5-.15-.2-1.21-1.61-1.21-3.07 0-1.46.77-2.18 1.04-2.48.27-.3.59-.37.79-.37h.57c.18 0 .43-.07.67.51.25.6.84 2.06.92 2.21.07.15.12.32.02.52-.1.2-.15.32-.3.5-.15.17-.31.39-.45.52-.15.15-.3.31-.13.6.17.3.77 1.27 1.65 2.05 1.13 1.01 2.09 1.32 2.39 1.47.3.15.47.12.65-.07.17-.2.75-.87.95-1.17.2-.3.4-.25.67-.15.27.1 1.73.82 2.03.97.3.15.5.22.57.35.07.12.07.72-.18 1.42z"/></svg>
-      Entrar al grupo de WhatsApp
-    </a>
-  </div>
-
-  <footer>© Step Her Up · Consultoría de posicionamiento y monetización · Puerto Rico</footer>
+  <p class="lede lede-abajo">Falta un último paso y es muy rápido. Entra al grupo de WhatsApp: ahí te mandamos los recordatorios y el enlace para entrar a la clase.</p>
+  <a class="btn wa" href="https://chat.whatsapp.com/L0Mjb4eIL52FT966cokUxt?mode=gi_t" data-pos="abajo">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 004.74 1.21c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zm5.8 14.17c-.25.7-1.45 1.34-2 1.4-.51.06-1.15.09-1.86-.12-.43-.14-.98-.32-1.69-.63-2.98-1.29-4.93-4.3-5.08-4.5-.15-.2-1.21-1.61-1.21-3.07 0-1.46.77-2.18 1.04-2.48.27-.3.59-.37.79-.37h.57c.18 0 .43-.07.67.51.25.6.84 2.06.92 2.21.07.15.12.32.02.52-.1.2-.15.32-.3.5-.15.17-.31.39-.45.52-.15.15-.3.31-.13.6.17.3.77 1.27 1.65 2.05 1.13 1.01 2.09 1.32 2.39 1.47.3.15.47.12.65-.07.17-.2.75-.87.95-1.17.2-.3.4-.25.67-.15.27.1 1.73.82 2.03.97.3.15.5.22.57.35.07.12.07.72-.18 1.42z"/></svg>
+    Entrar al grupo de WhatsApp
+  </a>
+  <div style="height:56px"></div>
 </div>
 <script>
   // Meta Pixel: clic en el botón del grupo (evento propio) y reproducción del video
