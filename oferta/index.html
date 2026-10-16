@@ -131,6 +131,14 @@ fbq('track', 'PageView');
   .was{ margin:0 0 6px; color:var(--blush); font-size:18px; letter-spacing:.04em; } .was s{ color:rgba(247,236,233,.6); }
   @media (max-width:960px){ .mods{ grid-template-columns:repeat(2,1fr); } .three{ grid-template-columns:1fr; } }
   @media (max-width:520px){ .mods{ grid-template-columns:1fr; } .v{ flex-direction:column; align-items:flex-start; gap:6px; } }
+  .lb{ position:fixed; inset:0; z-index:100; display:none; align-items:center; justify-content:center; background:rgba(14,3,8,.92); padding:56px 16px 24px; }
+  .lb.on{ display:flex; }
+  .lb img{ max-width:min(100%,900px); max-height:100%; width:auto; height:auto; border-radius:12px; background:#fff; box-shadow:0 30px 80px rgba(0,0,0,.6); }
+  .lb button{ position:absolute; border:0; cursor:pointer; color:#fff; background:rgba(255,255,255,.14); border-radius:999px; font-size:26px; line-height:1; width:48px; height:48px; display:flex; align-items:center; justify-content:center; }
+  .lb button:hover{ background:rgba(255,255,255,.26); }
+  .lb .x{ top:12px; right:14px; } .lb .pv{ left:12px; top:50%; margin-top:-24px; } .lb .nx{ right:12px; top:50%; margin-top:-24px; }
+  .lb .n{ position:absolute; top:22px; left:0; right:0; text-align:center; color:rgba(255,255,255,.75); font-size:14px; }
+  .gal a{ cursor:zoom-in; display:block; }
 </style>
 </head>
 <body>
@@ -298,6 +306,26 @@ fbq('track', 'PageView');
     }
     tick();
   })();
+</script>
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Captura de resultado">
+  <span class="n" id="lbn"></span>
+  <button class="x" id="lbx" aria-label="Cerrar">×</button>
+  <button class="pv" id="lbp" aria-label="Anterior">‹</button>
+  <img id="lbi" alt="Captura de resultado de una alumna">
+  <button class="nx" id="lbs" aria-label="Siguiente">›</button>
+</div>
+<script>
+(function(){
+  var links=[].slice.call(document.querySelectorAll('.gal a')), lb=document.getElementById('lb'), im=document.getElementById('lbi'), n=document.getElementById('lbn'), k=0;
+  function show(i){ k=(i+links.length)%links.length; im.src=links[k].getAttribute('href'); n.textContent=(k+1)+' de '+links.length; lb.classList.add('on'); document.body.style.overflow='hidden'; }
+  function hide(){ lb.classList.remove('on'); im.removeAttribute('src'); document.body.style.overflow=''; }
+  links.forEach(function(a,i){ a.removeAttribute('target'); a.addEventListener('click',function(e){ e.preventDefault(); show(i); }); });
+  document.getElementById('lbx').onclick=hide; document.getElementById('lbp').onclick=function(){show(k-1)}; document.getElementById('lbs').onclick=function(){show(k+1)};
+  lb.addEventListener('click',function(e){ if(e.target===lb) hide(); });
+  document.addEventListener('keydown',function(e){ if(!lb.classList.contains('on')) return; if(e.key==='Escape') hide(); if(e.key==='ArrowLeft') show(k-1); if(e.key==='ArrowRight') show(k+1); });
+  var x0=null; lb.addEventListener('touchstart',function(e){x0=e.touches[0].clientX},{passive:true});
+  lb.addEventListener('touchend',function(e){ if(x0===null) return; var d=e.changedTouches[0].clientX-x0; if(Math.abs(d)>50) show(k+(d<0?1:-1)); x0=null; });
+})();
 </script>
 </body>
 </html>
