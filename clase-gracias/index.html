@@ -123,6 +123,14 @@ fbq('track', 'PageView');
       try { if (typeof fbq === "function") fbq("trackCustom", "VideoGraciasTerminado"); } catch (e) {}
     });
     btn.addEventListener("click", function () { clearTimeout(auto); btn.classList.remove("llama"); });
+    // Respaldo: si a los 60 s de estar en la página no vio el video (o lo dejó en pausa), la llevamos al grupo.
+    // Si el video está reproduciéndose no se interrumpe: ahí manda la regla de los 20 s después de terminarlo.
+    setTimeout(function () {
+      if (!v.paused && !v.ended) return;
+      if (v.ended) return;
+      try { if (typeof fbq === "function") fbq("trackCustom", "AutoRedirectGrupoWhatsApp", { motivo: "60s" }); } catch (e) {}
+      setTimeout(function () { window.location.href = btn.href; }, 250);
+    }, 60000);
   })();
 </script>
 </body>
