@@ -136,7 +136,7 @@ fbq('track', 'PageView');
 <body>
 <header class="top"><div class="wrap">
   <a href="https://shu.stepherup.com/gianie/" aria-label="Step Her Up"><img src="https://shu.stepherup.com/assets/logo-sitio.png" alt="Step Her Up" width="77" height="50"></a>
-  <a class="btn sm pay" href="#pago">Asegurar mi lugar</a>
+  <a class="btn sm pay" href="#">Asegurar mi lugar</a>
 </div></header>
 
 <main>
@@ -147,7 +147,7 @@ fbq('track', 'PageView');
     <div id="contador" class="count" aria-live="polite">
       <div><b id="cd-d">0</b><span>días</span></div><div><b id="cd-h">00</b><span>horas</span></div><div><b id="cd-m">00</b><span>min</span></div><div><b id="cd-s">00</b><span>seg</span></div>
     </div><br>
-    <a class="btn pay" href="#pago" id="cta-hero">Asegurar mi lugar por $997</a>
+    <a class="btn pay" href="#" id="cta-hero">Asegurar mi lugar por $997</a>
     <p class="price-note">Pago único de $997</p>
   </div></section>
 
@@ -231,7 +231,6 @@ fbq('track', 'PageView');
     <div class="price">$997 <small>pago único</small></div>
     <p class="lede">Más de 100 videos, ≈26 llamadas grupales con Gianie, comunidad y devocionales.</p>
     <a class="btn pay" href="#">Asegurar mi lugar por $997</a>
-    <p class="price-note">Antes de pagar, revisa la política de reembolsos al final de la página.</p>
   </div></section>
 
   <section class="block paper" id="testimonios"><div class="wrap">
@@ -256,16 +255,6 @@ fbq('track', 'PageView');
     <a class="btn pay" href="#">Asegurar mi lugar por $997</a>
   </div></section>
 
-  <section class="block paper"><div class="wrap guide">
-    <img src="https://shu.stepherup.com/assets/gianie-foto.jpg" alt="Gianie Milet" loading="lazy" width="832" height="1040">
-    <div>
-      <p class="eyebrow">Quién te guía</p>
-      <h2>Gianie Milet</h2>
-      <p>Consultora de marca personal y ventas en Puerto Rico y fundadora de Step Her Up. Ha acompañado a más de 70 mujeres profesionales a posicionarse, atraer a sus clientas ideales y cobrar lo que valen.</p>
-      <a class="link" href="https://shu.stepherup.com/gianie/">Conoce más sobre Gianie →</a>
-    </div>
-  </div></section>
-
   <section class="block light"><div class="wrap center">
     <p class="eyebrow">Preguntas frecuentes</p>
     <h2>Antes de decidir</h2>
@@ -273,20 +262,7 @@ fbq('track', 'PageView');
       <details><summary>¿Qué incluye?</summary><p>Más de 100 videos de adiestramiento en Skool (8 módulos), unas 26 llamadas grupales semanales con Gianie durante seis meses, la comunidad privada de mujeres profesionales, networking y reflexiones devocionales guiadas por una pastora.</p></details>
       <details><summary>¿Cómo recibo mi acceso?</summary><p>Después de tu pago, te enviamos a tu correo los pasos para entrar a la plataforma.</p></details>
       <details><summary>¿El pago es único?</summary><p>Sí, es un pago único de $997.</p></details>
-      <details><summary>¿Hay reembolsos?</summary><p>Consulta la política de reembolsos al final de esta página antes de pagar.</p></details>
       <details><summary>¿Para quién es?</summary><p>Para mujeres profesionales y emprendedoras que dan mucho valor y quieren posicionarse como expertas para atraer a sus clientas ideales y cobrar lo que valen.</p></details>
-    </div>
-  </div></section>
-
-  <section class="block paper" id="politica"><div class="wrap center">
-    <p class="eyebrow">Antes de pagar</p>
-    <h2>Política de reembolsos y condiciones</h2>
-    <div style="margin-top:34px;text-align:left">
-      <details><summary>Reembolsos</summary><p>El Sistema de crecimiento en Skool es un producto digital con acceso inmediato a la plataforma y a los contenidos. Por eso, una vez realizado el pago y entregado el acceso, la compra es final y no es reembolsable.</p></details>
-      <details><summary>Excepciones</summary><p>Revisaremos tu caso y te reembolsaremos si se te cobró más de una vez por el mismo producto, o si por un problema técnico de nuestra parte no pudiste acceder a la plataforma y no logramos resolverlo.</p></details>
-      <details><summary>Cómo solicitar una revisión</summary><p>Escríbenos a <strong>contact@stepherup.com</strong> dentro de los 7 días siguientes a tu compra, con el nombre y el correo que usaste al pagar y una breve explicación.</p></details>
-      <details><summary>Acceso</summary><p>El acceso es personal e intransferible. Los contenidos, documentos y clases son propiedad de Step Her Up y no pueden copiarse, compartirse ni revenderse.</p></details>
-      <details><summary>Resultados</summary><p>Los resultados no están garantizados y dependen del compromiso y la situación de cada persona. Los testimonios son experiencias reales de alumnas y no prometen resultados iguales.</p></details>
     </div>
   </div></section>
 </main>
@@ -304,7 +280,6 @@ fbq('track', 'PageView');
   // --------------------------------------
   document.querySelectorAll("a.pay").forEach(function (a) {
     a.addEventListener("click", function (e) {
-      if (a.getAttribute("href") === "#pago") return; // los de la cabecera/portada bajan al bloque de pago
       try { if (typeof fbq === "function") fbq("track", "InitiateCheckout", { value: 997, currency: "USD", content_name: "Sistema de crecimiento en Skool" }); } catch (x) {}
       if (!LINK_PAGO) { e.preventDefault(); alert("El link de pago todavía no está configurado."); return; }
       e.preventDefault(); window.location.href = LINK_PAGO;
