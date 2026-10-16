@@ -66,6 +66,8 @@ fbq('track', 'PageView');
   @keyframes vsl-play-pulse{ 0%,100%{ transform:scale(1); } 50%{ transform:scale(1.12); } }
   @keyframes vsl-play-ring{ 0%{ transform:scale(1); opacity:0.7; } 100%{ transform:scale(2.1); opacity:0; } }
   .video.jugando .vsl-play{ opacity:0; pointer-events:none; }
+  .btn.wa{ margin-top:26px; }
+  .lede-debajo{ margin:22px auto 0 !important; font-size:17px !important; }
 </style>
 </head>
 <body>
@@ -81,12 +83,11 @@ fbq('track', 'PageView');
     <div class="vsl-play" id="grande" role="button" tabindex="0" aria-label="Reproducir el video">▶<span class="vsl-play-label" id="etq">Haz clic para ver</span></div>
   </div>
 
-  <p class="lede lede-abajo">Falta un último paso y es muy rápido. Entra al grupo de WhatsApp: ahí te mandamos los recordatorios y el enlace para entrar a la clase.</p>
   <a class="btn wa" href="https://chat.whatsapp.com/L0Mjb4eIL52FT966cokUxt?mode=gi_t" data-pos="abajo">
     <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 004.74 1.21c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zm5.8 14.17c-.25.7-1.45 1.34-2 1.4-.51.06-1.15.09-1.86-.12-.43-.14-.98-.32-1.69-.63-2.98-1.29-4.93-4.3-5.08-4.5-.15-.2-1.21-1.61-1.21-3.07 0-1.46.77-2.18 1.04-2.48.27-.3.59-.37.79-.37h.57c.18 0 .43-.07.67.51.25.6.84 2.06.92 2.21.07.15.12.32.02.52-.1.2-.15.32-.3.5-.15.17-.31.39-.45.52-.15.15-.3.31-.13.6.17.3.77 1.27 1.65 2.05 1.13 1.01 2.09 1.32 2.39 1.47.3.15.47.12.65-.07.17-.2.75-.87.95-1.17.2-.3.4-.25.67-.15.27.1 1.73.82 2.03.97.3.15.5.22.57.35.07.12.07.72-.18 1.42z"/></svg>
     Entrar al grupo de WhatsApp
   </a>
-  <p class="hint">Si no entras al grupo, no te llegará el enlace de la clase.</p>
+  <p class="lede lede-debajo">Falta un último paso y es muy rápido. Entra al grupo de WhatsApp: ahí te mandamos los recordatorios y el enlace para entrar a la clase.</p>
   <div style="height:56px"></div>
 </div>
 <script>
