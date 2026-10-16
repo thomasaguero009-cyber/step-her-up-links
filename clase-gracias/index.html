@@ -52,6 +52,21 @@ fbq('track', 'PageView');
   .final p{ margin:0 auto 22px; color:rgba(247,236,233,.78); max-width:520px; }
   footer{ text-align:center; padding:40px 0 48px; font-size:13px; color:rgba(247,236,233,.55); }
   @media (max-width:700px){ .steps{ grid-template-columns:1fr; gap:22px; } header img{ height:54px; } .btn{ font-size:18px; padding:18px 20px; } .lede{ font-size:17px; } }
+  .video{ position:relative; cursor:pointer; }
+  .video video::-webkit-media-controls{ display:none !important; }
+  .grande{ position:absolute; left:50%; top:50%; width:92px; height:92px; margin:-46px 0 0 -46px; border:0; border-radius:50%; background:rgba(240,168,190,.95); color:#2a0a13; display:flex; align-items:center; justify-content:center; cursor:pointer; box-shadow:0 12px 34px rgba(0,0,0,.45); transition:transform .15s, opacity .2s; }
+  .grande svg{ width:44px; height:44px; margin-left:5px; }
+  .grande:hover{ transform:scale(1.06); }
+  .pp{ position:absolute; left:14px; bottom:14px; width:46px; height:46px; border:0; border-radius:50%; background:rgba(26,5,9,.72); color:#fff; display:none; align-items:center; justify-content:center; cursor:pointer; backdrop-filter:blur(6px); }
+  .pp svg{ width:22px; height:22px; } .pp .ic-play{ display:none; margin-left:2px; }
+  .video.jugando .grande{ opacity:0; pointer-events:none; } .video.jugando .pp, .video.pausado .pp{ display:flex; }
+  .video.pausado .pp .ic-pause{ display:none; } .video.pausado .pp .ic-play{ display:block; }
+  .video.pausado .grande{ opacity:1; pointer-events:auto; }
+  /* Al terminar el video, el botón se mueve para invitar a tocarlo */
+  @keyframes llama{ 0%,100%{ transform:translateY(0) scale(1); box-shadow:0 14px 34px rgba(232,138,168,.32); } 12%{ transform:translateY(-9px) scale(1.04); box-shadow:0 22px 44px rgba(232,138,168,.6); } 24%{ transform:translateY(0) scale(1); } 34%{ transform:translateX(-5px); } 44%{ transform:translateX(5px); } 54%{ transform:translateX(-4px); } 64%{ transform:translateX(3px); } 74%{ transform:translateX(0); } }
+  @keyframes brillo{ 0%,100%{ box-shadow:0 0 0 0 rgba(240,168,190,.65), 0 14px 34px rgba(232,138,168,.32); } 50%{ box-shadow:0 0 0 16px rgba(240,168,190,0), 0 14px 34px rgba(232,138,168,.5); } }
+  .btn.llama{ animation:llama 2.2s ease-in-out infinite, brillo 1.4s ease-out infinite; }
+  @media (prefers-reduced-motion:reduce){ .btn.llama{ animation:brillo 1.6s ease-out infinite; } }
 </style>
 </head>
 <body>
@@ -59,11 +74,13 @@ fbq('track', 'PageView');
   <header><img src="https://shu.stepherup.com/assets/logo-sitio.png" alt="Step Her Up" width="112" height="64"></header>
   <h1>¡Felicidades! Ya reservaste <em>tu lugar</em></h1>
 
-  <div class="video">
-    <video controls playsinline preload="metadata" poster="https://shu.stepherup.com/assets/typ-clase-poster.jpg" id="v">
+  <div class="video" id="caja">
+    <video playsinline preload="metadata" poster="https://shu.stepherup.com/assets/typ-clase-poster.jpg" id="v" disablepictureinpicture controlslist="nodownload noplaybackrate nofullscreen noremoteplayback">
       <source src="https://shu.stepherup.com/assets/typ-clase.mp4" type="video/mp4">
       Tu navegador no puede reproducir este video.
     </video>
+    <button type="button" class="grande" id="grande" aria-label="Reproducir el video"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13a1 1 0 001.5.86l10.5-6.5a1 1 0 000-1.72L9.5 4.64A1 1 0 008 5.5z"/></svg></button>
+    <button type="button" class="pp" id="pp" aria-label="Pausar"><svg class="ic-pause" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4h3.5v16H7zM13.5 4H17v16h-3.5z"/></svg><svg class="ic-play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13a1 1 0 001.5.86l10.5-6.5a1 1 0 000-1.72L9.5 4.64A1 1 0 008 5.5z"/></svg></button>
   </div>
 
   <p class="lede lede-abajo">Falta un último paso y es muy rápido. Entra al grupo de WhatsApp: ahí te mandamos los recordatorios y el enlace para entrar a la clase.</p>
@@ -81,11 +98,25 @@ fbq('track', 'PageView');
     });
   });
   (function () {
-    var v = document.getElementById("v"), enviado = false;
+    var v = document.getElementById("v"), caja = document.getElementById("caja"), grande = document.getElementById("grande"), pp = document.getElementById("pp");
+    var btn = document.querySelector("a.wa"), enviado = false;
+    v.muted = false; v.volume = 1;
+    function alternar() { if (v.paused) { v.muted = false; v.play(); } else { v.pause(); } }
+    caja.addEventListener("click", function (e) { if (e.target.closest("button") && e.target.closest("button") !== grande && e.target.closest("button") !== pp) return; alternar(); });
     v.addEventListener("play", function () {
+      btn.classList.remove("llama"); caja.classList.add("jugando"); caja.classList.remove("pausado");
       if (enviado) return; enviado = true;
       try { if (typeof fbq === "function") fbq("trackCustom", "VerVideoGracias"); } catch (e) {}
     });
+    v.addEventListener("pause", function () { if (!v.ended) { caja.classList.add("pausado"); caja.classList.remove("jugando"); } });
+    v.addEventListener("volumechange", function () { if (v.muted || v.volume < 1) { v.muted = false; v.volume = 1; } });
+    v.addEventListener("ended", function () {
+      caja.classList.remove("jugando"); caja.classList.add("pausado"); pp.setAttribute("aria-label", "Ver de nuevo");
+      btn.classList.add("llama");
+      try { btn.scrollIntoView({ behavior: "smooth", block: "center" }); } catch (e) {}
+      try { if (typeof fbq === "function") fbq("trackCustom", "VideoGraciasTerminado"); } catch (e) {}
+    });
+    btn.addEventListener("click", function () { btn.classList.remove("llama"); });
   })();
 </script>
 </body>
