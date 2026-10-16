@@ -90,6 +90,33 @@ fbq('track', 'PageView');
   footer img{ height:56px; margin:0 auto 14px; }
   @media (max-width:860px){ .offer,.quotes{ grid-template-columns:1fr; } .gal{ grid-template-columns:repeat(2,1fr); } section.block{ padding:56px 0; } .devices .l{ left:8%; width:84%; border-width:7px; } }
   @media (max-width:520px){ .btn{ width:100%; } .btn.sm{ width:auto; } .count div{ min-width:64px; } .count b{ font-size:30px; } }
+  .mock{ width:100%; max-width:960px; margin:40px auto 0; }
+  .stats{ display:grid; grid-template-columns:repeat(3,1fr); border-top:1px solid var(--line); border-bottom:1px solid var(--line); background:var(--wine-1); color:var(--cream); }
+  .stats .it{ padding:26px 20px; text-align:center; border-left:1px solid var(--line); }
+  .stats .it:first-child{ border-left:0; }
+  .stats b{ display:block; font-family:"Playfair Display",serif; font-size:34px; line-height:1.1; }
+  .stats span{ font-size:14px; color:rgba(247,236,233,.7); }
+  .list{ list-style:none; padding:0; margin:34px auto 0; max-width:780px; text-align:left; }
+  .list li{ display:flex; gap:16px; align-items:flex-start; padding:18px 22px; margin-bottom:12px; background:#fff; border:1px solid var(--line-d); border-radius:14px; font-size:19px; font-weight:600; line-height:1.35; }
+  .list li i{ flex:0 0 36px; height:36px; border-radius:50%; background:var(--blush); color:var(--wine-1); display:flex; align-items:center; justify-content:center; font-style:normal; font-weight:800; font-size:18px; }
+  .steps{ display:grid; grid-template-columns:repeat(3,1fr); gap:20px; margin-top:40px; text-align:left; }
+  .step{ border-top:2px solid var(--wine-3); padding-top:18px; }
+  .step b{ font-family:"Playfair Display",serif; font-size:44px; color:var(--blush-2); line-height:1; }
+  .step h3{ font-size:23px; margin:8px 0; }
+  .step p{ margin:0; color:var(--muted); font-size:16px; }
+  .guide{ display:grid; grid-template-columns:minmax(0,.7fr) minmax(0,1.3fr); gap:50px; align-items:center; }
+  .guide img{ border-radius:14px; box-shadow:0 26px 50px rgba(42,13,20,.25); width:100%; }
+  .guide p{ color:var(--muted); font-size:18px; margin:14px 0 0; }
+  .guide a.link{ display:inline-block; margin-top:16px; color:var(--wine-3); font-weight:700; }
+  .stick{ display:none; }
+  @media (max-width:860px){
+    .steps{ grid-template-columns:1fr; } .guide{ grid-template-columns:1fr; gap:28px; } .guide img{ max-width:320px; }
+    .stats{ grid-template-columns:1fr; } .stats .it{ border-left:0; border-top:1px solid var(--line); padding:18px; } .stats .it:first-child{ border-top:0; }
+    .stick{ display:flex; position:fixed; left:0; right:0; bottom:0; z-index:30; gap:12px; align-items:center; justify-content:space-between; padding:12px 16px calc(12px + env(safe-area-inset-bottom,0px)); background:rgba(26,5,9,.96); border-top:1px solid var(--line); }
+    .stick div{ color:var(--cream); line-height:1.15; } .stick b{ font-family:"Playfair Display",serif; font-size:26px; display:block; } .stick small{ font-size:12px; color:var(--blush); }
+    .stick .btn{ width:auto; padding:13px 20px; font-size:16px; }
+    body{ padding-bottom:78px; }
+  }
 </style>
 </head>
 <body>
@@ -110,14 +137,27 @@ fbq('track', 'PageView');
     <p class="price-note">Pago único de $997</p>
   </div></section>
 
+  <div class="stats">
+    <div class="it"><b>+70</b><span>mujeres profesionales acompañadas</span></div>
+    <div class="it"><b>+20</b><span>cursos y clases en tu aula</span></div>
+    <div class="it"><b>Skool</b><span>plataforma de la Academy</span></div>
+  </div>
+
   <section class="block light"><div class="wrap center">
+    <p class="eyebrow">¿Es para ti?</p>
+    <h2>Esto es para ti si…</h2>
+    <ul class="list">
+      <li><i>1</i>Tienes la agenda llena y aun así no llegas a los $5,000 netos.</li>
+      <li><i>2</i>Llevas años en lo que haces y todavía dependes de referidos.</li>
+      <li><i>3</i>Compites por precio y no por el valor de tu servicio.</li>
+      <li><i>4</i>Quieres posicionarte y cobrar lo que vales.</li>
+    </ul>
+  </div></section>
+
+  <section class="block paper"><div class="wrap center">
     <p class="eyebrow">Esto es todo lo que recibirás</p>
     <h2>Cuando te unes hoy</h2>
-    <div class="devices">
-      <img class="l" src="https://shu.stepherup.com/assets/oferta-laptop.jpg" alt="Plataforma de Step Her Up Academy en Skool" loading="lazy">
-      <img class="t" src="https://shu.stepherup.com/assets/oferta-tablet.jpg" alt="Aula con los cursos de la Academy" loading="lazy">
-      <img class="p" src="https://shu.stepherup.com/assets/oferta-phone.jpg" alt="Lecciones en el celular" loading="lazy">
-    </div>
+    <img class="mock" src="https://shu.stepherup.com/assets/oferta-producto.png" alt="Step Her Up Academy: plataforma en Skool en computadora, tablet y celular" loading="lazy">
     <div class="offer" style="text-align:left">
       <div class="card">
         <span class="num">Oferta principal</span>
@@ -132,6 +172,22 @@ fbq('track', 'PageView');
         <h3>Clases grupales</h3>
         <p>Clases en grupo para avanzar acompañada y resolver tus dudas mientras aplicas.</p>
       </div>
+    </div>
+  </div></section>
+
+  <section class="block light"><div class="wrap center">
+    <p class="eyebrow">Lo que vas a lograr</p>
+    <h2>Posicionarte, atraer y cobrar lo que vales</h2>
+    <ul class="list">
+      <li><i>✓</i>Posicionarte como la experta que eres.</li>
+      <li><i>✓</i>Atraer a tus clientas ideales.</li>
+      <li><i>✓</i>Cobrar lo que vales, sin trabajar más horas.</li>
+      <li><i>✓</i>Dejar de competir por precio y competir por valor.</li>
+    </ul>
+    <div class="steps">
+      <div class="step"><b>1</b><h3>Realizas tu pago</h3><p>Pago único de $997, procesado de forma segura por Stripe.</p></div>
+      <div class="step"><b>2</b><h3>Recibes tu acceso</h3><p>Te enviamos a tu correo los pasos para entrar a la plataforma.</p></div>
+      <div class="step"><b>3</b><h3>Empiezas en tu aula</h3><p>Entras a Skool, empiezas por la bienvenida y avanzas a tu ritmo.</p></div>
     </div>
   </div></section>
 
@@ -165,7 +221,29 @@ fbq('track', 'PageView');
     <a class="btn pay" href="#">Asegurar mi lugar por $997</a>
   </div></section>
 
-  <section class="block light" id="politica"><div class="wrap center">
+  <section class="block paper"><div class="wrap guide">
+    <img src="https://shu.stepherup.com/assets/gianie-foto.jpg" alt="Gianie Milet" loading="lazy" width="832" height="1040">
+    <div>
+      <p class="eyebrow">Quién te guía</p>
+      <h2>Gianie Milet</h2>
+      <p>Consultora de marca personal y ventas en Puerto Rico y fundadora de Step Her Up. Ha acompañado a más de 70 mujeres profesionales a posicionarse, atraer a sus clientas ideales y cobrar lo que valen.</p>
+      <a class="link" href="https://shu.stepherup.com/gianie/">Conoce más sobre Gianie →</a>
+    </div>
+  </div></section>
+
+  <section class="block light"><div class="wrap center">
+    <p class="eyebrow">Preguntas frecuentes</p>
+    <h2>Antes de decidir</h2>
+    <div style="margin-top:30px;text-align:left">
+      <details><summary>¿Qué incluye?</summary><p>Step Her Up Academy en Skool, con más de 20 cursos y clases, y clases grupales.</p></details>
+      <details><summary>¿Cómo recibo mi acceso?</summary><p>Después de tu pago, te enviamos a tu correo los pasos para entrar a la plataforma.</p></details>
+      <details><summary>¿El pago es único?</summary><p>Sí, es un pago único de $997.</p></details>
+      <details><summary>¿Hay reembolsos?</summary><p>Consulta la política de reembolsos al final de esta página antes de pagar.</p></details>
+      <details><summary>¿Para quién es?</summary><p>Para mujeres profesionales y emprendedoras que dan mucho valor y quieren posicionarse como expertas para atraer a sus clientas ideales y cobrar lo que valen.</p></details>
+    </div>
+  </div></section>
+
+  <section class="block paper" id="politica"><div class="wrap center">
     <p class="eyebrow">Antes de pagar</p>
     <h2>Política de reembolsos y condiciones</h2>
     <div style="margin-top:34px;text-align:left">
@@ -183,6 +261,7 @@ fbq('track', 'PageView');
   <p>© Step Her Up · Consultoría de posicionamiento y monetización · Puerto Rico</p>
 </div></footer>
 
+<div class="stick"><div><b>$997</b><small>pago único</small></div><a class="btn pay" href="#">Asegurar mi lugar</a></div>
 <script>
   // ---- Configuración (cambiar aquí) ----
   var LINK_PAGO = "https://buy.stripe.com/dRm00l5FG5IX7mAblBfQI08";                                  // link de pago de $997
