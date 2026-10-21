@@ -45,6 +45,9 @@ fbq('track', 'PageView');
   .orn span{ font-size:14px; line-height:1; }
   .btn{ display:inline-block; padding:19px 40px; border-radius:2px; font-weight:600; font-size:13px; letter-spacing:.2em; text-transform:uppercase; text-decoration:none; text-align:center; background:linear-gradient(180deg,#f6c3d2,var(--rose)); color:#2a0a13; border:1px solid #f6c3d2; box-shadow:0 18px 44px rgba(240,168,190,.22); transition:transform .2s, box-shadow .2s; }
   .btn:hover{ transform:translateY(-2px); box-shadow:0 24px 54px rgba(240,168,190,.34); }
+  .btn[hidden]{ display:none; }
+  .btn.alt{ background:transparent; color:var(--cream); border:1px solid rgba(236,201,183,.6); box-shadow:none; margin-top:14px; }
+  .btn.alt small{ display:block; margin-top:6px; font-size:10px; letter-spacing:.18em; font-weight:500; opacity:.85; }
   .btn.sm{ padding:12px 22px; font-size:11px; letter-spacing:.16em; box-shadow:none; }
 
   header.top{ position:sticky; top:0; z-index:20; background:rgba(18,4,10,.82); backdrop-filter:blur(14px); border-bottom:1px solid var(--line); }
@@ -172,11 +175,12 @@ fbq('track', 'PageView');
       <div class="total"><span>Valor total estimado</span><s>$6,288</s></div>
     </div>
 
-    <div class="oferta">
+    <div class="oferta" id="opciones">
       <p class="lbl">Oferta exclusiva</p>
       <div class="pr">$997<small>pago único</small></div>
       <p class="was">En lugar de <s>$6,288</s></p>
-      <a class="btn pay" href="#">Asegurar mi lugar</a>
+      <a class="btn pay pay1" href="#">Asegurar mi lugar</a>
+      <a class="btn alt pay pay3" href="#" hidden>3 pagos de $397<small>Total $1,191</small></a>
     </div>
   </div></section>
 
@@ -225,7 +229,8 @@ fbq('track', 'PageView');
       <p class="lbl">Oferta exclusiva</p>
       <div class="pr">$997<small>pago único</small></div>
       <p class="was">En lugar de <s>$6,288</s></p>
-      <a class="btn pay" href="#">Asegurar mi lugar</a>
+      <a class="btn pay pay1" href="#">Asegurar mi lugar</a>
+      <a class="btn alt pay pay3" href="#" hidden>3 pagos de $397<small>Total $1,191</small></a>
     </div>
   </div></section>
 
@@ -260,14 +265,25 @@ fbq('track', 'PageView');
 <div class="stick"><div><b>$997</b><small>pago único</small></div><a class="btn pay" href="#">Asegurar mi lugar</a></div>
 <script>
   // ---- Configuración (cambiar aquí) ----
-  var LINK_PAGO = "https://buy.stripe.com/dRm00l5FG5IX7mAblBfQI08";                                  // link de pago de $997
+  var LINK_PAGO = "https://buy.stripe.com/dRm00l5FG5IX7mAblBfQI08";                                  // link de pago único de $997
+  var LINK_PAGO_3 = "";                                                                                // link del plan de 3 pagos de $397 (total $1,191). Vacío = la página muestra solo el pago único.
   var CIERRE = new Date("2026-10-21T23:59:00-04:00");  // cierre de la oferta (hora de Puerto Rico). Ajustar al cierre real.
   // --------------------------------------
+  var DOS = !!LINK_PAGO_3;
+  if (DOS) {
+    document.querySelectorAll(".pay3").forEach(function (a) { a.hidden = false; });
+    document.querySelectorAll(".pay1").forEach(function (a) { a.textContent = "Pago único de $997"; });
+    var sk = document.querySelector(".stick small"); if (sk) sk.textContent = "único o 3 pagos de $397";
+  }
   document.querySelectorAll("a.pay").forEach(function (a) {
     a.addEventListener("click", function (e) {
-      try { if (typeof fbq === "function") fbq("track", "InitiateCheckout", { value: 997, currency: "USD", content_name: "Sistema de crecimiento en Skool" }); } catch (x) {}
-      if (!LINK_PAGO) { e.preventDefault(); alert("El link de pago todavía no está configurado."); return; }
-      e.preventDefault(); window.location.href = LINK_PAGO;
+      e.preventDefault();
+      var es3 = a.classList.contains("pay3"), enOferta = !!a.closest(".oferta");
+      if (DOS && !enOferta) { var o = document.getElementById("opciones"); if (o) o.scrollIntoView({ behavior: "smooth", block: "center" }); return; }
+      try { if (typeof fbq === "function") fbq("track", "InitiateCheckout", { value: es3 ? 1191 : 997, currency: "USD", content_name: "Sistema de crecimiento en Skool" + (es3 ? " (3 pagos)" : "") }); } catch (x) {}
+      var link = es3 ? LINK_PAGO_3 : LINK_PAGO;
+      if (!link) { alert("El link de pago todavía no está configurado."); return; }
+      window.location.href = link;
     });
   });
   (function () {
