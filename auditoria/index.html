@@ -82,26 +82,34 @@ input[type=text]:focus{outline:2px solid var(--blush);border-color:var(--rose)}
 </div>
 <script>
 const SECS=[
- {t:'Tu perfil',d:'Lo primero que ve una clienta cuando llega a la cuenta.',it:[
+ {t:'Tu perfil como embudo',d:'Módulo 3. Lo primero que ve una clienta cuando llega a tu cuenta.',it:[
   ['Foto de perfil','Se ve la cara, con buena luz y buena calidad.','Cambiar la foto por una de tu cara, con buena luz y de cerca.'],
-  ['Nombre','Dice qué haces, con la palabra que busca tu clienta.','Poner en el nombre qué haces, con la palabra que tu clienta busca.'],
+  ['Nombre y username','Dicen qué haces y se encuentran fácil en la búsqueda.','Poner en el nombre qué haces, con la palabra que tu clienta busca, y un username fácil de escribir.'],
   ['Bio: a quién ayudas y qué logra','En una frase se entiende a quién ayuda y qué resultado da.','Reescribir la bio con a quién ayudas y qué resultado logra.'],
   ['Bio: una acción clara','Hay un solo llamado a la acción.','Cerrar la bio con una sola acción clara.'],
   ['Link','Lleva a un solo lugar útil, como la agenda o un formulario.','Dejar un solo link que lleve a agendar o a escribirte.'],
-  ['Destacadas','Ordenadas, con portada coherente, y cuentan quién es, qué ofrece y pruebas.','Ordenar las destacadas con quién eres, qué ofreces y tus pruebas.'],
-  ['Publicaciones fijadas','Las fijadas presentan su autoridad, una prueba y su oferta.','Fijar tres publicaciones: autoridad, prueba y oferta.']]},
- {t:'Tu contenido',d:'Según las 7 reglas de los Frameworks para guionizar: idea masiva, postura, hook, desarrollo y valor.',it:[
+  ['Destacadas','Cuentan quién es y qué ofrece, con resultados, ofertas, cómo llegar, políticas y preguntas frecuentes.','Armar destacadas de resultados, ofertas, cómo llegar, políticas y preguntas frecuentes, con portada coherente.'],
+  ['Las 3 publicaciones fijadas','Presentan su autoridad, una prueba y su oferta.','Fijar tres publicaciones: autoridad, prueba y oferta.'],
+  ['Camino hasta tu DM','Quien la descubre sabe cómo escribirle o agendar.','Dejar claro el camino desde que te descubren hasta tu DM.']]},
+ {t:'Tu contenido',d:'Módulo 1. Los frameworks para guionizar: idea masiva, postura, hook, desarrollo y valor.',it:[
   ['Idea masiva','Habla de algo que la gente ya se pregunta, comenta o comparte.','Elegir temas que tu clienta ya se pregunta y que comparte con otras.'],
   ['Postura clara','Dice lo que cree y por qué, no solo explica el tema.','Decir lo que crees con "Yo creo que ___ porque ___".'],
   ['Hook con tensión','Los primeros segundos detienen a la persona y abren una pregunta.','Reescribir el inicio de cada video con un hook con tensión.'],
   ['Desarrollo y valor al final','Cada frase pide la siguiente y el valor llega al final.','Guardar el valor para el final y quitar lo que no suma.'],
+  ['Guiones de 40 segundos','Los videos son cortos y van al punto.','Escribir guiones de unos 40 segundos con los frameworks.'],
+  ['Formatos de contenido viralizable','Usa formatos que ya funcionan en vez de inventar cada vez.','Escoger 2 o 3 formatos viralizables y repetirlos.'],
+  ['Checklist de video','Cada video pasa el checklist de video de Step Her Up antes de publicarse.','Pasar cada video por el checklist antes de publicarlo.'],
   ['Mezcla y frecuencia','Alterna autoridad, conexión, prueba y venta, al menos 3 piezas por semana.','Publicar 3 piezas por semana, alternando autoridad, conexión, prueba y venta.']]},
- {t:'Tu oferta y tu forma de vender',d:'Cómo pasa de que la sigan a que le compren.',it:[
+ {t:'Tu posicionamiento y tu oferta',d:'Módulo 5. A quién le habla, qué la hace diferente y qué vende.',it:[
+  ['Clienta ideal','Se entiende con claridad a quién le habla.','Definir una clienta ideal concreta y hablarle directamente.'],
+  ['Diferenciador','Dice qué la hace diferente, de forma literal y concreta.','Escribir tu diferenciador en una frase literal y concreta.'],
   ['Se entiende qué vende','Queda claro qué vende, a quién y qué resultado da.','Explicar en una frase qué vendes, a quién y qué resultado da.'],
-  ['Prueba visible','Hay testimonios o resultados reales a la vista.','Mostrar testimonios y resultados reales en destacadas y publicaciones.'],
+  ['Prueba visible','Hay testimonios o resultados reales a la vista.','Mostrar testimonios y resultados reales en destacadas y publicaciones.']]},
+ {t:'Tu proceso de ventas',d:'Módulo 4. Cómo pasa de que la sigan a que le compren.',it:[
   ['Un solo llamado a la acción','Cada pieza de venta pide una sola cosa.','Dejar un solo llamado a la acción por pieza.'],
-  ['Camino para escribirle o agendar','La clienta sabe cómo dar el siguiente paso.','Dejar claro el camino: escribir por mensaje o agendar.'],
-  ['Seguimiento a mensajes','Responde y da seguimiento a mensajes y comentarios.','Responder y dar seguimiento a cada mensaje y comentario.']]}
+  ['Conversación por DM','Responde mensajes y comentarios con la intención de avanzar la conversación.','Responder cada mensaje y comentario y llevarlo al siguiente paso.'],
+  ['Precio y objeciones','Sabe dar el precio sin que la clienta desaparezca y maneja las objeciones.','Practicar cómo dar el precio y cómo responder las objeciones.'],
+  ['Seguimiento','Da seguimiento para que ninguna clienta se escape.','Dar seguimiento a cada clienta interesada hasta que decida.']]}
 ];
 const V={si:2,pa:1,no:0};
 let est={};
@@ -132,7 +140,7 @@ function calc(){
   const top=falt.slice(0,3);
   window._top=top;
   $('hall').innerHTML=top.length?top.map((f,i)=>`<div class="h"><b>${i+1}. ${f.n}</b><span>${f.a}</span></div>`).join(''):'<div class="vacio">Marca los puntos de arriba y aquí aparecen los 3 ajustes principales.</div>';
-  $('puente').textContent=top.length?'Para decir en la llamada: "Esto es justo lo que trabajamos en las 3 llamadas con Gianie y en tu estrategia de marca personal."':'';
+  $('puente').textContent=top.length?'Para decir en la llamada: "Esto es justo lo que trabajamos en las 3 llamadas con Gianie y en tu estrategia de contenido personalizada."':'';
 }
 document.addEventListener('click',e=>{const b=e.target.closest('.op button');if(!b)return;const k=b.dataset.k;est[k]=est[k]===b.dataset.v?undefined:b.dataset.v;guardar();pintar()});
 ['nom','ig'].forEach(i=>$(i).addEventListener('input',guardar));
