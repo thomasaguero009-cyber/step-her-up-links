@@ -35,18 +35,31 @@
     { nombre: "paula", tel: "5491133994714" }
   ];
   var TEXTO = "Hola, escribo AYUDA. Vengo de la clase gratuita de Gianie.";
-  function elegir() {
-    var forzada = (new URLSearchParams(location.search).get("s") || "").toLowerCase();
-    var f = EQUIPO.filter(function (e) { return e.nombre === forzada; })[0];
-    if (f) return f;
+  var CONTADOR = "https://abacus.jasoncameron.dev/hit/shu-stepherup/ayuda-webinar-21oct"; // solo cuenta visitas, sin datos de nadie
+  function alAzar() {
     var i = 0;
     try { var a = new Uint32Array(1); crypto.getRandomValues(a); i = a[0] % EQUIPO.length; } catch (x) { i = Math.floor(Math.random() * EQUIPO.length); }
     return EQUIPO[i];
   }
-  var destino = elegir();
-  var url = "https://wa.me/" + destino.tel + "?text=" + encodeURIComponent(TEXTO);
-  document.getElementById("ir").href = url;
-  setTimeout(function () { location.replace(url); }, 700);
+  function ir(destino) {
+    var url = "https://wa.me/" + destino.tel + "?text=" + encodeURIComponent(TEXTO);
+    document.getElementById("ir").href = url;
+    setTimeout(function () { location.replace(url); }, 300);
+  }
+  // Reparto por turnos: cada visita suma 1 al contador y le toca la persona que corresponde (Belen, Mia, Paula, Belen...).
+  // Si el contador no responde en 1,2 segundos, se elige al azar para no hacer esperar a nadie.
+  (function () {
+    var forzada = (new URLSearchParams(location.search).get("s") || "").toLowerCase();
+    var f = EQUIPO.filter(function (e) { return e.nombre === forzada; })[0];
+    if (f) { ir(f); return; }
+    var hecho = false;
+    var t = setTimeout(function () { if (!hecho) { hecho = true; ir(alAzar()); } }, 1200);
+    fetch(CONTADOR).then(function (r) { return r.json(); }).then(function (d) {
+      if (hecho) return; hecho = true; clearTimeout(t);
+      var n = parseInt(d && d.value, 10);
+      ir(isNaN(n) ? alAzar() : EQUIPO[n % EQUIPO.length]);
+    }).catch(function () { if (hecho) return; hecho = true; clearTimeout(t); ir(alAzar()); });
+  })();
 </script>
 </body>
 </html>
