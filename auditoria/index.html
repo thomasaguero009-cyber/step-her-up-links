@@ -31,6 +31,8 @@ input[type=text]:focus{outline:2px solid var(--blush);border-color:var(--rose)}
 .it{background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px 16px;margin-bottom:10px;display:grid;grid-template-columns:1fr auto;gap:10px 16px;align-items:center}
 .it b{font-weight:600;font-size:15.5px;display:block}
 .it span.s{font-size:13px;color:var(--mut)}
+.it span.dile{display:block;margin-top:8px;padding:8px 10px;border-radius:10px;background:#fbeef2;color:var(--wine2)}
+.it span.dile b{display:inline;font-size:13px}
 .op{display:flex;gap:6px}
 .op button{font:inherit;font-size:13px;font-weight:600;border:1px solid var(--line);background:#fff;color:var(--mut);border-radius:999px;padding:7px 13px;cursor:pointer}
 .op button.on.si{background:var(--ok);border-color:var(--ok);color:#fff}
@@ -111,6 +113,7 @@ const SECS=[
   ['Precio y objeciones','Sabe dar el precio sin que la clienta desaparezca y maneja las objeciones.','Practicar cómo dar el precio y cómo responder las objeciones.'],
   ['Seguimiento','Da seguimiento para que ninguna clienta se escape.','Dar seguimiento a cada clienta interesada hasta que decida.']]}
 ];
+const DILE={"Foto de perfil": "Tu foto es lo primero que se ve. Con tu cara, buena luz y de cerca, la gente confía más rápido.", "Nombre y username": "Si alguien busca lo que haces, tu nombre tiene que decirlo. Ahora no se entiende qué ofreces.", "Bio: a quién ayudas y qué logra": "En tu bio no queda claro a quién ayudas ni qué logra. Vamos a escribirla juntas ahora mismo.", "Bio: una acción clara": "Tu bio termina sin decirle a la persona qué hacer. Pon una sola acción clara, como escribirte o agendar.", "Link": "Hoy tu link no lleva a un solo lugar útil. Deja uno solo, a tu agenda o a tu formulario.", "Destacadas": "Tus destacadas son tu vitrina. Ahí van quién eres, tus resultados, tus ofertas, cómo llegar, tus políticas y tus preguntas frecuentes.", "Las 3 publicaciones fijadas": "Tus tres fijadas son lo primero que ve quien llega. Una de autoridad, una de prueba y una de tu oferta.", "Camino hasta tu DM": "Quien te descubre tiene que saber cómo dar el siguiente paso. Hoy ese camino no está claro.", "Idea masiva": "Habla de lo que tu clienta ya se pregunta. Si nadie se lo pregunta, nadie lo comparte.", "Postura clara": "No solo expliques el tema. Di qué crees y por qué, y eso hace que te recuerden.", "Hook con tensión": "Los primeros segundos deciden si se quedan. Vamos a reescribir el inicio de uno de tus videos.", "Desarrollo y valor al final": "Deja lo más valioso para el final, para que se queden viendo hasta ahí.", "Guiones de 40 segundos": "Los videos de unos 40 segundos, directos al punto, retienen más.", "Formatos de contenido viralizable": "No inventes cada vez. Escoge 2 o 3 formatos que ya funcionan y repítelos.", "Checklist de video": "Antes de publicar, pasa cada video por el checklist de video de Step Her Up.", "Mezcla y frecuencia": "Publica tres piezas por semana, alternando autoridad, conexión, prueba y venta.", "Clienta ideal": "Mientras más concreta sea tu clienta ideal, más fácil es que se reconozca en tu contenido.", "Diferenciador": "¿Qué te hace diferente, dicho de forma literal y concreta? Hoy eso no se nota.", "Se entiende qué vende": "Quien llega a tu perfil debe entender en una frase qué vendes, a quién y qué logra.", "Prueba visible": "Los resultados de tus clientas son tu mejor argumento, y hoy casi no se ven.", "Un solo llamado a la acción": "Cada pieza de venta pide una sola cosa. Si pides tres, no hacen ninguna.", "Conversación por DM": "Responde rápido y con la intención de avanzar. Cada mensaje es una venta posible.", "Precio y objeciones": "Practica dar el precio con seguridad y responder las objeciones más comunes.", "Seguimiento": "Muchas compran después del primer no. El seguimiento no es insistir, es acompañar."};
 const V={si:2,pa:1,no:0};
 let est={};
 const KEY='auditoria-shu';
@@ -123,7 +126,7 @@ function pintar(){
   SECS.forEach((s,si)=>{
     h+=`<div class="sec"><div class="sec-h"><h2>${s.t}</h2><span class="sec-sc" id="sc${si}"></span></div><p class="d">${s.d}</p>`;
     s.it.forEach((x,i)=>{const k=si+'-'+i,v=est[k];
-      h+=`<div class="it"><div><b>${x[0]}</b><span class="s">${x[1]}</span></div><div class="op">`+
+      h+=`<div class="it"><div><b>${x[0]}</b><span class="s">${x[1]}</span>${(v==='no'||v==='pa')&&DILE[x[0]]?`<span class="s dile"><b>Dile:</b> ${DILE[x[0]]}</span>`:''}</div><div class="op">`+
       [['si','Sí'],['pa','Parcial'],['no','No']].map(o=>`<button class="${o[0]}${v===o[0]?' on':''}" data-k="${k}" data-v="${o[0]}">${o[1]}</button>`).join('')+`</div></div>`});
     h+='</div>'});
   $('secs').innerHTML=h;calc();
