@@ -85,7 +85,7 @@ fbq('track', 'PageView');
   <header><img src="https://shu.stepherup.com/assets/logo-sitio.png" alt="Step Her Up" width="112" height="64"></header>
   <div class="check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>
   <h1>¡Bienvenida a <em>Step Her Up</em>!</h1>
-  <p class="lede">Tu pago fue recibido. Ya eres parte del Sistema de crecimiento en Skool: más de 100 videos, llamadas grupales con Gianie y una comunidad de mujeres profesionales.</p>
+  <p class="lede">Tu pago fue recibido. Ya eres parte del Sistema de crecimiento en Skool: 5 módulos, llamadas grupales con Gianie por 3 meses y tus bonos.</p>
 
   <div class="consulta">
     <h2>Tu llamada de consulta 1:1</h2>
@@ -95,9 +95,9 @@ fbq('track', 'PageView');
 
   <h2 class="pasos-h">Estos son tus próximos pasos</h2>
   <div class="steps">
-    <div class="step"><b>1</b><h3>Revisa tu correo</h3><p>Te llega el recibo de tu pago y el contrato para firmar.</p></div>
-    <div class="step"><b>2</b><h3>Firma el contrato</h3><p>Es rápido y la copia firmada queda en tu correo.</p></div>
-    <div class="step"><b>3</b><h3>Entra a Skool</h3><p>Cuando el contrato esté firmado, te llega la invitación a la comunidad a ese mismo correo.</p></div>
+    <div class="step"><b>1</b><h3>Revisa tu correo</h3><p>Te llega el recibo de tu pago y, en unos minutos, la invitación a la comunidad en Skool.</p></div>
+    <div class="step"><b>2</b><h3>Entra a Skool</h3><p>Acepta la invitación con ese mismo correo y empieza por la bienvenida.</p></div>
+    <div class="step"><b>3</b><h3>Conéctate a las llamadas</h3><p>Las llamadas grupales con Gianie son los lunes, y los avisos te llegan por Skool.</p></div>
   </div>
 
   <p class="nota">Si no ves ningún correo, revisa la carpeta de spam o promociones. Si sigue sin llegar, escríbenos a <a href="mailto:contact@stepherup.com">contact@stepherup.com</a> y te ayudamos.</p>
@@ -112,7 +112,8 @@ fbq('track', 'PageView');
     if (enviado) return;
     try {
       if (typeof fbq === "function") {
-        fbq("track", "Purchase", { value: 997.00, currency: "USD", content_name: "Sistema de crecimiento en Skool" });
+        var tres = new URLSearchParams(location.search).get("p") === "3";
+        fbq("track", "Purchase", { value: tres ? 397.00 : 997.00, currency: "USD", content_name: "Sistema de crecimiento en Skool" + (tres ? " (3 pagos)" : "") });
         try { localStorage.setItem("shu_compra_enviada", "1"); } catch (e) {}
       }
     } catch (e) {}
