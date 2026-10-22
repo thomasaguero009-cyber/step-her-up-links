@@ -95,6 +95,10 @@
   .price sup{font-size:.45em;color:var(--rose);vertical-align:super}
   .plan{color:var(--muted);font-size:16px;margin-bottom:34px}
   .plan strong{color:var(--cream);font-weight:600}
+  .price-opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:28px;max-width:980px;margin:56px auto 0}
+  .price-opts .price-box{margin:0;padding:48px 32px;display:flex;flex-direction:column;align-items:center}
+  .price-opts .plan{flex:1}
+  .opt-tag{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--rose);font-weight:600}
   .note{font-size:12.5px;color:#8a7a7f;margin-top:26px;letter-spacing:.04em}
 
   footer{padding:60px 24px 70px;text-align:center;border-top:1px solid #241318}
@@ -163,11 +167,20 @@
 <section id="oferta">
   <div class="wrap">
     <div class="eyebrow"><span>Tu inversión</span></div>
-    <h2>Todo en <span class="accent">un solo paso.</span></h2>
-    <div class="price-box">
-      <div class="price"><sup>$</sup>2,997</div>
-      <div class="plan">Incluye las <strong>3 llamadas 1:1 con Gianie</strong>, tu <strong>estrategia de contenido personalizada</strong>, <strong>3 sesiones con la psicóloga</strong> y <strong>3 meses más</strong> de acompañamiento.</div>
-      <a class="btn" href="#">Sí, quiero mi estrategia</a>
+    <h2>Elige <span class="accent">cómo entrar.</span></h2>
+    <div class="price-opts">
+      <div class="price-box">
+        <div class="opt-tag">Pago único</div>
+        <div class="price"><sup>$</sup>2,497</div>
+        <div class="plan">Incluye las <strong>3 llamadas 1:1 con Gianie</strong>, tu <strong>estrategia de contenido personalizada</strong>, <strong>3 sesiones con la psicóloga</strong> y <strong>3 meses más</strong> de acompañamiento.</div>
+        <a class="btn" href="#">Sí, quiero mi estrategia</a>
+      </div>
+      <div class="price-box">
+        <div class="opt-tag">Empieza ahora</div>
+        <div class="price"><sup>$</sup>253</div>
+        <div class="plan">hoy, y luego <strong>2 pagos de $1,250</strong>. Con los <strong>$997</strong> que ya pagaste, cubres el primero de <strong>3 pagos de $1,250</strong>.</div>
+        <a class="btn" href="#">Empezar ahora</a>
+      </div>
     </div>
   </div>
 </section>
