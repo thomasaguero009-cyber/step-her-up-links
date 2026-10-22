@@ -14,7 +14,7 @@
 </style>
 </head>
 <body>
-<p>Un momento…</p>
-<script>location.replace("https://class.stepherup.com/step-her-up-c" + location.search);</script>
+<p id="m">Un momento…</p>
+<script>if(/^\/oferta(\/|$)/.test(location.pathname)){document.getElementById("m").textContent="Esta página ya no está disponible.";}else{location.replace("https://class.stepherup.com/step-her-up-c" + location.search);}</script>
 </body>
 </html>
