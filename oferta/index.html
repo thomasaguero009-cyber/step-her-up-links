@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/png" sizes="32x32" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAEm0lEQVR42sWXy2+VVRTFf/t85765vX2X0paWggTii6YJGOThIwwMxsQHziQmEhPjH8HMoUxMTIwjSJwYE4MkhsQBWAgSQVAk2KDUFkpLaal93Nt7+51ztoPeEMCg0ErZw++Rs/Y+a+29tgACKMDOwuo9iPkgBO1FyFff/R+hKDPGyFk0fHp8aujL6nOR/WCO0BtlC+OfR2L2KkpQ5VGEEUEQvIaDpanGfa9y1gvA9pqOg6ko8U45eA+IgHkUABQCoGkTRRUfH+qbvrpXdhQ63zBivnIanIBlGULBWTE2aHgzWp2q/UyEDl3IXFimEAFV2qxCT1Bd3sPBBFUUeowIOR5TiJBbEtlUFV2iYszikAveOQr1ddTU1eKdR0SWDwAiuNjRsLKZ+uZGnIsXXQG7SBIRvCdfW8DNxwQfEJFFXYddLI1DCORq8sSVeTSE5amAiIAI1iYIGkhn0hhj8MERJSwaO3hIYj4wAA2Byvw83jk0KO3dayg0NFAulljV1cnI4DWMWQCXSCUfmJT2QeWWzKRZvX4tdU1NpLMZWtpX8faH7xF8IFfIc31giNLsLDdHRrkxNIx3bqHdLRlAtWcmkkkaWppp6+6itrGehpZmmlpX4pyjua2VTC7LxOgYLo4Zv34D7/3SK2AigyC4ELh5fZSBa/1UcACsbVrH1MQkAIc+/oQrtwaIgCQJ8lGBTC6LtRZFCf7+JJXthU69N2NjDD52FGdm8HgaGptZ++QG1m96is7162hd3U4qk6alox0NgfHRG5RmZhm9Osxg/+/0n7/AlYu/MTExRoQlV5MnspYQfNX63AeAMYY4jpmbLVLb2MDml3ew87VX6Fi3hnh+nrHhEUb+vMr4yA2uDw2x5aWdOOc4+/1J2rq6aFq1klVdHTS3tRLZBEOX/+D44W85/d0xpiYmya7IYRMJwh2yvQ1AVamUy9Q3NbFt9y42bXuO+bkyF06f4ZdTPzI8MEipXEQJWJJMM8lbe94ljmMOf/0FeQo4YgyGbGYF7d1dbHp+C89s3UwikeDM8ZP0HTnK5M0J0tnMPwEYY9jY+ywbezcxNjzCub5TDA8OApDJZEmmUpjIAIIxwvTkFC++vhsfO/qOHCVfVyAEheqdV8oVyuUSArR3d9O7cyuNrS38evonLp09f7tXyI7aLnXO0b1xPZlcjv6fLzAzOUUmt3CoVnvAnc3FGENxeoYtu17AO8eZYyfI5fN3l7bKJWABTKlETX0dG3qepjg9y5VL/VhrsapKZCOGLl+hPDdHMpWipr4ODeG+UlJAjGFutoj3HjHmXm6hqrf/TyQTJNN1eOc4d+IH0tksURShqlUZ6oJvTmcyqCrhvzSsiokMpWKJ4D3GRPAv7VdVUb8wstOZzF2zw9774QPP8SiiND1D0EAUmYcyMUuehqqKtZa/Jm4BEFm7aGdkVCk+LkumStEInDMiWl0aWKa9IBgRrZ7NAVkYW8sGAAiCiAgHosHK1KWOZH5tOrI9TtVXDY88wtUspE1k4+AO9U0PfRTtB3Ox8sQ3JlXstGJ6RBB9RGlHIhKJMbGGg6Xppn3vM4I87vX8b7ecN6X/5FkIAAAAAElFTkSuQmCC">
+<link rel="apple-touch-icon" href="data:image/png;base64,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">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Sistema de crecimiento en Skool | Step Her Up</title>
+<meta name="description" content="5 módulos, llamadas grupales con Gianie por 3 meses y 5 bonos para posicionarte, crecer en redes y aumentar tus ventas.">
+<link rel="canonical" href="https://shu.stepherup.com/oferta/">
+<meta property="og:title" content="Sistema de crecimiento en Skool | Step Her Up">
+<meta property="og:description" content="El sistema para posicionarte, crecer en redes y aumentar tus ventas.">
+<meta property="og:image" content="https://shu.stepherup.com/assets/gianie-foto.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '775352058307323');
+fbq('track', 'PageView');
+</script>
+<style>
+  :root{ --ink:#12040a; --wine:#1d0710; --wine2:#2a0c18; --rose:#f0a8be; --rose2:#e88aa8; --champ:#ecc9b7; --cream:#f4e3d6; --muted:rgba(244,227,214,.68); --line:rgba(236,201,183,.2); }
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{ margin:0; background:var(--ink); color:var(--cream); font-family:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; font-size:17px; line-height:1.7; -webkit-font-smoothing:antialiased; }
+  img{ max-width:100%; height:auto; display:block; } a{ color:inherit; }
+  .wrap{ max-width:1040px; margin:0 auto; padding:0 28px; }
+  .narrow{ max-width:760px; margin:0 auto; }
+  h1,h2,h3{ font-family:"Playfair Display",Georgia,serif; font-weight:500; margin:0; text-wrap:balance; letter-spacing:-.01em; }
+  .eyebrow{ font-size:11px; letter-spacing:.34em; text-transform:uppercase; font-weight:600; color:var(--champ); margin:0 0 20px; }
+  .center{ text-align:center; }
+  em{ font-style:italic; color:var(--rose); }
+  /* ornamento: línea fina con una estrella al centro */
+  .orn{ display:flex; align-items:center; gap:18px; max-width:300px; margin:0 auto; color:var(--champ); }
+  .orn::before,.orn::after{ content:""; flex:1; height:1px; background:linear-gradient(90deg,transparent,var(--champ)); } .orn::after{ background:linear-gradient(270deg,transparent,var(--champ)); }
+  .orn span{ font-size:14px; line-height:1; }
+  .btn{ display:inline-block; padding:19px 40px; border-radius:2px; font-weight:600; font-size:13px; letter-spacing:.2em; text-transform:uppercase; text-decoration:none; text-align:center; background:linear-gradient(180deg,#f6c3d2,var(--rose)); color:#2a0a13; border:1px solid #f6c3d2; box-shadow:0 18px 44px rgba(240,168,190,.22); transition:transform .2s, box-shadow .2s; }
+  .btn:hover{ transform:translateY(-2px); box-shadow:0 24px 54px rgba(240,168,190,.34); }
+  .btn[hidden]{ display:none; }
+  .btn.alt{ background:transparent; color:var(--cream); border:1px solid rgba(236,201,183,.6); box-shadow:none; margin-top:14px; }
+  .oferta .btn.pay1{ display:block; width:100%; max-width:440px; margin:0 auto; padding:27px 30px; font-size:16px; letter-spacing:.16em; }
+  .oferta .btn.pay3{ display:block; width:100%; max-width:320px; margin:18px auto 0; padding:11px 14px; font-size:11px; letter-spacing:.14em; border-color:rgba(236,201,183,.4); }
+  .oferta .btn.pay3 small{ margin-top:3px; font-size:9.5px; }
+  .btn.alt small{ display:block; margin-top:6px; font-size:10px; letter-spacing:.18em; font-weight:500; opacity:.85; }
+  .btn.sm{ padding:12px 22px; font-size:11px; letter-spacing:.16em; box-shadow:none; }
+
+  header.top{ position:sticky; top:0; z-index:20; background:rgba(18,4,10,.82); backdrop-filter:blur(14px); border-bottom:1px solid var(--line); }
+  .top .wrap{ display:flex; align-items:center; justify-content:space-between; height:74px; }
+  .top img{ height:48px; width:auto; }
+
+  .hero{ position:relative; padding:110px 0 96px; text-align:center; background:radial-gradient(700px 420px at 50% 0%,rgba(122,28,54,.55),transparent 70%),radial-gradient(500px 300px at 85% 90%,rgba(90,22,38,.35),transparent 70%); border-bottom:1px solid var(--line); }
+  .hero h1{ font-size:clamp(38px,6.2vw,76px); line-height:1.08; font-weight:400; max-width:900px; margin:0 auto; }
+  .hero .lede{ font-size:19px; color:var(--muted); max-width:620px; margin:26px auto 40px; }
+  .count{ display:flex; width:fit-content; margin:0 auto 52px; border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+  .count div{ min-width:96px; padding:14px 12px; border-left:1px solid var(--line); } .count div:first-child{ border-left:0; }
+  .count b{ display:block; font-family:"Playfair Display",serif; font-weight:400; font-size:42px; line-height:1.1; font-variant-numeric:tabular-nums; }
+  .count span{ font-size:10px; letter-spacing:.28em; text-transform:uppercase; color:var(--champ); }
+  .hero-price{ font-family:"Playfair Display",serif; font-size:22px; margin:0 0 26px; color:var(--muted); } .hero-price s{ opacity:.7; } .hero-price b{ font-size:44px; font-weight:400; color:var(--cream); margin-left:12px; }
+  .price-note{ margin:18px 0 0; font-size:12px; letter-spacing:.18em; text-transform:uppercase; color:var(--muted); }
+
+  section.block{ padding:110px 0; border-bottom:1px solid var(--line); }
+  .alt{ background:linear-gradient(180deg,var(--wine),var(--ink)); }
+  h2{ font-size:clamp(32px,4.6vw,54px); line-height:1.1; font-weight:400; max-width:820px; }
+  .center h2{ margin-left:auto; margin-right:auto; }
+  .sub{ color:var(--muted); font-size:19px; max-width:620px; margin:20px auto 0; }
+
+  .stage{ position:relative; max-width:1000px; margin:56px auto 0; }
+  .stage::before{ content:""; position:absolute; left:50%; top:46%; width:80%; height:70%; transform:translate(-50%,-50%); background:radial-gradient(closest-side,rgba(240,168,190,.2),transparent); filter:blur(20px); z-index:0; }
+  .mock{ position:relative; z-index:1; width:100%; }
+
+  .ledger{ max-width:820px; margin:70px auto 0; text-align:left; }
+  .row{ display:grid; grid-template-columns:1fr auto; gap:6px 24px; align-items:baseline; padding:26px 0; border-top:1px solid var(--line); }
+  .row:last-of-type{ border-bottom:1px solid var(--line); }
+  .row h3{ font-size:25px; line-height:1.25; } .row p{ grid-column:1; margin:6px 0 0; font-size:15.5px; color:var(--muted); line-height:1.6; }
+  .row .val{ grid-column:2; grid-row:1; font-family:"Playfair Display",serif; font-size:27px; color:var(--champ); white-space:nowrap; font-variant-numeric:lining-nums; }
+  .total{ display:flex; justify-content:space-between; align-items:baseline; padding:26px 0 0; font-family:"Playfair Display",serif; font-size:22px; color:var(--muted); }
+  .total s{ font-size:30px; opacity:.75; text-decoration-thickness:1.5px; }
+  .oferta{ position:relative; max-width:640px; margin:46px auto 0; padding:56px 40px 52px; text-align:center; background:linear-gradient(180deg,rgba(122,28,54,.4),rgba(42,12,24,.5)); border:1px solid rgba(236,201,183,.5); }
+  .oferta::before{ content:""; position:absolute; inset:7px; border:1px solid rgba(236,201,183,.22); pointer-events:none; }
+  .oferta .lbl{ font-size:11px; letter-spacing:.38em; text-transform:uppercase; color:var(--champ); margin:0 0 6px; }
+  .oferta .pr{ font-family:"Playfair Display",serif; font-weight:400; font-size:clamp(78px,15vw,128px); line-height:1.12; color:var(--cream); }
+  .oferta .pr small{ display:block; font-family:"Inter",sans-serif; font-size:12px; letter-spacing:.3em; text-transform:uppercase; color:var(--champ); margin-top:14px; line-height:1.4; }
+  .oferta .was{ margin:6px 0 30px; color:var(--muted); font-size:16px; } .oferta .was s{ opacity:.8; }
+
+  .mods{ display:grid; grid-template-columns:1fr 1fr; gap:0 64px; max-width:940px; margin:64px auto 0; text-align:left; }
+  .mod{ display:grid; grid-template-columns:62px 1fr; gap:6px 14px; padding:28px 0; border-top:1px solid var(--line); }
+  .mod b{ grid-row:1/3; font-family:"Playfair Display",serif; font-style:italic; font-weight:400; font-size:38px; line-height:1; color:var(--champ); }
+  .mod h3{ font-size:22px; line-height:1.25; } .mod p{ margin:0; font-size:15px; color:var(--muted); line-height:1.6; }
+
+  .three{ display:grid; grid-template-columns:repeat(3,1fr); gap:44px; margin-top:62px; text-align:left; }
+  .col{ border-top:1px solid var(--champ); padding-top:24px; }
+  .col .k{ font-size:10.5px; letter-spacing:.3em; text-transform:uppercase; color:var(--champ); }
+  .col h3{ font-size:26px; margin:12px 0 10px; } .col p{ margin:0; color:var(--muted); font-size:15.5px; line-height:1.65; }
+  .note{ font-size:12.5px; color:rgba(244,227,214,.5); margin:34px 0 0; }
+
+  .logros{ display:grid; grid-template-columns:1fr 1fr; gap:0 64px; max-width:820px; margin:60px auto 0; text-align:left; }
+  .logros div{ padding:22px 0; border-top:1px solid var(--line); font-family:"Playfair Display",serif; font-size:23px; line-height:1.35; display:flex; gap:16px; } .logros div::before{ content:"✦"; color:var(--rose); font-size:15px; line-height:2.2; }
+  .steps{ display:grid; grid-template-columns:repeat(3,1fr); gap:44px; margin:84px auto 0; max-width:940px; text-align:left; }
+  .step b{ font-family:"Playfair Display",serif; font-style:italic; font-weight:400; font-size:54px; line-height:1; color:var(--champ); }
+  .step h3{ font-size:23px; margin:10px 0 8px; } .step p{ margin:0; font-size:15.5px; color:var(--muted); line-height:1.6; }
+
+  .quotes{ display:grid; grid-template-columns:1fr 1fr; gap:56px 64px; max-width:940px; margin:64px auto 0; text-align:left; }
+  blockquote{ margin:0; position:relative; padding-top:34px; border-top:1px solid var(--line); }
+  blockquote::before{ content:"“"; position:absolute; top:-6px; left:0; font-family:"Playfair Display",serif; font-size:62px; line-height:1; color:var(--rose); }
+  blockquote p{ margin:6px 0 0; font-family:"Playfair Display",serif; font-style:italic; font-size:22px; line-height:1.45; }
+  blockquote cite{ display:block; margin-top:16px; font-style:normal; font-size:11px; letter-spacing:.24em; text-transform:uppercase; color:var(--champ); }
+  .gal{ display:grid; grid-template-columns:repeat(4,1fr); gap:14px; max-width:1000px; margin:72px auto 0; }
+  .gal img{ width:100%; aspect-ratio:3/4; object-fit:cover; border:1px solid var(--line); background:#fff; filter:saturate(.95) brightness(.9); }
+  .legal{ font-size:12.5px; color:rgba(244,227,214,.5); margin-top:28px; text-align:center; }
+  .gal a{ cursor:zoom-in; display:block; }
+
+  .final{ padding:110px 0 120px; text-align:center; background:radial-gradient(600px 360px at 50% 100%,rgba(122,28,54,.5),transparent 70%); }
+  footer{ border-top:1px solid var(--line); padding:50px 0; text-align:center; font-size:12.5px; letter-spacing:.04em; color:rgba(244,227,214,.55); }
+  footer img{ height:54px; margin:0 auto 16px; opacity:.9; } footer p{ margin:0; }
+
+  .stick{ display:none; }
+  .lb{ position:fixed; inset:0; z-index:100; display:none; align-items:center; justify-content:center; background:rgba(10,2,6,.94); padding:56px 16px 24px; }
+  .lb.on{ display:flex; }
+  .lb img{ max-width:min(100%,900px); max-height:100%; width:auto; height:auto; background:#fff; box-shadow:0 30px 80px rgba(0,0,0,.6); }
+  .lb button{ position:absolute; border:0; cursor:pointer; color:#fff; background:rgba(255,255,255,.12); border-radius:999px; font-size:26px; line-height:1; width:48px; height:48px; display:flex; align-items:center; justify-content:center; }
+  .lb button:hover{ background:rgba(255,255,255,.24); }
+  .lb .x{ top:12px; right:14px; } .lb .pv{ left:12px; top:50%; margin-top:-24px; } .lb .nx{ right:12px; top:50%; margin-top:-24px; }
+  .lb .n{ position:absolute; top:22px; left:0; right:0; text-align:center; color:rgba(255,255,255,.75); font-size:14px; }
+
+  @media (max-width:860px){
+    section.block{ padding:76px 0; } .hero{ padding:76px 0 70px; }
+    .mods,.logros,.quotes{ grid-template-columns:1fr; gap:0; } .quotes{ gap:42px; }
+    .three,.steps{ grid-template-columns:1fr; gap:34px; }
+    .gal{ grid-template-columns:repeat(2,1fr); }
+    .row{ grid-template-columns:1fr; } .row .val{ grid-column:1; grid-row:auto; }
+    .stick{ display:flex; position:fixed; left:0; right:0; bottom:0; z-index:30; gap:12px; align-items:center; justify-content:space-between; padding:12px 16px calc(12px + env(safe-area-inset-bottom,0px)); background:rgba(18,4,10,.96); border-top:1px solid var(--line); }
+    .stick div{ line-height:1.1; } .stick b{ font-family:"Playfair Display",serif; font-weight:400; font-size:28px; display:block; } .stick small{ font-size:10px; letter-spacing:.22em; text-transform:uppercase; color:var(--champ); }
+    .stick .btn{ padding:14px 22px; font-size:11px; letter-spacing:.14em; }
+    body{ padding-bottom:78px; }
+  }
+  @media (max-width:520px){ .wrap{ padding:0 20px; } .btn{ width:100%; } .btn.sm,.stick .btn{ width:auto; } .count div{ min-width:70px; } .count b{ font-size:32px; } .oferta{ padding:44px 22px 40px; } .top img{ height:42px; } }
+  .hero-price s,.total s,.oferta .was s,.sub s,s.rojo{ color:#ff5a5f !important; opacity:1 !important; text-decoration-color:#ff5a5f; text-decoration-thickness:2px; }
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a href="https://shu.stepherup.com/gianie/" aria-label="Step Her Up"><img src="https://shu.stepherup.com/assets/logo-sitio.png" alt="Step Her Up" width="77" height="48"></a>
+  <a class="btn sm pay" href="#">Asegurar mi lugar</a>
+</div></header>
+
+<main>
+  <section class="hero"><div class="wrap">
+    <p class="eyebrow">Acceso exclusivo</p>
+    <h1>El sistema para posicionarte, crecer en redes y <em>aumentar tus ventas.</em></h1>
+    <p class="lede">Sistema de crecimiento en Skool: 5 módulos, llamadas grupales con Gianie por 3 meses y 5 bonos.</p>
+    <div id="contador" class="count" aria-live="polite">
+      <div><b id="cd-d">0</b><span>días</span></div><div><b id="cd-h">00</b><span>horas</span></div><div><b id="cd-m">00</b><span>min</span></div><div><b id="cd-s">00</b><span>seg</span></div>
+    </div>
+    <a class="btn pay" href="#" id="cta-hero">Asegurar mi lugar</a>
+  </div></section>
+
+  <section class="block alt"><div class="wrap center">
+    <p class="eyebrow">Esto es todo lo que recibirás</p>
+    <h2>Cuando te unes <em>hoy</em></h2>
+    <div class="stage"><img class="mock" src="https://shu.stepherup.com/assets/oferta-producto-3.png?v=2" alt="Sistema de crecimiento en Skool: panel, llamadas grupales, chat de la comunidad y los 5 módulos" loading="lazy"></div>
+
+    <div class="ledger">
+      <div class="row"><h3>5 módulos + llamadas grupales con Gianie por 3 meses</h3><span class="val">$3,997</span><p>Valor de los módulos y las llamadas. Contenido viral, compra de medios en Meta, tu perfil como embudo, el proceso de ventas, y posicionamiento y oferta, con llamadas grupales con Gianie durante tres meses.</p></div>
+      <div class="row"><h3>Bono 1 · Consulta 1-on-1 con el equipo</h3><span class="val">$1,000</span><p>Una llamada privada con alguien de mi equipo donde identificamos exactamente qué está fallando en tu marca. Solo esta noche.</p></div>
+      <div class="row"><h3>Bono 2 · Sesión con la psicóloga</h3><span class="val">$100</span><p>La psicóloga de la comunidad te ayuda a disminuir tus miedos e inseguridades, y a hacer una planificación estratégica para dejar a un lado el “no tengo tiempo”.</p></div>
+      <div class="row"><h3>Bono 3 · Scripts de venta</h3><span class="val">$497</span><p>Un script de venta por texto y uno por llamada: un borrador para que lo adaptes a tu nicho.</p></div>
+      <div class="row"><h3>Bono 4 · Devocionales semanales</h3><span class="val">$297</span><p>Cada semana, un devocional para que crezcas tu negocio sin dejar a un lado lo que te sostiene.</p></div>
+      <div class="row"><h3>Bono 5 · Lista de hooks probados</h3><span class="val">$397</span><p>Una lista de hooks que ya funcionan para empezar tus videos.</p></div>
+      <div class="total"><span>Valor total de los módulos, las llamadas y los 5 bonos</span><s>$6,288</s></div>
+    </div>
+
+    <div class="oferta" id="opciones">
+      <p class="lbl">Oferta exclusiva</p>
+      <div class="pr">$997<small>pago único</small></div>
+      <p class="was">En lugar de <s>$6,288</s></p>
+      <a class="btn pay pay1" href="#">Asegurar mi lugar</a>
+      <a class="btn alt pay pay3" href="#" hidden>3 pagos de $397<small>Total $1,191</small></a>
+    </div>
+  </div></section>
+
+  <section class="block"><div class="wrap center">
+    <p class="eyebrow">Lo que aprenderás</p>
+    <h2>Cinco módulos para convertir tu conocimiento en una marca que vende</h2>
+    <div class="mods">
+      <div class="mod"><b>01</b><h3>Contenido viral, consistente</h3><p>Frameworks para conectar, llamar la atención y entregar valor, guiones de 40 segundos y formatos de contenido viralizable.</p></div>
+      <div class="mod"><b>02</b><h3>Compra de medios en Meta</h3><p>Configurar tu cuenta de Meta Business, escoger el objetivo y tu público, saber cuánto invertir y leer los resultados.</p></div>
+      <div class="mod"><b>03</b><h3>Tu perfil como embudo</h3><p>Bio, foto, nombre, destacadas y publicaciones pineadas, y el camino de quien te descubre hasta tu DM.</p></div>
+      <div class="mod"><b>04</b><h3>El proceso de ventas</h3><p>Cómo dar el precio, llevar conversaciones por DM y llamadas, manejar objeciones y dar seguimiento.</p></div>
+      <div class="mod"><b>05</b><h3>Posicionamiento y oferta</h3><p>Tu clienta ideal, tu diferenciador, cómo ponerle precio a tu trabajo, y ofertas high ticket y membresías.</p></div>
+    </div>
+  </div></section>
+
+  <section class="block alt"><div class="wrap center">
+    <p class="eyebrow">Acompañamiento, comunidad y fe</p>
+    <h2>Aprende con el sistema. <em>Avanza con Gianie.</em></h2>
+    <div class="three">
+      <div class="col"><span class="k">Llamadas grupales · 3 meses</span><h3>Acceso a Gianie</h3><p>Llamadas grupales semanales para aclarar dudas sobre tu contenido, tu oferta, tus anuncios y tu proceso de ventas.</p></div>
+      <div class="col"><span class="k">Comunidad</span><h3>Mujeres que construyen</h3><p>Un chat privado para compartir, hacer contactos y desarrollar relaciones profesionales con intención.</p></div>
+      <div class="col"><span class="k">Fe y propósito</span><h3>Devocionales</h3><p>Reflexiones guiadas por una pastora para mantener a Dios presente en tu proceso de crecimiento.</p></div>
+    </div>
+  </div></section>
+
+  <section class="block"><div class="wrap center">
+    <p class="eyebrow">Lo que vas a lograr</p>
+    <h2>Posicionarte, atraer y <em>cobrar lo que vales</em></h2>
+    <div class="logros">
+      <div>Posicionarte como la experta que eres.</div>
+      <div>Atraer a tus clientas ideales.</div>
+      <div>Cobrar lo que vales, sin trabajar más horas.</div>
+      <div>Dejar de competir por precio y competir por valor.</div>
+    </div>
+    <div class="steps">
+      <div class="step"><b>I</b><h3>Realizas tu pago</h3><p>Pago único de $997, procesado de forma segura por Stripe.</p></div>
+      <div class="step"><b>II</b><h3>Recibes tu acceso</h3><p>Te enviamos a tu correo la invitación para entrar a la comunidad en Skool.</p></div>
+      <div class="step"><b>III</b><h3>Empiezas en tu aula</h3><p>Entras a Skool, empiezas por la bienvenida y avanzas a tu ritmo.</p></div>
+    </div>
+  </div></section>
+
+  <section class="block alt" id="pago"><div class="wrap center">
+    <p class="eyebrow">Asegura tu lugar</p>
+    <h2>Tu lugar te está <em>esperando</em></h2>
+    <div class="oferta">
+      <p class="lbl">Oferta exclusiva</p>
+      <div class="pr">$997<small>pago único</small></div>
+      <p class="was">En lugar de <s>$6,288</s></p>
+      <a class="btn pay pay1" href="#">Asegurar mi lugar</a>
+      <a class="btn alt pay pay3" href="#" hidden>3 pagos de $397<small>Total $1,191</small></a>
+    </div>
+  </div></section>
+
+  <section class="block" id="testimonios"><div class="wrap center">
+    <p class="eyebrow">Resultados reales</p>
+    <h2>Lo que dicen las mujeres que <em>ya lo hicieron</em></h2>
+    <div class="quotes">
+      <blockquote><p>De febrero a acá, tengo 51 clientas recurrentes y 16 nuevas, solo con contenido orgánico.</p><cite>Fabi · alumna</cite></blockquote>
+      <blockquote><p>En menos de un mes adquirimos más de 2000 nuevos followers y más de 30 llamadas de clientes interesados en nuestro servicio.</p><cite>Piazza · cliente</cite></blockquote>
+      <blockquote><p>Puse una candelita en ig y me salieron 5 ventas.</p><cite>Lizbeth · alumna</cite></blockquote>
+      <blockquote><p>Le diría que lo dé, así aunque tenga miedo… Me lancé y ha sido un éxito.</p><cite>Aymar Ginorio · dueña de tienda de joyería</cite></blockquote>
+      <blockquote><p>Es la confianza en mí misma, y me llevo un grupo de mujeres que nos apoyamos las unas a las otras.</p><cite>Virnalis Santiago · farmacéutica</cite></blockquote>
+      <blockquote><p>Lo que me trajo a Step Her Up es ganas de organizar y maximizar ideas que ya tenía corriendo en mi negocio y en mi vida.</p><cite>Fabiola Morales · manicurista</cite></blockquote>
+    </div>
+    <div class="gal"><a href="https://thomasaguero009-cyber.github.io/step-her-up/images/testimonios/testimonio-1.jpeg" target="_blank" rel="noopener"><img src="https://thomasaguero009-cyber.github.io/step-her-up/images/testimonios/testimonio-1.jpeg" alt="Captura de resultado de una alumna" loading="lazy"></a><a href="https://thomasaguero009-cyber.github.io/step-her-up/images/testimonios/testimonio-2.jpeg" target="_blank" rel="noopener"><img src="https://thomasaguero009-cyber.github.io/step-her-up/images/testimonios/testimonio-2.jpeg" alt="Captura de resultado de una alumna" loading="lazy"></a><a href="https://thomasaguero009-cyber.github.io/step-her-up/images/testimonios/testimonio-3.jpeg" target="_blank" rel="noopener"><img src="https://thomasaguero009-cyber.github.io/step-her-up/images/testimonios/testimonio-3.jpeg" alt="Captura de resultado de una alumna" loading="lazy"></a><a href="https://thomasaguero009-cyber.github.io/step-her-up/images/testimonios/testimonio-4.jpeg" target="_blank" rel="noopener"><img src="https://thomasaguero009-cyber.github.io/step-her-up/images/testimonios/testimonio-4.jpeg" alt="Captura de resultado de una alumna" loading="lazy"></a><a href="https://thomasaguero009-cyber.github.io/step-her-up/images/testimonios/testimonio-5.jpeg" target="_blank" rel="noopener"><img src="https://thomasaguero009-cyber.github.io/step-her-up/images/testimonios/testimonio-5.jpeg" alt="Captura de resultado de una alumna" loading="lazy"></a><a href="https://thomasaguero009-cyber.github.io/step-her-up/images/testimonios/testimonio-6.jpeg" target="_blank" rel="noopener"><img src="https://thomasaguero009-cyber.github.io/step-her-up/images/testimonios/testimonio-6.jpeg" alt="Captura de resultado de una alumna" loading="lazy"></a><a href="https://thomasaguero009-cyber.github.io/step-her-up/images/testimonios/testimonio-7.jpeg" target="_blank" rel="noopener"><img src="https://thomasaguero009-cyber.github.io/step-her-up/images/testimonios/testimonio-7.jpeg" alt="Captura de resultado de una alumna" loading="lazy"></a><a href="https://thomasaguero009-cyber.github.io/step-her-up/images/testimonios/testimonio-8.jpeg" target="_blank" rel="noopener"><img src="https://thomasaguero009-cyber.github.io/step-her-up/images/testimonios/testimonio-8.jpeg" alt="Captura de resultado de una alumna" loading="lazy"></a><a href="https://thomasaguero009-cyber.github.io/step-her-up/images/testimonios/testimonio-9.jpeg" target="_blank" rel="noopener"><img src="https://thomasaguero009-cyber.github.io/step-her-up/images/testimonios/testimonio-9.jpeg" alt="Captura de resultado de una alumna" loading="lazy"></a><a href="https://thomasaguero009-cyber.github.io/step-her-up/images/testimonios/testimonio-10.jpeg" target="_blank" rel="noopener"><img src="https://thomasaguero009-cyber.github.io/step-her-up/images/testimonios/testimonio-10.jpeg" alt="Captura de resultado de una alumna" loading="lazy"></a><a href="https://thomasaguero009-cyber.github.io/step-her-up/images/testimonios/testimonio-11.jpeg" target="_blank" rel="noopener"><img src="https://thomasaguero009-cyber.github.io/step-her-up/images/testimonios/testimonio-11.jpeg" alt="Captura de resultado de una alumna" loading="lazy"></a><a href="https://thomasaguero009-cyber.github.io/step-her-up/images/testimonios/testimonio-12.jpeg" target="_blank" rel="noopener"><img src="https://thomasaguero009-cyber.github.io/step-her-up/images/testimonios/testimonio-12.jpeg" alt="Captura de resultado de una alumna" loading="lazy"></a></div>
+    <p class="legal">Los resultados no están garantizados y dependen del compromiso y la situación de cada persona.</p>
+  </div></section>
+
+  <section class="final"><div class="wrap center">
+    <div class="orn"><span>✦</span></div>
+    <h2 style="margin:34px auto 12px">Da el paso <em>hoy</em></h2>
+    <p class="sub" style="margin-bottom:36px">Oferta exclusiva de <b style="color:var(--cream);font-weight:600">$997</b> en pago único, en lugar de <s>$6,288</s>.</p>
+    <a class="btn pay" href="#">Asegurar mi lugar</a>
+  </div></section>
+</main>
+
+<footer><div class="wrap">
+  <img src="https://shu.stepherup.com/assets/logo-sitio.png" alt="Step Her Up" width="97" height="56" loading="lazy">
+  <p>© 2025 – 2026 Step Her Up™. Todos los derechos reservados.</p><p style="margin-top:6px">Consultoría de posicionamiento y monetización · Puerto Rico</p>
+</div></footer>
+
+<div class="stick"><div><b>$997</b><small>pago único</small></div><a class="btn pay" href="#">Asegurar mi lugar</a></div>
+<script>
+  // ---- Configuración (cambiar aquí) ----
+  var LINK_PAGO = "https://buy.stripe.com/dRm00l5FG5IX7mAblBfQI08";                                  // link de pago único de $997
+  var LINK_PAGO_3 = "https://buy.stripe.com/cNi28t2tu2wL0YcdtJfQI1h";                                                                                // link del plan de 3 pagos de $397 (total $1,191). Vacío = la página muestra solo el pago único.
+  var CIERRE = new Date("2026-10-21T23:59:00-04:00");  // cierre de la oferta (hora de Puerto Rico). Ajustar al cierre real.
+  // --------------------------------------
+  var DOS = !!LINK_PAGO_3;
+  if (DOS) {
+    document.querySelectorAll(".pay3").forEach(function (a) { a.hidden = false; });
+    document.querySelectorAll(".pay1").forEach(function (a) { a.textContent = "Pago único de $997"; });
+    var sk = document.querySelector(".stick small"); if (sk) sk.textContent = "único o 3 pagos de $397";
+  }
+  document.querySelectorAll("a.pay").forEach(function (a) {
+    a.addEventListener("click", function (e) {
+      e.preventDefault();
+      var es3 = a.classList.contains("pay3"), enOferta = !!a.closest(".oferta");
+      if (DOS && !enOferta) { var o = document.getElementById("opciones"); if (o) o.scrollIntoView({ behavior: "smooth", block: "center" }); return; }
+      try { if (typeof fbq === "function") fbq("track", "InitiateCheckout", { value: es3 ? 1191 : 997, currency: "USD", content_name: "Sistema de crecimiento en Skool" + (es3 ? " (3 pagos)" : "") }); } catch (x) {}
+      var link = es3 ? LINK_PAGO_3 : LINK_PAGO;
+      if (!link) { alert("El link de pago todavía no está configurado."); return; }
+      window.location.href = link;
+    });
+  });
+  (function () {
+    var box = document.getElementById("contador");
+    function tick() {
+      var ms = CIERRE.getTime() - Date.now();
+      if (ms <= 0) { box.style.display = "none"; return; }
+      var s = Math.floor(ms / 1000), d = Math.floor(s / 86400), h = Math.floor(s % 86400 / 3600), m = Math.floor(s % 3600 / 60), sec = s % 60;
+      function p(n) { return (n < 10 ? "0" : "") + n; }
+      document.getElementById("cd-d").textContent = d; document.getElementById("cd-h").textContent = p(h);
+      document.getElementById("cd-m").textContent = p(m); document.getElementById("cd-s").textContent = p(sec);
+      setTimeout(tick, 1000);
+    }
+    tick();
+  })();
+</script>
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Captura de resultado">
+  <span class="n" id="lbn"></span>
+  <button class="x" id="lbx" aria-label="Cerrar">×</button>
+  <button class="pv" id="lbp" aria-label="Anterior">‹</button>
+  <img id="lbi" alt="Captura de resultado de una alumna">
+  <button class="nx" id="lbs" aria-label="Siguiente">›</button>
+</div>
+<script>
+(function(){
+  var links=[].slice.call(document.querySelectorAll('.gal a')), lb=document.getElementById('lb'), im=document.getElementById('lbi'), n=document.getElementById('lbn'), k=0;
+  function show(i){ k=(i+links.length)%links.length; im.src=links[k].getAttribute('href'); n.textContent=(k+1)+' de '+links.length; lb.classList.add('on'); document.body.style.overflow='hidden'; }
+  function hide(){ lb.classList.remove('on'); im.removeAttribute('src'); document.body.style.overflow=''; }
+  links.forEach(function(a,i){ a.removeAttribute('target'); a.addEventListener('click',function(e){ e.preventDefault(); show(i); }); });
+  document.getElementById('lbx').onclick=hide; document.getElementById('lbp').onclick=function(){show(k-1)}; document.getElementById('lbs').onclick=function(){show(k+1)};
+  lb.addEventListener('click',function(e){ if(e.target===lb) hide(); });
+  document.addEventListener('keydown',function(e){ if(!lb.classList.contains('on')) return; if(e.key==='Escape') hide(); if(e.key==='ArrowLeft') show(k-1); if(e.key==='ArrowRight') show(k+1); });
+  var x0=null; lb.addEventListener('touchstart',function(e){x0=e.touches[0].clientX},{passive:true});
+  lb.addEventListener('touchend',function(e){ if(x0===null) return; var d=e.changedTouches[0].clientX-x0; if(Math.abs(d)>50) show(k+(d<0?1:-1)); x0=null; });
+})();
+</script>
+</body>
+</html>
