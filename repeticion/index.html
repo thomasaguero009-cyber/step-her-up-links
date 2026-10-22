@@ -194,7 +194,7 @@ fbq('track', 'PageView');
   var LINK_PAGO = "https://buy.stripe.com/dRm00l5FG5IX7mAblBfQI08";   // link de pago único de $997
   var LINK_PAGO_3 = "https://buy.stripe.com/cNi28t2tu2wL0YcdtJfQI1h"; // plan de 3 pagos de $397 (total $1,191). Vacío = solo pago único.
   var CIERRE = new Date("2026-10-23T23:59:00-04:00");  // cierre de la oferta (viernes 23, hora de Puerto Rico).
-  var REPLAY_URL = "";  // link de la repetición: YouTube, Vimeo, .mp4 o cualquier otro (si no es embebible, se muestra un botón).
+  var REPLAY_URL = "https://step-her-up-calendar.thomasaguero009.workers.dev/videos/repeticion-clase-21-oct.mp4";  // link de la repetición: YouTube, Vimeo, .mp4 o cualquier otro (si no es embebible, se muestra un botón).
   // --------------------------------------
   var DOS = !!LINK_PAGO_3;
   if (DOS) {
@@ -219,7 +219,7 @@ fbq('track', 'PageView');
     if (!u) { box.innerHTML = '<div class="soon"><b>La repetición estará aquí</b>Vuelve en unos minutos.</div>'; }
     else if ((m = u.match(/(?:youtube\.com\/(?:watch\?v=|embed\/|live\/)|youtu\.be\/)([\w-]{11})/))) { ifr("https://www.youtube-nocookie.com/embed/" + m[1] + "?rel=0"); }
     else if ((m = u.match(/vimeo\.com\/(?:video\/)?(\d+)/))) { ifr("https://player.vimeo.com/video/" + m[1]); }
-    else if (/\.(mp4|m4v|mov|webm)(\?|$)/i.test(u)) { box.innerHTML = '<video controls playsinline preload="metadata" src="' + u + '"></video>'; }
+    else if (/\.(mp4|m4v|mov|webm)(\?|$)/i.test(u)) { box.innerHTML = '<video controls playsinline preload="metadata" poster="https://shu.stepherup.com/assets/repeticion-poster.jpg" src="' + u + '"></video>'; }
     else { box.innerHTML = '<div class="soon"><b>Mira la repetición</b><a class="btn" href="' + u + '" target="_blank" rel="noopener" style="margin-top:14px;font-size:20px;padding:14px 28px">Ver la repetición</a></div>'; }
   })();
   (function () {
