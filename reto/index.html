@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Reto 2027 | Step Her Up</title>
+<meta name="description" content="Reto de la comunidad Step Her Up: publica todos los días, conéctate a las clases y gana que Gianie lleve el marketing de tu negocio.">
+<meta property="og:title" content="Reto 2027 | Step Her Up">
+<meta property="og:description" content="Publica todos los días, conéctate a las clases y gana el marketing de tu negocio con Gianie.">
+<meta property="og:image" content="https://shu.stepherup.com/assets/gianie-foto.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{ --ink:#12040a; --wine:#1d0710; --wine2:#2a0c18; --rose:#f0a8be; --champ:#ecc9b7; --cream:#f4e3d6; --muted:rgba(244,227,214,.72); --line:rgba(236,201,183,.28); }
+  *{ box-sizing:border-box; }
+  html{ scroll-snap-type:y mandatory; scroll-behavior:smooth; }
+  body{ margin:0; background:var(--ink); color:var(--cream); font-family:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; font-size:18px; line-height:1.6; -webkit-font-smoothing:antialiased; }
+  h1,h2,h3{ font-family:"Playfair Display",serif; font-weight:400; margin:0; }
+  em{ font-style:italic; color:var(--rose); }
+  .slide{ min-height:100vh; min-height:100svh; scroll-snap-align:start; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; padding:84px 32px 72px; position:relative; border-bottom:1px solid var(--line); background:radial-gradient(900px 520px at 50% 0%,rgba(122,28,54,.5),transparent 70%),radial-gradient(600px 400px at 90% 100%,rgba(90,22,38,.35),transparent 70%),var(--ink); }
+  .wrap{ width:100%; max-width:1040px; margin:0 auto; }
+  .logo{ position:absolute; top:22px; left:28px; height:46px; width:auto; opacity:.95; }
+  .num{ position:absolute; bottom:22px; right:28px; font-size:12px; letter-spacing:.3em; color:var(--champ); opacity:.7; }
+  .eyebrow{ font-size:12px; letter-spacing:.36em; text-transform:uppercase; font-weight:600; color:var(--champ); margin:0 0 26px; }
+  .big{ font-size:clamp(76px,17vw,190px); line-height:.98; letter-spacing:.02em; text-transform:uppercase; }
+  .year{ display:flex; gap:clamp(14px,3vw,38px); justify-content:center; align-items:baseline; font-family:"Playfair Display",serif; font-size:clamp(48px,10vw,118px); line-height:1.1; margin-top:6px; }
+  .year s{ color:rgba(244,227,214,.45); text-decoration-color:#ff5a5f; text-decoration-thickness:.07em; }
+  .year i{ color:var(--rose); }
+  .lede{ max-width:700px; margin:34px auto 0; color:var(--muted); font-size:clamp(17px,2.2vw,22px); }
+  h2{ font-size:clamp(34px,5.6vw,66px); line-height:1.1; max-width:900px; margin:0 auto; }
+  .grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:26px; margin-top:54px; text-align:left; }
+  .card{ border:1px solid rgba(236,201,183,.45); background:linear-gradient(180deg,rgba(122,28,54,.38),rgba(42,12,24,.5)); padding:38px 36px 40px; }
+  .card .k{ font-family:"Playfair Display",serif; font-style:italic; font-size:44px; color:var(--champ); line-height:1; }
+  .card h3{ font-size:clamp(26px,3.2vw,36px); line-height:1.2; margin:14px 0 12px; }
+  .card p{ margin:0; color:var(--muted); font-size:clamp(16px,1.9vw,19px); line-height:1.6; }
+  .note{ margin:40px auto 0; font-family:"Playfair Display",serif; font-style:italic; font-size:clamp(20px,2.8vw,30px); color:var(--champ); max-width:760px; line-height:1.4; }
+  .prize{ display:grid; grid-template-columns:minmax(220px,360px) 1fr; gap:clamp(28px,5vw,70px); align-items:center; text-align:left; }
+  .photo{ width:100%; aspect-ratio:4/5; object-fit:cover; object-position:50% 20%; border:1px solid rgba(236,201,183,.55); border-radius:999px 999px 8px 8px; box-shadow:0 0 70px rgba(164,30,52,.3); }
+  .prize h2{ margin:0 0 22px; text-align:left; font-size:clamp(32px,4.8vw,56px); }
+  .prize p{ color:var(--muted); font-size:clamp(17px,2vw,21px); margin:0 0 14px; }
+  .prize .who{ color:var(--champ); font-size:12px; letter-spacing:.3em; text-transform:uppercase; font-weight:600; margin-top:24px; }
+  .steps{ display:grid; grid-template-columns:repeat(3,1fr); gap:34px; margin-top:54px; text-align:left; }
+  .step{ border-top:1px solid var(--champ); padding-top:22px; }
+  .step b{ font-family:"Playfair Display",serif; font-style:italic; font-weight:400; font-size:54px; line-height:1; color:var(--champ); }
+  .step h3{ font-size:26px; margin:10px 0 8px; line-height:1.25; }
+  .step p{ margin:0; color:var(--muted); font-size:16.5px; line-height:1.6; }
+  .fechas{ margin-top:44px; font-size:13px; letter-spacing:.24em; text-transform:uppercase; color:var(--champ); }
+  .orn{ display:flex; align-items:center; gap:18px; max-width:300px; margin:0 auto 30px; color:var(--champ); }
+  .orn::before,.orn::after{ content:""; flex:1; height:1px; background:linear-gradient(90deg,transparent,var(--champ)); } .orn::after{ background:linear-gradient(270deg,transparent,var(--champ)); }
+  .hint{ position:fixed; left:50%; bottom:14px; transform:translateX(-50%); font-size:11px; letter-spacing:.22em; text-transform:uppercase; color:rgba(244,227,214,.4); z-index:5; pointer-events:none; }
+  .dots{ position:fixed; right:14px; top:50%; transform:translateY(-50%); display:flex; flex-direction:column; gap:12px; z-index:6; }
+  .dots button{ width:9px; height:9px; border-radius:50%; border:1px solid var(--champ); background:transparent; padding:0; cursor:pointer; opacity:.6; }
+  .dots button.on{ background:var(--rose); border-color:var(--rose); opacity:1; }
+  @media (max-height:760px){ .slide{ padding-top:72px; padding-bottom:56px; } .grid,.steps{ margin-top:34px; } .card{ padding:28px 30px 30px; } .note{ margin-top:28px; } .hint{ display:none; } }
+  @media (max-width:760px){ html{ scroll-snap-type:y proximity; } .dots{ display:none; } .grid,.steps{ grid-template-columns:1fr; } .prize{ grid-template-columns:1fr; text-align:center; } .prize h2{ text-align:center; } .photo{ max-width:260px; margin:0 auto; } .slide{ padding:84px 22px 64px; } .logo{ height:38px; left:18px; } .dots{ right:8px; } .hint{ display:none; } }
+</style>
+</head>
+<body>
+
+<section class="slide" id="s1">
+  <img class="logo" src="https://shu.stepherup.com/assets/logo-sitio.png" alt="Step Her Up">
+  <div class="wrap">
+    <p class="eyebrow">Comunidad Step Her Up</p>
+    <div class="big">Reto</div>
+    <div class="year"><s>2026</s><i>2027</i></div>
+    <p class="lede">Publica todos los días y conéctate a las clases. La que logre el mejor resultado se lleva el marketing de su negocio con Gianie.</p>
+  </div>
+  <span class="num">01 / 06</span>
+</section>
+
+<section class="slide" id="s2">
+  <img class="logo" src="https://shu.stepherup.com/assets/logo-sitio.png" alt="Step Her Up">
+  <div class="wrap">
+    <p class="eyebrow">De qué se trata</p>
+    <h2>Un reto para toda <em>la comunidad</em></h2>
+    <div class="grid">
+      <div class="card"><span class="k">01</span><h3>Publica todos los días</h3><p>Durante el reto, tu marca se muestra cada día. Sin días en blanco.</p></div>
+      <div class="card"><span class="k">02</span><h3>Conéctate a las clases</h3><p>Entra a las clases en vivo y aplica lo que aprendes en lo que publicas.</p></div>
+    </div>
+    <p class="note">Al final del reto se mide el resultado de cada una.</p>
+  </div>
+  <span class="num">02 / 06</span>
+</section>
+
+<section class="slide" id="s3">
+  <img class="logo" src="https://shu.stepherup.com/assets/logo-sitio.png" alt="Step Her Up">
+  <div class="wrap">
+    <p class="eyebrow">Cómo se mide</p>
+    <h2>Dos categorías, para que <em>todas compitan</em></h2>
+    <div class="grid">
+      <div class="card"><span class="k">A</span><h3>Engagement</h3><p>Para quien hoy no tiene algo que vender por redes, como las doctoras. Se mide la interacción que logra tu contenido.</p></div>
+      <div class="card"><span class="k">B</span><h3>Ventas</h3><p>Para quien sí tiene una oferta. Se mide por las ventas que logras durante el reto.</p></div>
+    </div>
+    <p class="note">Así nadie queda en desventaja.</p>
+  </div>
+  <span class="num">03 / 06</span>
+</section>
+
+<section class="slide" id="s4">
+  <img class="logo" src="https://shu.stepherup.com/assets/logo-sitio.png" alt="Step Her Up">
+  <div class="wrap prize">
+    <img class="photo" src="https://shu.stepherup.com/assets/gianie-foto.jpg" alt="Gianie Milet">
+    <div>
+      <p class="eyebrow" style="margin-bottom:18px">El premio</p>
+      <h2>Gianie, personalmente, <em>lleva el marketing de tu negocio.</em></h2>
+      <p>Además, te promociona de forma profesional en su página.</p>
+      <p class="who">Para la mejor de cada categoría</p>
+    </div>
+  </div>
+  <span class="num">04 / 06</span>
+</section>
+
+<section class="slide" id="s5">
+  <img class="logo" src="https://shu.stepherup.com/assets/logo-sitio.png" alt="Step Her Up">
+  <div class="wrap">
+    <p class="eyebrow">Cómo participar</p>
+    <h2>Tres pasos, <em>todos los días</em></h2>
+    <div class="steps">
+      <div class="step"><b>1</b><h3>Publica</h3><p>Un contenido cada día durante todo el reto.</p></div>
+      <div class="step"><b>2</b><h3>Conéctate</h3><p>Entra a las clases y aplica lo que aprendes.</p></div>
+      <div class="step"><b>3</b><h3>Mide</h3><p>Anota tu resultado: interacción o ventas, según tu categoría.</p></div>
+    </div>
+    <p class="fechas" id="fechas" hidden></p>
+  </div>
+  <span class="num">05 / 06</span>
+</section>
+
+<section class="slide" id="s6">
+  <img class="logo" src="https://shu.stepherup.com/assets/logo-sitio.png" alt="Step Her Up">
+  <div class="wrap">
+    <div class="orn"><span>✦</span></div>
+    <h2>¿Te unes <em>al reto?</em></h2>
+    <p class="lede">Empieza hoy. Tu 2027 se construye desde ahora.</p>
+  </div>
+  <span class="num">06 / 06</span>
+</section>
+
+<div class="dots" id="dots" aria-label="Diapositivas"></div>
+<div class="hint">← → para avanzar</div>
+
+<script>
+  // Fechas del reto. Si se dejan vacías, la línea no se muestra. Ejemplo: "Del 26 de octubre al 31 de diciembre"
+  var FECHAS = "";
+  (function () {
+    if (FECHAS) { var f = document.getElementById("fechas"); f.textContent = FECHAS; f.hidden = false; }
+    var slides = [].slice.call(document.querySelectorAll(".slide")), dots = document.getElementById("dots"), cur = 0;
+    slides.forEach(function (s, i) {
+      var b = document.createElement("button"); b.setAttribute("aria-label", "Diapositiva " + (i + 1));
+      b.onclick = function () { go(i); }; dots.appendChild(b);
+    });
+    function go(i) { i = Math.max(0, Math.min(slides.length - 1, i)); slides[i].scrollIntoView({ behavior: "smooth" }); }
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) { cur = slides.indexOf(e.target); [].forEach.call(dots.children, function (d, k) { d.classList.toggle("on", k === cur); }); } });
+    }, { threshold: 0.55 });
+    slides.forEach(function (s) { io.observe(s); });
+    var hint = document.querySelector(".hint"); function quitarPista() { if (hint) { hint.style.display = "none"; } }
+    window.addEventListener("scroll", function () { if (window.scrollY > 40) quitarPista(); }, { passive: true });
+    document.addEventListener("keydown", function (e) { quitarPista();
+      if (["ArrowRight", "ArrowDown", "PageDown", " "].indexOf(e.key) > -1) { e.preventDefault(); go(cur + 1); }
+      if (["ArrowLeft", "ArrowUp", "PageUp"].indexOf(e.key) > -1) { e.preventDefault(); go(cur - 1); }
+      if (e.key === "Home") go(0); if (e.key === "End") go(slides.length - 1);
+    });
+  })();
+</script>
+</body>
+</html>
