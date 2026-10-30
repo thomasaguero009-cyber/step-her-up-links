@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Step Her Up</title>
+<meta property="og:title" content="Step Her Up">
+<meta property="og:description" content="Estrategia, contenido y ventas para que tu negocio crezca con claridad.">
+<meta property="og:image" content="https://shu.stepherup.com/assets/gianie-foto.jpg">
+<meta property="og:type" content="website">
+<style>
+  html,body{ margin:0; height:100%; background:#1a0509; color:#f7ece9; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif; }
+  body{ display:flex; align-items:center; justify-content:center; }
+  p{ font-size:14px; letter-spacing:.04em; opacity:.7; }
+</style>
+</head>
+<body>
+<p>Un momento…</p>
+<script>
+(function () {
+  // Pasarela de PDF con rastreo: cuenta el clic (Worker /pdf-clic, por campaña) y abre el archivo.
+  // Solo abre links https que sean un PDF o estén en sitios de confianza (para que nadie use este dominio como redirección abierta).
+  var WORKER = "https://step-her-up-calendar.thomasaguero009.workers.dev";
+  var INICIO = "https://www.stepherup.com";
+  var CLAVES = ["utm_source", "utm_medium", "utm_campaign", "utm_content"];
+  var CONFIABLES = [/(^|\.)drive\.google\.com$/, /(^|\.)docs\.google\.com$/, /(^|\.)stepherup\.com$/, /(^|\.)r2\.dev$/, /(^|\.)r2\.cloudflarestorage\.com$/, /^thomasaguero009-cyber\.github\.io$/];
+  var params = new URLSearchParams(location.search);
+  var destino = INICIO;
+  try {
+    var u = new URL((params.get("u") || "").trim());
+    var esPdf = /\.pdf$/i.test(u.pathname);
+    var confiable = CONFIABLES.some(function (r) { return r.test(u.hostname); });
+    if (u.protocol === "https:" && (esPdf || confiable)) destino = u.toString();
+  } catch (e) {}
+  var q = new URLSearchParams();
+  CLAVES.forEach(function (k) { var v = (params.get(k) || "").trim().slice(0, 80); if (v) q.set(k, v); });
+  try {
+    var nombre = decodeURIComponent(new URL(destino).pathname.split("/").pop() || "").replace(/\.pdf$/i, "");
+    q.set("f", (nombre || new URL(destino).hostname).slice(0, 80));
+  } catch (e) {}
+  var hecho = false;
+  function ir() { if (hecho) return; hecho = true; location.replace(destino); }
+  if (destino === INICIO) { ir(); return; }
+  setTimeout(ir, 1500); // si el Worker tarda, no se hace esperar a la persona
+  try { fetch(WORKER + "/pdf-clic?" + q.toString(), { keepalive: true, mode: "cors" }).then(ir, ir); } catch (e) { ir(); }
+})();
+</script>
+</body>
+</html>
