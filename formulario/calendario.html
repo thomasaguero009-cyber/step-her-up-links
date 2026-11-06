@@ -298,7 +298,7 @@
     let contacto = {};
     try { contacto = JSON.parse(localStorage.getItem("shu_application_lead")) || JSON.parse(localStorage.getItem("shu_vsl_lead")) || {}; } catch (e) {}
     if (!contacto.nombre && !contacto.email) {
-      window.location.href = "index.html";
+      window.location.href = "https://class.stepherup.com/step-her-up-c";
       return;
     }
     const nombreCompleto = (contacto.nombre || "").trim();
@@ -585,7 +585,7 @@
           delete days[selectedDate]; // fuerza a recargar ese día
           await cargarHorarios();
           selectedSlot = null;
-          showError("Ese horario se acaba de ocupar — elegí otro.");
+          showError("Ese horario se acaba de ocupar. Elige otro.");
           renderSlots();
           return;
         }

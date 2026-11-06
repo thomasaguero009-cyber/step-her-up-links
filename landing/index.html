@@ -335,7 +335,7 @@
 
     <section class="hero">
       <div class="wrap" style="max-width:760px; text-align:center;">
-        <h1>De experta invisible a <span class="hl">autoridad pagada</span>. El método para posicionar <span class="hl">tu servicio</span>, atraer clientas ideales y <span class="hl">cobrar lo que vales</span> — sin trabajar más horas.</h1>
+        <h1>El sistema de contenido + anuncios que convierte tu Instagram en <span class="hl">clientas que pagan</span></h1>
         <p style="margin:24px 0 6px; font-weight:600;">En este entrenamiento vas a entender:</p>
         <ul class="checklist" style="display:inline-block; text-align:left;">
           <li>Por qué tu negocio no está creciendo aunque trabajas más que nunca.</li>
@@ -954,7 +954,28 @@
   function actualizarBotonAplicar() {
     const u = getUTMs(), q = new URLSearchParams();
     Object.keys(u).forEach((k) => { if (u[k]) q.set(k, u[k]); });
-    if (q.toString()) applyBtn.href = "/formulario/?" + q.toString();
+    if (pase) {
+      // Formulario en shu.stepherup.com: la dirección lleva SOLO un código (los datos de la persona se los pasa el Worker).
+      q.set("t", pase);
+      applyBtn.href = FORM_SHU + "?" + q.toString();
+      applyBtn.target = "_top";
+    } else if (q.toString()) applyBtn.href = "/formulario/?" + q.toString();
+  }
+  // Traspaso del lead al formulario (otro dominio): se pide al desbloquear el botón. Si falla, el botón sigue yendo al formulario de aquí.
+  const FORM_SHU = "https://shu.stepherup.com/formulario/";
+  let pase = "", paseEnCurso = false;
+  async function prepararPase() {
+    if (pase || paseEnCurso) return;
+    paseEnCurso = true;
+    try {
+      const lead = JSON.parse(localStorage.getItem("shu_vsl_lead")) || {};
+      if (!lead.email && !lead.nombre) return;
+      const ctrl = new AbortController(), to = setTimeout(() => ctrl.abort(), 6000);
+      const r = await fetch(GEO_WORKER_URL + "/lead-pase", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(lead), signal: ctrl.signal });
+      clearTimeout(to);
+      const d = await r.json();
+      if (d && d.ok && d.t) { pase = d.t; actualizarBotonAplicar(); }
+    } catch (e) {} finally { paseEnCurso = false; }
   }
   actualizarBotonAplicar();
   const fill = document.getElementById("ctaFill");
@@ -974,6 +995,7 @@
     applyBtn.classList.remove("locked");
     applyBtn.removeAttribute("aria-disabled");
     applyBtn.classList.add("just-unlocked");
+    prepararPase();
   }
 
   vslVideo.addEventListener("timeupdate", () => {
