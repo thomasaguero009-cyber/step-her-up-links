@@ -298,7 +298,7 @@
     let contacto = {};
     try { contacto = JSON.parse(localStorage.getItem("shu_application_lead")) || JSON.parse(localStorage.getItem("shu_vsl_lead")) || {}; } catch (e) {}
     if (!contacto.nombre && !contacto.email) {
-      window.top.location.href = "index.html";
+      window.location.href = "index.html";
       return;
     }
     const nombreCompleto = (contacto.nombre || "").trim();
@@ -617,6 +617,7 @@
     window.parent.postMessage({ shuFrameHeight: document.documentElement.scrollHeight }, "*");
   }
   window.addEventListener("load", reportHeight);
+  window.addEventListener("load", function () { if (window.parent !== window) { try { document.body.scrollIntoView(); } catch (e) {} } });   // al llegar desde otra página del iframe, arranca arriba
   window.addEventListener("resize", reportHeight);
   new ResizeObserver(reportHeight).observe(document.body);
 })();
