@@ -18,7 +18,6 @@
 </style>
 </head>
 <body>
-<p>Un momento…</p>
 <noscript><meta http-equiv="refresh" content="0;url=https://gianiemvelezlopezst2fb6d.myclickfunnels.com/calendar"></noscript>
 <script>
 (function () {
@@ -37,11 +36,9 @@
   var destino = DESTINO + (q.toString() ? "?" + q.toString() : "");
   var hecho = false;
   function ir() { if (hecho) return; hecho = true; location.replace(destino); }
-  if (!q.toString()) { ir(); return; }
-  setTimeout(ir, 1500); // si el Worker tarda, no se hace esperar a la persona
-  try {
-    fetch(WORKER + "/click?" + q.toString(), { keepalive: true, mode: "cors" }).then(ir, ir);
-  } catch (e) { ir(); }
+  // Se anota el click sin esperar la respuesta (keepalive sigue aunque la página cambie) y se entra de una.
+  if (q.toString()) { try { fetch(WORKER + "/click?" + q.toString(), { keepalive: true, mode: "cors" }).catch(function () {}); } catch (e) {} }
+  ir();
 })();
 </script>
 </body>
