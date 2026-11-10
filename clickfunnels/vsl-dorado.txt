@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="cf-page-token" content="cfp_EjZ5fkBUcnqWE88rZ2QCo481">
+<meta name="cf-page-token" content="cfp_yJKLuDZG6CF2RAEUpAcPhW3w">
 <script src="https://sdk.myclickfunnels.com/sdk.js" defer></script>
 <script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','775352058307323');fbq('init','2379181872915932');fbq('track','PageView');</script><noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=775352058307323&ev=PageView&noscript=1"/></noscript><noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=2379181872915932&ev=PageView&noscript=1"/></noscript>
 <script type="text/javascript">(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window, document, "clarity", "script", "zbknod2h9m");</script>
@@ -333,6 +333,11 @@
   /* Prueba A/B: en la versión B el formulario se abre solo al entrar, encima de la página (que se ve de fondo),
      y no se puede cerrar hasta dejar los datos. */
   .var-b .vsl-gate-close{ display:none; }
+  /* 10-nov-2026 (Thomas): logo chico arriba a la izquierda, para que el titular, el video y toda la página queden más arriba. */
+  header.top{ align-items:flex-start; padding:16px 24px 0; }
+  header.top .logo-img{ height:58px; }
+  .hero{ padding-top:0; }
+  @media (max-width:760px){ header.top{ padding:12px 16px 0; } header.top .logo-img{ height:44px; } }
   .field input.campo-error{ border-color:#e9d3a0; box-shadow:0 0 0 2px rgba(233,211,160,0.35); }
 </style>
 <link rel="stylesheet" href="https://thomasaguero009-cyber.github.io/step-her-up/assets/carrusel.css?v=3">
@@ -525,7 +530,7 @@
         <span class="cta-label">Aplicar al programa →</span>
         <span class="cta-fill" id="ctaFill"></span>
       </a>
-      <p class="apply-hint" id="applyHint">Este botón se activa cuando termines de ver el video.</p>
+      <p class="apply-hint" id="applyHint">Este botón se activa al minuto del video.</p>
     </div>
   </section>
 
@@ -1135,11 +1140,11 @@
   const ICON_EXPAND = '<svg viewBox="0 0 24 24"><path fill="currentColor" d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>';
   const ICON_COMPRESS = '<svg viewBox="0 0 24 24"><path fill="currentColor" d="M5 16h3v3h2v-5H5v2zm3-8H5v2h5V5H8v3zm6 11h2v-3h3v-2h-5v5zm2-11V5h-2v5h5V8h-3z"/></svg>';
 
+  const SEG_DESBLOQUEO = 60;
   function unlock() {
     const hint = document.getElementById("applyHint");
     if (hint) hint.style.display = "none";
     fill.style.width = "100%";
-    progressFill.style.width = "100%";
     applyBtn.classList.remove("locked");
     applyBtn.removeAttribute("aria-disabled");
     applyBtn.classList.add("just-unlocked");
@@ -1147,16 +1152,15 @@
 
   vslVideo.addEventListener("timeupdate", () => {
     if (!vslVideo.duration) return;
-    const frac = Math.min(1, vslVideo.currentTime / vslVideo.duration);
-    // Easing "ease-out": avanza rápido al principio y se frena después,
-    // sin perder la conexión real con el tiempo del video (en frac=1
-    // siempre da 100%, sea cual sea la curva). Las dos barras (la del
-    // video y la del botón) usan el mismo valor para que se vean
-    // siempre sincronizadas entre sí.
-    if (frac >= 0.98 && applyBtn.classList.contains("locked")) unlock();
-    const eased = 1 - Math.pow(1 - frac, 2.2);
-    fill.style.width = eased * 100 + "%";
-    progressFill.style.width = eased * 100 + "%";
+    const t = vslVideo.currentTime;
+    // La barra del video muestra el avance real del video (curva suave).
+    const frac = Math.min(1, t / vslVideo.duration);
+    progressFill.style.width = (1 - Math.pow(1 - frac, 2.2)) * 100 + "%";
+    // 10-nov-2026 (Thomas): el botón se desbloquea al minuto de video visto; su barra carga durante ese minuto.
+    if (applyBtn.classList.contains("locked")) {
+      fill.style.width = Math.min(1, t / SEG_DESBLOQUEO) * 100 + "%";
+      if (t >= SEG_DESBLOQUEO) unlock();
+    }
   });
 
   vslVideo.addEventListener("ended", unlock);
@@ -1291,7 +1295,7 @@
       ev.preventDefault();
       const hint = document.getElementById("applyHint");
       if (hint) {
-        hint.textContent = started ? "Mira el video hasta el final para desbloquear el botón." : "Primero dale play al video: el botón se activa cuando lo termines.";
+        hint.textContent = started ? "Sigue viendo el video: el botón se activa al minuto." : "Dale play al video: el botón se activa al minuto de verlo.";
         hint.classList.remove("alerta"); void hint.offsetWidth; hint.classList.add("alerta");
       }
       vslVideoWrap.scrollIntoView({ behavior: "smooth", block: "center" });
