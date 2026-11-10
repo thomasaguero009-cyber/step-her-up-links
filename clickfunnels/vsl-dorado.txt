@@ -530,7 +530,7 @@
         <span class="cta-label">Aplicar al programa →</span>
         <span class="cta-fill" id="ctaFill"></span>
       </a>
-      <p class="apply-hint" id="applyHint">Este botón se activa al minuto del video.</p>
+      <p class="apply-hint" id="applyHint"></p>
     </div>
   </section>
 
