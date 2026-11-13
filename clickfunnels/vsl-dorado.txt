@@ -337,7 +337,6 @@
   header.top{ align-items:flex-start; padding:16px 24px 0; }
   header.top .logo-img{ height:58px; }
   .hero{ padding-top:0; }
-  #heroBullets{ display:none; } /* sin la lista "En este entrenamiento vas a entender", como en la dorada anterior */
   @media (max-width:760px){ header.top{ padding:12px 16px 0; } header.top .logo-img{ height:44px; } }
   .field input.campo-error{ border-color:#e9d3a0; box-shadow:0 0 0 2px rgba(233,211,160,0.35); }
 </style>
@@ -405,6 +404,119 @@
       </div>
     </section>
 
+    <!-- Encuesta previa al VSL — aparece al tocar play, antes de arrancar
+         el video. El código de país del celular se autocompleta según la
+         IP (ver detectCountryCode() más abajo); el resto de los datos
+         todavía no se envía a ningún backend (placeholder, ver script). -->
+    <div class="vsl-gate-overlay" id="vslGateOverlay">
+      <div class="form-card vsl-gate-card">
+        <button type="button" class="vsl-gate-close" id="vslGateClose" aria-label="Cerrar">✕</button>
+        <h3>Antes de ver el video…</h3>
+        <p class="sub">Déjanos tus datos para guardarte tu lugar.</p>
+        <form id="vslGateForm" novalidate>
+          <div class="field">
+            <label for="gateNombre">Nombre y apellido</label>
+            <input type="text" id="gateNombre" placeholder="Tu nombre y apellido" autocomplete="name" required>
+          </div>
+          <div class="field">
+            <label for="gateEmail">Correo electrónico</label>
+            <input type="email" id="gateEmail" placeholder="tu@email.com" autocomplete="email" autocapitalize="off" autocorrect="off" spellcheck="false" inputmode="email" required>
+          </div>
+          <div class="field">
+            <label for="gateTelefono">Celular</label>
+            <div class="phone-row">
+              <select id="gateCodigoPais" autocomplete="tel-country-code">
+                <option value="+54" data-cc="AR">🇦🇷 +54 Argentina</option>
+                <option value="+34" data-cc="ES">🇪🇸 +34 España</option>
+                <option value="+52" data-cc="MX">🇲🇽 +52 México</option>
+                <option value="+56" data-cc="CL">🇨🇱 +56 Chile</option>
+                <option value="+57" data-cc="CO">🇨🇴 +57 Colombia</option>
+                <option value="+598" data-cc="UY">🇺🇾 +598 Uruguay</option>
+                <option value="+51" data-cc="PE">🇵🇪 +51 Perú</option>
+                <option value="+593" data-cc="EC">🇪🇨 +593 Ecuador</option>
+                <option value="+58" data-cc="VE">🇻🇪 +58 Venezuela</option>
+                <option value="+591" data-cc="BO">🇧🇴 +591 Bolivia</option>
+                <option value="+595" data-cc="PY">🇵🇾 +595 Paraguay</option>
+                <option value="+507" data-cc="PA">🇵🇦 +507 Panamá</option>
+                <option value="+506" data-cc="CR">🇨🇷 +506 Costa Rica</option>
+                <option value="+502" data-cc="GT">🇬🇹 +502 Guatemala</option>
+                <option value="+504" data-cc="HN">🇭🇳 +504 Honduras</option>
+                <option value="+503" data-cc="SV">🇸🇻 +503 El Salvador</option>
+                <option value="+505" data-cc="NI">🇳🇮 +505 Nicaragua</option>
+                <option value="+1" data-cc="DO">🇩🇴 +1 República Dominicana</option>
+                <option value="+1" data-cc="PR" selected>🇵🇷 +1 Puerto Rico</option>
+                <option value="+53" data-cc="CU">🇨🇺 +53 Cuba</option>
+                <option value="+351" data-cc="PT">🇵🇹 +351 Portugal</option>
+                <option value="+55" data-cc="BR">🇧🇷 +55 Brasil</option>
+                <option value="+1" data-cc="US">🇺🇸 +1 Estados Unidos</option>
+                <option value="+1" data-cc="CA">🇨🇦 +1 Canadá</option>
+                <option value="+44" data-cc="GB">🇬🇧 +44 Reino Unido</option>
+                <option value="+49" data-cc="DE">🇩🇪 +49 Alemania</option>
+                <option value="+33" data-cc="FR">🇫🇷 +33 Francia</option>
+                <option value="+39" data-cc="IT">🇮🇹 +39 Italia</option>
+                <option value="+31" data-cc="NL">🇳🇱 +31 Países Bajos</option>
+                <option value="+41" data-cc="CH">🇨🇭 +41 Suiza</option>
+                <option value="+61" data-cc="AU">🇦🇺 +61 Australia</option>
+                <option value="+64" data-cc="NZ">🇳🇿 +64 Nueva Zelanda</option>
+                <option value="+81" data-cc="JP">🇯🇵 +81 Japón</option>
+                <option value="+86" data-cc="CN">🇨🇳 +86 China</option>
+                <option value="+91" data-cc="IN">🇮🇳 +91 India</option>
+                <option value="+971" data-cc="AE">🇦🇪 +971 Emiratos Árabes Unidos</option>
+                <option value="+1" data-cc="JM">🇯🇲 +1 Jamaica</option>
+                <option value="+1" data-cc="TT">🇹🇹 +1 Trinidad y Tobago</option>
+                <option value="+1" data-cc="BS">🇧🇸 +1 Bahamas</option>
+                <option value="+501" data-cc="BZ">🇧🇿 +501 Belice</option>
+                <option value="+509" data-cc="HT">🇭🇹 +509 Haití</option>
+                <option value="+592" data-cc="GY">🇬🇾 +592 Guyana</option>
+                <option value="+597" data-cc="SR">🇸🇷 +597 Surinam</option>
+                <option value="+240" data-cc="GQ">🇬🇶 +240 Guinea Ecuatorial</option>
+                <option value="+353" data-cc="IE">🇮🇪 +353 Irlanda</option>
+                <option value="+32" data-cc="BE">🇧🇪 +32 Bélgica</option>
+                <option value="+43" data-cc="AT">🇦🇹 +43 Austria</option>
+                <option value="+46" data-cc="SE">🇸🇪 +46 Suecia</option>
+                <option value="+47" data-cc="NO">🇳🇴 +47 Noruega</option>
+                <option value="+45" data-cc="DK">🇩🇰 +45 Dinamarca</option>
+                <option value="+358" data-cc="FI">🇫🇮 +358 Finlandia</option>
+                <option value="+48" data-cc="PL">🇵🇱 +48 Polonia</option>
+                <option value="+420" data-cc="CZ">🇨🇿 +420 Chequia</option>
+                <option value="+36" data-cc="HU">🇭🇺 +36 Hungría</option>
+                <option value="+40" data-cc="RO">🇷🇴 +40 Rumania</option>
+                <option value="+359" data-cc="BG">🇧🇬 +359 Bulgaria</option>
+                <option value="+385" data-cc="HR">🇭🇷 +385 Croacia</option>
+                <option value="+30" data-cc="GR">🇬🇷 +30 Grecia</option>
+                <option value="+352" data-cc="LU">🇱🇺 +352 Luxemburgo</option>
+                <option value="+354" data-cc="IS">🇮🇸 +354 Islandia</option>
+                <option value="+380" data-cc="UA">🇺🇦 +380 Ucrania</option>
+                <option value="+7" data-cc="RU">🇷🇺 +7 Rusia</option>
+                <option value="+90" data-cc="TR">🇹🇷 +90 Turquía</option>
+                <option value="+972" data-cc="IL">🇮🇱 +972 Israel</option>
+                <option value="+966" data-cc="SA">🇸🇦 +966 Arabia Saudita</option>
+                <option value="+974" data-cc="QA">🇶🇦 +974 Catar</option>
+                <option value="+965" data-cc="KW">🇰🇼 +965 Kuwait</option>
+                <option value="+20" data-cc="EG">🇪🇬 +20 Egipto</option>
+                <option value="+212" data-cc="MA">🇲🇦 +212 Marruecos</option>
+                <option value="+27" data-cc="ZA">🇿🇦 +27 Sudáfrica</option>
+                <option value="+234" data-cc="NG">🇳🇬 +234 Nigeria</option>
+                <option value="+254" data-cc="KE">🇰🇪 +254 Kenia</option>
+                <option value="+65" data-cc="SG">🇸🇬 +65 Singapur</option>
+                <option value="+60" data-cc="MY">🇲🇾 +60 Malasia</option>
+                <option value="+63" data-cc="PH">🇵🇭 +63 Filipinas</option>
+                <option value="+66" data-cc="TH">🇹🇭 +66 Tailandia</option>
+                <option value="+62" data-cc="ID">🇮🇩 +62 Indonesia</option>
+                <option value="+84" data-cc="VN">🇻🇳 +84 Vietnam</option>
+                <option value="+82" data-cc="KR">🇰🇷 +82 Corea del Sur</option>
+                <option value="+852" data-cc="HK">🇭🇰 +852 Hong Kong</option>
+                <option value="+886" data-cc="TW">🇹🇼 +886 Taiwán</option>
+                <option value="+92" data-cc="PK">🇵🇰 +92 Pakistán</option>
+              </select>
+              <input type="tel" id="gateTelefono" placeholder="Tu celular" autocomplete="tel-national" inputmode="tel" required>
+            </div>
+          </div>
+          <p id="gateError" role="alert" style="display:none;margin:0 0 12px;color:#e9d3a0;font-size:14px;line-height:1.4;text-align:center;"></p>
+          <button type="submit" class="btn btn-solid">Ver el video →</button>
+        </form>
+      </div>
+    </div>
   </div>
 
   <!-- Al terminar el video se desbloquea "Aplicar al programa", que lleva
@@ -726,21 +838,136 @@
     } catch (e) {}
   }
 
-  // ===== Versión "libre" (split test, 11-nov-2026): el video se ve SIN dejar datos. "Aplicar al programa" se
-  // desbloquea al minuto de video visto (el botón se va llenando) y los datos (nombre, número y correo)
-  // se piden en el formulario (/form). Sus leads llevan lp = "vsl-libre" (etiqueta lp-vsl-libre en GHL).
-  const VARIANTE = "libre";
-  const LP = "vsl-libre";
-  const SEG_DESBLOQUEO = 60; // segundos de video que hay que ver para activar "Aplicar al programa"
+  // ===== Gate previo al VSL: solo nombre/email/teléfono. Al enviar, el
+  // lead (+ UTMs) se manda a GHL y arranca el video. =====
+  const gateOverlay = document.getElementById("vslGateOverlay");
+  const gateForm = document.getElementById("vslGateForm");
+  const gateClose = document.getElementById("vslGateClose");
+  const gateCodigoPais = document.getElementById("gateCodigoPais");
   const playBtn = document.getElementById("vslPlayBtn");
+
+  // ===== Prueba A/B (desde el 10-nov-2026). A = página de siempre: lista de puntos y formulario al tocar el video.
+  // B = primero los datos: al entrar el formulario se abre solo encima de la página (que se ve de fondo) y no se puede
+  // cerrar hasta dejarlos; tampoco muestra la lista de puntos. Cada visita cae al azar en una (mitad y mitad) y se le mantiene la misma si vuelve.
+  // Para verlas a mano: ?v=a o ?v=b en el link.
+  // 10-nov-2026 (Thomas): "all in con la versión B". Todas las visitas ven la B; la A queda solo para verla a mano
+  // con ?v=a (no se guarda, así quien la mira vuelve a la B en la próxima visita).
+  const VARIANTE = (function () {
+    try {
+      if (new URLSearchParams(location.search).get("v") === "a") return "a";
+      localStorage.setItem("shu_vsl_var", "b");
+    } catch (e) {}
+    return "b";
+  })();
+  const VAR_ETQ = VARIANTE === "b" ? "B" : "A";
+  const gateCard = gateOverlay.querySelector(".vsl-gate-card");
   const medir = (evento) => { try { window.fbq && fbq("trackCustom", evento); } catch (e) {} };
-  try { localStorage.setItem("shu_vsl_lp", LP); } catch (e) {} // el formulario lo lee para etiquetar a la persona
-  medir("VSL_Libre_Vista");
+  // Quien ya dejó sus datos en este teléfono no vuelve a toparse con el formulario en la versión B.
+  let yaDejoDatos = false;
+  try { yaDejoDatos = !!localStorage.getItem("shu_vsl_lead"); } catch (e) {}
+  let datosListos = yaDejoDatos;
+  if (VARIANTE === "b") {
+    // 12-nov-2026 (Thomas): los datos se piden al tocar el play, no al entrar; el formulario se puede cerrar con la X.
+    document.getElementById("heroBullets").style.display = "none";
+  }
+  if (!yaDejoDatos) medir("VSL_Dorado_Vista");
+
+  let gateMedido = false;
+  function openGate() {
+    // En B, quien ya dejó sus datos arranca el video directo al tocar el play.
+    if (VARIANTE === "b" && datosListos) { startVsl(); return; }
+    gateOverlay.classList.add("open");
+    document.body.style.overflow = "hidden";
+    // Mide cuánta gente llega a ver el formulario (una vez por visita; aparece en el Administrador de eventos de Meta).
+    if (!gateMedido) { gateMedido = true; try { window.fbq && fbq("trackCustom", "FormularioVisto"); } catch (e) {} }
+  }
+  function closeGate() {
+    gateOverlay.classList.remove("open");
+    document.body.style.overflow = "";
+  }
+  function terminarGate() {
+    datosListos = true;
+    closeGate();
+  }
 
   let started = false;
   playBtn.addEventListener("click", () => {
-    if (!started) { startVsl(); return; }
+    if (!started) { openGate(); return; }
     vslVideo.play();
+  });
+  gateClose.addEventListener("click", closeGate);
+  gateOverlay.addEventListener("click", (ev) => {
+    if (ev.target === gateOverlay) closeGate();
+  });
+
+  gateForm.addEventListener("submit", (ev) => {
+    ev.preventDefault();
+    // Validación propia con aviso visible: el navegador de Instagram (iPhone) bloquea el envío sin mostrar nada
+    // cuando falta un dato, y la persona cree que el botón "no hace nada".
+    const gateError = document.getElementById("gateError");
+    try { window.fbq && fbq("trackCustom", "FormularioIntento"); } catch (e) {}
+    const avisar = (texto, campo) => {
+      try { window.fbq && fbq("trackCustom", "FormularioError", { campo: campo.id }); } catch (e) {}
+      [nombreEl, emailEl, telEl].forEach((c) => c.classList.toggle("campo-error", c === campo));
+      gateError.textContent = texto;
+      gateError.style.display = "block";
+      try { campo.focus(); campo.scrollIntoView({ block: "center" }); } catch (e) {}
+    };
+    const nombreEl = document.getElementById("gateNombre"), emailEl = document.getElementById("gateEmail"), telEl = document.getElementById("gateTelefono");
+    const emailLimpio = emailEl.value.replace(/\s+/g, "").toLowerCase();
+    emailEl.value = emailLimpio;
+    if (nombreEl.value.trim().length < 2) return avisar("Escribe tu nombre para continuar.", nombreEl);
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]{2,}$/.test(emailLimpio)) return avisar("Revisa tu correo electrónico, parece que falta algo (por ejemplo: nombre@gmail.com).", emailEl);
+    // Número: se arma con el código del país elegido sin duplicarlo. El autocompletado del iPhone suele poner
+    // "+1 (787) 555-1234" y antes quedaba "+1 +1 787…"; si alguien escribe "1 787…" con +1 elegido, quedaba "+1 1787…".
+    const telCrudo = telEl.value.trim();
+    let telDigitos = telCrudo.replace(/\D/g, "");
+    const codPais = gateCodigoPais.value, codDigitos = codPais.replace(/\D/g, "");
+    let telefono;
+    if (telCrudo.startsWith("+")) {
+      telefono = "+" + telDigitos; // ya trae su código de país
+    } else {
+      if (telDigitos.startsWith("00")) telDigitos = telDigitos.slice(2);
+      const largoNacional = codDigitos === "1" ? 10 : 8;
+      if (codDigitos && telDigitos.startsWith(codDigitos) && telDigitos.length > largoNacional) telDigitos = telDigitos.slice(codDigitos.length);
+      telefono = codPais + " " + telDigitos;
+    }
+    if (telDigitos.length < 7) return avisar("Escribe tu número de celular completo.", telEl);
+    // Puerto Rico, EE. UU. y República Dominicana (+1): siempre 10 dígitos con el código de área.
+    if (codDigitos === "1" && !telCrudo.startsWith("+") && telDigitos.length !== 10)
+      return avisar("Escribe tu número de 10 dígitos, con el código de área (por ejemplo: 787 555 1234).", telEl);
+    gateError.style.display = "none";
+    [nombreEl, emailEl, telEl].forEach((c) => c.classList.remove("campo-error"));
+    const nombre = nombreEl.value.trim();
+    const email = emailLimpio;
+    const lead = {
+      nombre,
+      email,
+      telefono,
+      lp: "vsl-dorado",
+      ...getUTMs(),
+      pagina: location.href,
+      fecha: new Date().toISOString(),
+    };
+    try {
+      localStorage.setItem("shu_vsl_lead", JSON.stringify(lead));
+    } catch (e) {}
+    try { window.fbq && fbq("track", "Lead"); } catch (e) {}
+    sendToGHL({
+      first_name: nombre,
+      full_name: nombre,
+      email,
+      phone: telefono,
+      ...getUTMs(),
+      pagina_origen: "landing dorada",
+      pagina: location.href,
+      fecha: lead.fecha,
+    });
+    registrarAtribucion({ nombre, email, telefono, lp: "vsl-dorado", ...getUTMs() });
+    medir("VSL_Dorado_Lead");
+    terminarGate();
+    startVsl();
+    if (VARIANTE === "b") { try { vslVideo.scrollIntoView({ block: "center" }); } catch (e) {} }
   });
 
   // Autocompleta el código de país del celular según la IP del visitante
@@ -805,6 +1032,40 @@
       })
       .catch(() => {});
   })();
+  async function detectCountryCode(selectEl) {
+    const elegir = (opt) => { opt.selected = true; };
+    try {
+      const ctrl = new AbortController();
+      const t = setTimeout(() => ctrl.abort(), 3000);
+      const res = await fetch(GEO_WORKER_URL + "/geo", { signal: ctrl.signal });
+      clearTimeout(t);
+      const geo = await res.json();
+      const opt = geo.ok && geo.country ? [...selectEl.options].find((o) => o.dataset.cc === geo.country) : null;
+      if (opt) { elegir(opt); return; }
+    } catch (e) {
+      // sigue con el respaldo
+    }
+    try {
+      const res = await fetch("https://ipapi.co/json/");
+      if (!res.ok) return;
+      const data = await res.json();
+      const cc = data.country_code;
+      const dial = data.country_calling_code;
+      if (!dial) return;
+      let opt = [...selectEl.options].find((o) => o.dataset.cc === cc);
+      if (!opt) {
+        opt = document.createElement("option");
+        opt.value = dial;
+        opt.textContent = dial + " " + (data.country_name || cc);
+        opt.dataset.cc = cc;
+        selectEl.insertBefore(opt, selectEl.firstChild);
+      }
+      elegir(opt);
+    } catch (e) {
+      // silencioso: si falla, queda el default y el usuario elige a mano
+    }
+  }
+  detectCountryCode(gateCodigoPais);
 
   // ===== VSL real (video alojado en CDN propio, sin YouTube) + desbloqueo
   // de "Aplicar al programa" sincronizado con el progreso REAL del video,
@@ -836,7 +1097,6 @@
   function actualizarBotonAplicar() {
     const u = getUTMs(), q = new URLSearchParams();
     Object.keys(u).forEach((k) => { if (u[k]) q.set(k, u[k]); });
-    q.set("lp", LP); // el formulario etiqueta a la persona con esta versión
     const cf = origenCF();
     if (pase) {
       // Formulario en shu.stepherup.com: la dirección lleva SOLO un código (los datos de la persona se los pasa el Worker).
@@ -877,6 +1137,7 @@
   const ICON_EXPAND = '<svg viewBox="0 0 24 24"><path fill="currentColor" d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>';
   const ICON_COMPRESS = '<svg viewBox="0 0 24 24"><path fill="currentColor" d="M5 16h3v3h2v-5H5v2zm3-8H5v2h5V5H8v3zm6 11h2v-3h3v-2h-5v5zm2-11V5h-2v5h5V8h-3z"/></svg>';
 
+  const SEG_DESBLOQUEO = 60;
   function unlock() {
     const hint = document.getElementById("applyHint");
     if (hint) hint.style.display = "none";
@@ -884,16 +1145,15 @@
     applyBtn.classList.remove("locked");
     applyBtn.removeAttribute("aria-disabled");
     applyBtn.classList.add("just-unlocked");
-    medir("VSL_Libre_Desbloqueo");
   }
 
   vslVideo.addEventListener("timeupdate", () => {
     if (!vslVideo.duration) return;
     const t = vslVideo.currentTime;
-    // La barra del video muestra el avance real del video (curva suave, como en las otras versiones).
+    // La barra del video muestra el avance real del video (curva suave).
     const frac = Math.min(1, t / vslVideo.duration);
     progressFill.style.width = (1 - Math.pow(1 - frac, 2.2)) * 100 + "%";
-    // La barra del botón carga durante el primer minuto de video visto y al llegar al 100 % se desbloquea.
+    // 10-nov-2026 (Thomas): el botón se desbloquea al minuto de video visto; su barra carga durante ese minuto.
     if (applyBtn.classList.contains("locked")) {
       fill.style.width = Math.min(1, t / SEG_DESBLOQUEO) * 100 + "%";
       if (t >= SEG_DESBLOQUEO) unlock();
@@ -907,7 +1167,7 @@
     // Antes de arrancar, tocar CUALQUIER parte del video abre el formulario
     // (igual que el botón de play): si no, el video se reproducía sin
     // pasar por el gate y no se pedían los datos.
-    if (!started) { startVsl(); return; }
+    if (!started) { openGate(); return; }
     if (vslVideo.paused) vslVideo.play(); else vslVideo.pause();
   });
 
@@ -977,7 +1237,6 @@
   function startVsl() {
     if (started) return;
     started = true;
-    medir("VSL_Libre_Play");
     playBtn.style.display = "none";
     // Arranca CON sonido: esto corre dentro del clic de "Ver el video" del
     // gate (un gesto del usuario), así que los navegadores lo permiten. Ya
@@ -1002,7 +1261,7 @@
   const RET_PASO = 15;
   let retMax = 0, retJugo = false, retFin = false, retAplicar = false;
   let retEst = { b: -1, ini: 0, fin: 0, ap: 0 };
-  try { const g = JSON.parse(localStorage.getItem("shu_vsl_ret_libre") || "null"); if (g && typeof g.b === "number") retEst = g; } catch (e) {}
+  try { const g = JSON.parse(localStorage.getItem("shu_vsl_ret_dorado") || "null"); if (g && typeof g.b === "number") retEst = g; } catch (e) {}
   vslVideo.addEventListener("playing", () => { retJugo = true; });
   vslVideo.addEventListener("timeupdate", () => {
     const t = vslVideo.currentTime; // el video no tiene barra para saltar: la posición es lo que vio
@@ -1016,19 +1275,19 @@
       const b1 = Math.max(Math.floor(retMax / RET_PASO), retEst.b);
       const fin = retFin ? 1 : retEst.fin, ap = retAplicar ? 1 : retEst.ap;
       if (retEst.ini && b1 === retEst.b && fin === retEst.fin && ap === retEst.ap) return; // nada nuevo
-      const cuerpo = JSON.stringify({ v: VARIANTE, b0: retEst.b, b1, ini: retEst.ini ? 0 : 1, fin: fin - retEst.fin, ap: ap - retEst.ap, d: Math.round(vslVideo.duration || 0) });
+      const cuerpo = JSON.stringify({ v: "dorado", b0: retEst.b, b1, ini: retEst.ini ? 0 : 1, fin: fin - retEst.fin, ap: ap - retEst.ap, d: Math.round(vslVideo.duration || 0) });
       let ok = false;
       if (navigator.sendBeacon) ok = navigator.sendBeacon(RET_URL, new Blob([cuerpo], { type: "text/plain;charset=UTF-8" }));
       if (!ok) fetch(RET_URL, { method: "POST", body: cuerpo, keepalive: true, headers: { "Content-Type": "text/plain;charset=UTF-8" } }).catch(() => {});
       retEst = { b: b1, ini: 1, fin, ap };
-      localStorage.setItem("shu_vsl_ret_libre", JSON.stringify(retEst));
+      localStorage.setItem("shu_vsl_ret_dorado", JSON.stringify(retEst));
     } catch (e) {}
   }
   document.addEventListener("visibilitychange", () => { if (document.visibilityState === "hidden") enviarRet(); });
   window.addEventListener("pagehide", enviarRet);
 
   applyBtn.addEventListener("click", (ev) => {
-    if (!applyBtn.classList.contains("locked")) { retAplicar = true; medir("VSL_Libre_Aplicar"); enviarRet(); }
+    if (!applyBtn.classList.contains("locked")) { retAplicar = true; enviarRet(); }
     if (applyBtn.classList.contains("locked")) {
       ev.preventDefault();
       const hint = document.getElementById("applyHint");
