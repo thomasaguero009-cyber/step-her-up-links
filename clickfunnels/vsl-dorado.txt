@@ -366,7 +366,7 @@
 
     <section class="hero">
       <div class="wrap" style="max-width:760px; text-align:center;">
-        <h1>El sistema de contenido + anuncios que convierte tu Instagram en <span class="hl">clientas que pagan</span></h1>
+        <h1>El sistema para crecer tu marca personal y convertirla en <span class="hl">ventas recurrentes</span></h1>
         <div id="heroBullets">
         <p style="margin:24px 0 6px; font-weight:600;">En este entrenamiento vas a entender:</p>
         <ul class="checklist" style="display:inline-block; text-align:left;">
