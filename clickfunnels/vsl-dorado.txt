@@ -526,7 +526,7 @@
        el flujo sigue a calendario.html. TEMPORAL: gracias.html está
        desconectada del funnel hasta tener su video — calendario.html
        muestra la confirmación de la reserva en la misma página. -->
-  <section class="section" id="aplicar" style="padding:20px 0 90px;">
+  <section class="section" id="aplicar" style="padding:20px 0 90px;display:none;">
     <div class="wrap" style="text-align:center;">
       <a class="btn btn-cta locked" id="applyBtn" href="/form" target="_self" aria-disabled="true">
         <span class="cta-label">Aplicar al programa →</span>
@@ -1139,7 +1139,8 @@
   const ICON_EXPAND = '<svg viewBox="0 0 24 24"><path fill="currentColor" d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>';
   const ICON_COMPRESS = '<svg viewBox="0 0 24 24"><path fill="currentColor" d="M5 16h3v3h2v-5H5v2zm3-8H5v2h5V5H8v3zm6 11h2v-3h3v-2h-5v5zm2-11V5h-2v5h5V8h-3z"/></svg>';
 
-  const SEG_DESBLOQUEO = 60;
+  // 13-nov-2026 (Thomas): se desbloquea la PRIMERA vez que Gianie habla de agendar la llamada: "debajo del video puedes agendar ... una llamada con nuestro equipo" (3:35 del video "The First Step to Her Up", 4:39 en total). Más adelante lo repite ("haz clic en el botón y agenda tu llamada", 4:30). Si se cambia el video, ajustar este segundo.
+  const SEG_DESBLOQUEO = 215;
   function unlock() {
     const hint = document.getElementById("applyHint");
     if (hint) hint.style.display = "none";
@@ -1254,6 +1255,8 @@
       });
     }
     vslVideoWrap.classList.add("started");
+    // 13-nov-2026 (Thomas): "Aplicar al programa" aparece cuando la persona ya reproduce el video (antes se veía bloqueado desde el inicio y la gente lo tocaba sin que pasara nada).
+    var secAplicar = document.getElementById("aplicar"); if (secAplicar) secAplicar.style.display = "";
   }
 
   // ===== Retención del video (se ve en el Admin del dashboard). Un solo aviso por persona al salir de la página,
