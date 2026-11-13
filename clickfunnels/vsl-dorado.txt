@@ -384,7 +384,7 @@
       <div class="wrap">
         <div class="vsl-card">
           <div class="vsl-video" id="vslVideoWrap">
-            <video id="vslVideo" playsinline preload="metadata" poster="https://thomasaguero009-cyber.github.io/step-her-up/assets/vsl-poster.jpg" controlsList="nodownload noremoteplayback" src="https://step-her-up-calendar.thomasaguero009.workers.dev/videos/gianie-april-vsl-720.mp4"></video>
+            <video id="vslVideo" playsinline preload="metadata" poster="https://step-her-up-calendar.thomasaguero009.workers.dev/videos/first-step-vsl-poster.jpg" controlsList="nodownload noremoteplayback" src="https://step-her-up-calendar.thomasaguero009.workers.dev/videos/first-step-vsl-v3-1080.mp4"></video>
             <div class="vsl-controls" id="vslControls">
               <div class="vsl-progress"><div class="vsl-progress-fill" id="vslProgressFill"></div></div>
               <div class="vsl-speed">
